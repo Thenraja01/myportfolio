@@ -1,0 +1,38 @@
+.section ol{
+display: grid;
+gap: 10px;
+justify-content: center;
+margin: 0 auto;
+padding: 12px;
+grid-template-columns:repeat(2,300px);
+
+}
+
+.section ol li{
+    list-style: none;
+    border: 1px solid;
+padding: 12px;
+background-color: rgb(11, 12, 12);
+border-radius: 12px;
+
+}
+.section{
+    display: grid; 
+    margin: 50px auto;
+    border: 1px solid;
+    border-radius: 12px;
+    padding: 12px;
+}
+.section ol li:hover{
+box-shadow: 2px 2px 12px rgb(2, 57, 61);
+
+    transition: transform 0.3s ease-in 0.2s;
+    transform: translateX(50px);
+
+}
+.contentbox h4{
+    color: white;
+}
+.contentbox p{
+    color: white;
+}

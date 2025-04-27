@@ -1,0 +1,23 @@
+.reviewform{
+    display: flex;
+    justify-content: center;
+    margin: 0px auto;
+    padding-bottom: 50px;
+    width: auto;
+}
+.reviewform form{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 12px;
+    gap: 12px;    
+    border: 1px solid;
+    border-radius: 12px;
+    text-align: center;
+
+}
+.reviewform form:hover{
+    scale: 1.1;
+    transition: scale 0.1s ease-in-out 0.5s;
+    box-shadow: 0px 0px 20px grey;
+}

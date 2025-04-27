@@ -1,0 +1,12 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.dark{
+    background-color: black;
+    color: white;
+}
+.light{
+    background-color: rgb(240, 232, 232);
+    color: rgb(19, 18, 18);
+}

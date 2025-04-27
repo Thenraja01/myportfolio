@@ -1,0 +1,36 @@
+.navbar{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(25, 143, 104);
+    position: sticky;
+    top:0
+}
+.navbar ol{
+    display: flex;
+    margin-left: 12px;
+    gap: 12px;
+    padding: 12px;
+}
+.navbar ol li {
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+
+    
+}
+.navbar ol li a{
+    text-decoration: none;
+}
+.navbar ol li a:hover{
+    color: blue;
+    border-bottom: 1px solid;
+}
+.navbar ol button{
+    padding: 2px 10px;
+    border-radius: 8px;
+    border: none;
+}
+.navbar ol button:hover{
+    cursor: pointer;
+
+}

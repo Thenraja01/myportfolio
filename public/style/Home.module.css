@@ -1,0 +1,44 @@
+.content{
+    border-bottom: 1px solid;
+    margin: 0 auto;
+    width: 90%;
+    padding-top: 24px;
+
+}
+.contentmain img{
+      display: flex;
+      justify-self: center;
+    border-radius: 12px;
+}
+
+.contentmain img:hover,.aboutcontent img:hover{
+    box-shadow: 2px 2px 10px 3px rgb(4, 66, 77);
+    transition:box-shadow 0.3s ease-in-out 0.5s ;
+}
+.contentmain h3{
+    color:rgb(44, 44, 44);
+    animation: fanta 0.5s 5s 0.2 25 normal forwards;
+}
+
+
+.paracontent p{
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.aboutcontent img{
+    display: flex;
+    justify-self: center;
+    border-radius: 12px;
+}
+.aboutcontent{
+    border: 1px solid;
+    margin: 90px auto;
+    padding: 20px;
+    border-radius: 12px;
+}
+.aboutcontent p{
+width: 90%;
+justify-self: center;
+margin:0 auto;
+}

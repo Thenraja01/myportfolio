@@ -1,12 +1,12 @@
-import { FaHtml5 } from 'react-icons/fa';
-import { SiCss3 } from 'react-icons/si';
-import { SiJavascript } from 'react-icons/si';
+import { FaHtml5 } from 'react-icons/fa6';
+import { FaCss3Alt } from 'react-icons/fa';
+import { FaJs } from 'react-icons/fa';
 import styles from '../../public/style/Skills.module.css'
 import { FaReact } from 'react-icons/fa';
 export default function Skills( ) {
     return(
         <div className={styles.section} id='skills'>
-            <div className="skills">
+            <div className="skills"> 
                 <h3>My Skills</h3>
         <ol>
             <li><div className={styles.contentbox}>
@@ -15,13 +15,13 @@ export default function Skills( ) {
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi, vel dolor, dolore quidem totam impedit expedita excepturi molestias illum, reprehenderit eum nulla quam omnis facere velit porro dignissimos. Sit, impedit!</p>
                 </div></li>
                 <li><div className={styles.contentbox}>
-                <SiCss3 size={30} color="#264de4" />
+                <FaCss3Alt size={30} color="#264de4" />
             <h4>CSS</h4>
 
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora enim vitae nemo quod, ad perspiciatis hic pariatur, exercitationem dolorum corrupti nam dolor cumque ea officiis? Tenetur quaerat quae quidem vero?</p>
                 </div></li>
                 <li><div className={styles.contentbox}>
-                <SiJavascript size={30} color="#f7df1e" />
+                <FaJs size={30} color="#f7df1e" />
             <h4>JS</h4>
 
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque fuga recusandae pariatur aspernatur natus? Quia unde adipisci doloribus velit, ad quos dicta hic reiciendis deserunt consectetur dolorum quis incidunt suscipit.</p>

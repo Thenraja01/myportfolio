@@ -1,10 +1,11 @@
 .section ol{
-display: grid;
+display: flex;
+flex-wrap: wrap;
 gap: 10px;
 justify-content: center;
 margin: 0 auto;
 padding: 12px;
-grid-template-columns:repeat(2,300px);
+/* grid-template-columns:repeat(2,300px); */
 
 }
 
@@ -18,10 +19,12 @@ border-radius: 12px;
 }
 .section{
     display: grid; 
-    margin: 50px auto;
+    margin: 20px auto;
     border: 1px solid;
     border-radius: 12px;
     padding: 12px;
+    width: 90%;
+
 }
 .section ol li:hover{
 box-shadow: 2px 2px 12px rgb(2, 57, 61);
@@ -34,5 +37,6 @@ box-shadow: 2px 2px 12px rgb(2, 57, 61);
     color: white;
 }
 .contentbox p{
+    width: 300px;
     color: white;
 }

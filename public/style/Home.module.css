@@ -1,8 +1,12 @@
 .content{
-    border-bottom: 1px solid;
     margin: 0 auto;
-    width: 90%;
     padding-top: 24px;
+
+
+}
+.contentmain{
+ margin: 0 auto;
+    width: 90%;
 
 }
 .contentmain img{
@@ -16,12 +20,13 @@
     transition:box-shadow 0.3s ease-in-out 0.5s ;
 }
 .contentmain h3{
-    color:rgb(44, 44, 44);
+    color:rgb(104, 104, 104);
     animation: fanta 0.5s 5s 0.2 25 normal forwards;
+    width: 25%;
 }
 
 
-.paracontent p{
+.contentmain p{
     width: 80%;
     margin: 0 auto;
     padding: 20px;
@@ -33,9 +38,10 @@
 }
 .aboutcontent{
     border: 1px solid;
-    margin: 90px auto;
-    padding: 20px;
+    margin: 20px auto;
     border-radius: 12px;
+    width: 90%;
+
 }
 .aboutcontent p{
 width: 90%;

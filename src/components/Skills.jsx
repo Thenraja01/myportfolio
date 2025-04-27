@@ -6,7 +6,7 @@ import { FaReact } from 'react-icons/fa';
 export default function Skills( ) {
     return(
         <div className={styles.section} id='skills'>
-            <div className="skills"> 
+        
                 <h3>My Skills</h3>
         <ol>
             <li><div className={styles.contentbox}>
@@ -32,7 +32,7 @@ export default function Skills( ) {
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus unde voluptate alias sequi, culpa iste vitae ratione eius laborum explicabo voluptatum pariatur obcaecati labore incidunt, vero sunt aperiam numquam. Deleniti!</p>
                 </div></li>
         </ol>
-            </div>
+            
         </div>
     )
 }

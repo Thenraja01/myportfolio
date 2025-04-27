@@ -11,7 +11,8 @@ function Handlechangetheme(){
 }
   return (
     <>
-  
+  <div className="parentc">
+
 <Navbar setTheme={Handlechangetheme}/>
     <div className={theme?'dark':'light'}>
 <Home/>
@@ -20,6 +21,7 @@ function Handlechangetheme(){
 <Reviews/>
 
         </div>
+  </div>
 
     </>
   )

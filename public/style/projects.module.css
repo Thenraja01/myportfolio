@@ -1,16 +1,14 @@
 .projects{
-    width: 96%;
-    margin: 0 auto;
+    margin: 20px auto;
     display: grid;
     gap: 8px;
-    padding: 60px;
-    border-bottom: 1px solid;
+    width: 90%;
+
 }
 .youtube ol{
     display: flex;
     gap: 12px;
-    width: 80%;
-    margin: 10px auto;
+    margin: 0 auto;
     
 }
 .youtube ol li{
@@ -29,7 +27,7 @@ width:fit-content;
     border: 1px solid;
     padding: 5px;
     border-radius: 12px;
-    margin: 12px;
+    margin: 10px auto;
 }
 .youtube p{
     width: 80%;

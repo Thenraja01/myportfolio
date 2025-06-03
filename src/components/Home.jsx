@@ -2,7 +2,7 @@ import React from 'react'
 import person from '../components/download.jpeg'
 import styles from '../../public/style/Home.module.css'
 export default function Home() {
-  data={
+  const data={
   username:"Then Raja",
   joblevel:"Web devoloper",
   jobdesc:"A Web developer who focus on the user interface and user experience side of website and web application .i specialised with JS library likes React JS and freaquently update my skills. ",
@@ -18,8 +18,8 @@ export default function Home() {
         <div className={styles.aboutcontent} id='about'>
         <h3>About me</h3>
         <img src={person} alt="" />
-        <p>
         <h1>HI EVERY ONE</h1>
+        <p>
         {data.jobdesc}
 </p>
         </div>

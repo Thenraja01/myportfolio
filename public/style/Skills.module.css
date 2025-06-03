@@ -1,7 +1,7 @@
 .section ol{
 display: flex;
 flex-wrap: wrap;
-gap: 10px;
+gap: 20px;
 justify-content: center;
 margin: 0 auto;
 padding: 12px;
@@ -30,7 +30,7 @@ border-radius: 12px;
 box-shadow: 2px 2px 12px rgb(2, 57, 61);
 
     transition: transform 0.3s ease-in 0.2s;
-    transform: translateX(50px);
+    transform: skew(6deg,5deg);
 
 }
 .contentbox h4{

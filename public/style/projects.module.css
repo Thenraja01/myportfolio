@@ -1,5 +1,6 @@
 .projects{
     margin: 20px auto;
+    padding: 12px;
     display: grid;
     gap: 8px;
     width: 90%;

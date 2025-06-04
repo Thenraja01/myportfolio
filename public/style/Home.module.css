@@ -1,8 +1,6 @@
 .content{
     margin: 0 auto;
     padding-top: 24px;
-
-
 }
 .contentmain{
  margin: 0 auto;
@@ -20,9 +18,9 @@
     transition:box-shadow 0.3s ease-in-out 0.5s ;
 }
 .contentmain h3{
-    color:rgb(104, 104, 104);
-    animation: fanta 0.5s 5s 0.2 25 normal forwards;
+    color:rgb(101, 97, 97);
     width: 25%;
+    text-align: center;
 }
 
 
@@ -30,15 +28,23 @@
     width: 80%;
     margin: 0 auto;
     padding: 20px;
+    text-align: center;
+    text-transform: capitalize;
+    font-size:large;
 }
 .aboutcontent img{
     display: flex;
     justify-self: center;
     border-radius: 12px;
 }
+.aboutcontent h2{
+    padding: 12px;
+    margin: 12px auto;
+}
 .aboutcontent{
     border: 1px solid;
     margin: 20px auto;
+    padding: 12px;
     border-radius: 12px;
     width: 90%;
 
@@ -46,5 +52,8 @@
 .aboutcontent p{
 width: 90%;
 justify-self: center;
-margin:0 auto;
+margin:20px auto;
+font-variant: initial;
+font-size: large;
+font-weight: lighter;
 }

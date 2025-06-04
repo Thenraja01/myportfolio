@@ -5,8 +5,6 @@ gap: 20px;
 justify-content: center;
 margin: 0 auto;
 padding: 12px;
-/* grid-template-columns:repeat(2,300px); */
-
 }
 
 .section ol li{
@@ -26,12 +24,9 @@ border-radius: 12px;
     width: 90%;
 
 }
-.section ol li:hover{
+.section ol li{
 box-shadow: 2px 2px 12px rgb(2, 57, 61);
-
-    transition: transform 0.3s ease-in 0.2s;
-    transform: skew(6deg,5deg);
-
+    animation: skillsets 1s ease-out 0.5s infinite alternate;
 }
 .contentbox h4{
     color: white;
@@ -39,4 +34,21 @@ box-shadow: 2px 2px 12px rgb(2, 57, 61);
 .contentbox p{
     width: 300px;
     color: white;
+}
+.section ol li:hover{
+box-shadow: 2px -2px 12px 2px rgb(100, 142, 3);
+
+}
+@keyframes skillsets {
+  0%{
+transform: skew(0deg,2deg);
+  }  
+  50%{   
+    transform: skew(2deg,8deg);
+  }
+  100%{
+transform: skew(6deg,0deg);
+
+  }
+    
 }

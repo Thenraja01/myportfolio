@@ -37,7 +37,7 @@
       justify-self: start;
       margin-bottom: 15px;
     border-radius: 12px;
-    width: 100%;
+    width: 50%;
     height: 100%;
   
 }
@@ -62,7 +62,7 @@
     display: flex;
     justify-self: center;
     border-radius: 12px;
-     width: 100%;
+     width: 50%;
     height: 100%;
 }
 .aboutcontent h2{

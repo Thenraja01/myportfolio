@@ -39,8 +39,15 @@
     border-radius: 12px;
     width: 50%;
     height: 100%;
-  
+         transform: scale(1.05);
+    transition: 0.3s ease-in-out ;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
+
+  
+
+
 .contentmain h3{
     color:rgb(101, 97, 97);
     width: 25%;

@@ -99,12 +99,16 @@ font-weight: lighter;
 .contentmain h3{
      color:rgb(102, 93, 114);
     width: 25%;
-    text-align: start;
+    text-align: center;
     text-decoration: underline;
 }
 .aboutcontent p{
     text-align: start;
     font-size: large;
     padding-top: 12px;
+    text-indent: 12px;
+    margin: 0 auto;
+    width: 90%; 
+
 }
 }

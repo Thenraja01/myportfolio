@@ -36,8 +36,9 @@
       display: flex;
       justify-self: start;
       margin-bottom: 15px;
+      margin-top: 12px;
     border-radius: 12px;
-    width: 50%;
+    width: 45%;
     height: 100%;
          transform: scale(1.05);
     transition: 0.3s ease-in-out ;

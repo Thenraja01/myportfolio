@@ -1,11 +1,29 @@
 .navbar{
-    display: flex;
-    justify-content: center;
+   padding: 12px;
+    justify-items: center;
     background-color: rgb(25, 143, 104);
     width: 100%;
     position: sticky;
     top:0;
     z-index: 100;
+}
+.navbar h2{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    margin-left: 12px;
+}
+.navbar .navupper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+}
+.navbar .navlower{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
 }
 .navbar ol{
     display: flex;
@@ -16,9 +34,7 @@
 .navbar ol li {
     list-style: none;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-
-    
+    font-size: 15px;   
 }
 .navbar ol li a{
     text-decoration: none;
@@ -27,12 +43,16 @@
     color: blue;
     border-bottom: 1px solid;
 }
-.navbar ol button{
-    padding: 2px 10px;
-    border-radius: 8px;
+.navbar button {
+    background-color: transparent;
     border: none;
-}
-.navbar ol button:hover{
+    color: white;
+    font-size: 16px;
     cursor: pointer;
-
+}
+@media (max-width=450px){
+    .navbar ol li{
+        display: flex;
+        justify-content: end;
+    }
 }

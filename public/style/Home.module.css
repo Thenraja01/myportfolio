@@ -5,22 +5,20 @@
 .contentmain{
  margin: 0 auto;
     width: 90%;
+    padding-bottom: 12px;
 
 }
 .contentmain img{
       display: flex;
-      justify-self: center;
+      justify-self: start;
+      margin-bottom: 15px;
     border-radius: 12px;
-}
-
-.contentmain img:hover,.aboutcontent img:hover{
-    box-shadow: 2px 2px 10px 3px rgb(4, 66, 77);
-    transition:box-shadow 0.3s ease-in-out 0.5s ;
 }
 .contentmain h3{
     color:rgb(101, 97, 97);
     width: 25%;
     text-align: center;
+    text-decoration: underline;
 }
 
 
@@ -28,9 +26,10 @@
     width: 80%;
     margin: 0 auto;
     padding: 20px;
-    text-align: center;
+    text-align: start;
     text-transform: capitalize;
     font-size:large;
+
 }
 .aboutcontent img{
     display: flex;
@@ -56,4 +55,22 @@ margin:20px auto;
 font-variant: initial;
 font-size: large;
 font-weight: lighter;
+}
+@media (max-width:450px){
+    .contentmain img{
+      display: grid;
+      justify-self: center;
+    border-radius: 12px;
+}
+.contentmain h3{
+     color:rgb(102, 93, 114);
+    width: 25%;
+    text-align: start;
+    text-decoration: underline;
+}
+.aboutcontent p{
+    text-align: start;
+    font-size: large;
+    padding-top: 12px;
+}
 }

@@ -1,5 +1,4 @@
 .navbar{
-   padding: 12px;
     justify-items: center;
     background-color: rgb(25, 143, 104);
     width: 100%;
@@ -17,8 +16,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px;
-}
+    padding: 12px;}
 .navbar .navlower{
     display: flex;
     justify-content: center;

@@ -17,12 +17,12 @@ export default function Navbar({setTheme}) {
     return(
         <div className={Styles.navbar}>
             <div className="navupper">
-                <h2 style={{color}}>My Portfolio</h2>
+                <h2 style={{color}}>My Portfolia</h2>
                 <ol>
-                    <li><a href=""><CiInstagram size={24} style={{color}}/>
+                    <li><a href="https://www.instagram.com/kingz__nyx_"><CiInstagram size={24} style={{color}}/>
                         </a></li>
-                    <li><a href=""><FaGithubSquare size={24} style={{color}}/></a></li>
-                    <li><a href=""><CiLinkedin size={24}style={{color}}/></a></li>
+                    <li><a href="https://github.com/Thenraja01"><FaGithubSquare size={24} style={{color}}/></a></li>
+                    <li><a href="https://www.linkedin.com/in/then-raja1205"><CiLinkedin size={24}style={{color}}/></a></li>
                 </ol>
                 
                 </div>

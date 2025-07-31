@@ -29,7 +29,7 @@ export default function Home() {
         <img src={person} alt="personimage" />
         <h1>{data.username}</h1>
         <h3>{data.joblevel}</h3>
-            <p>{data.jobdesc}</p>
+            <p>{data.personnalinfo}</p>
         </div>
         <div className={styles.aboutcontent} id='about'>
         <h2>About Me</h2>

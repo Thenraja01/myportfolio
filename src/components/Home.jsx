@@ -6,12 +6,12 @@ import styles from '../../public/style/Home.module.css'
 export default function Home() {
   const [visible, setVisible] = useState(false);
   const toggleVisibility = () => {
-    setVisible(true);
+    setVisible(!visible);
   };
   const info ={
     career:"Web Developer",
     jobdesc:"I am a passionate web developer with a focus on creating dynamic and responsive web applications. I have a strong foundation in HTML, CSS, and JavaScript, and I am continuously learning new technologies to enhance my skills. My goal is to build user-friendly websites that provide an excellent user experience.",
-    contact:"email: thenwthen@gmail.com,phone: 7418869396",
+    contact:"Email: thenwthen@gmail.com, Phone: 7418869396",
   }
   const data={
   username:"Then Raja",

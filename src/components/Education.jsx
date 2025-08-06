@@ -1,17 +1,48 @@
+import styles from '../../public/style/Education.module.css';
 export default function Education() {
+    const educationData=[
+            {id:1,
+            degree:'Bachelor of Engineering (B.E.) in Computer Science and Engineering',
+            institution:'Solamalai College of Engineering',
+            year:'2022 - 2026',
+            gpa:'8.5'},
+            {id:2,
+            degree:'Higher Secondary School Certificate (HSC)',
+            institution:'Holy Angel Higher Secondary School',
+            year:'2021-2022',
+            gpa:'7.5'
+   },
+            {id:3,
+            degree:'Secondary School Certificate (SSC)',
+            institution:'Holy Angel  Higher Secondary School',
+            year:'2019-2020',
+            gpa:'8.0'}]
+            const tablehead=['Degree','Institution','Year','GPA']
+      
+    
     return (
-        <div id="Education" className="education">
+        <div id="education" className={styles.education }>
             <h2>Education</h2>
-            <p>Details about your education will go here.</p>
-            <table>
+            <p>Details about my education will show here</p>
+            <table className={styles.table}>
                 <thead>
                     <tr>
-                        <th>Degree</th>
-                        <th>Institution</th>
-                        <th>Year</th>
-                         
+                       {tablehead.map((items,id)=>(
+                        <td key={id}>{items}</td>
+                       ))}    
                     </tr>
                 </thead>
+                <tbody>
+                    {educationData.map((items)=>
+                        <tr key={items.id}>
+                            <td>{items.degree}</td>
+                            <td>{items.institution}</td>
+                            <td>{items.year}</td>
+                            <td>{items.gpa}</td>
+                        </tr>
+                    )}
+                  </tbody>  
+        
             </table>
         </div>
     );

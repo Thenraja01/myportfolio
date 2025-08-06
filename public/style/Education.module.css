@@ -1,0 +1,35 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.education {
+    background-color: #f0f0f0;
+    justify-items: center;
+    padding: 12px;
+}
+.table{
+    height: 100%;
+    margin: 25px auto;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif; 
+    border-collapse:collapse;
+}
+thead{
+    background-color: #e0e0e0;
+    padding: 12px;
+    font-weight: bold;
+    text-align: left;  
+}
+tbody  {
+    margin: 12px;
+    background-color: #f9f9f9;
+    padding: 12px;
+}
+th,td{
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}

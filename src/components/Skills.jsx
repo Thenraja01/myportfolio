@@ -14,8 +14,7 @@ export default function Skills( ) {
             <div className={styles.skills}>
                  { icons.map((icon, index) => (
                   <li style={{listStyle:"none"} }className={styles.list} >
-                        {icon}
-                    
+                        {icon}     
                   </li>
           ))}
         </div>

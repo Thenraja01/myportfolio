@@ -8,7 +8,7 @@ import {CiInstagram,CiLinkedin} from 'react-icons/ci'
 export default function Navbar({setTheme}) {
     const [color, setColor] = useState("black")
     const [isPlay, setIsplay] = useState(false)
-  
+   const links = ["About", "Skills", "Projects", "Education"]
     function ChangeTheme(){
         setTheme()
         setColor(prev=>prev=="black"?'white':'black')
@@ -26,15 +26,13 @@ export default function Navbar({setTheme}) {
                 </ol>
                 
                 </div>
-            <div className="navlower" >
+            <div className="navlower" >       
             <ol>
-                <li><a href="#about" style={{color}}>About</a></li>
-                <li><a href="#skills" style={{color}}>Skills</a></li>
-                <li><a href="#projects" style={{color}}>Projects</a></li>
-                <li><a href="#Education" style={{color}}>Education</a></li>
-
+                <li className={Styles.navigation}>{links.map((items,id)=>{
+                    return <a href={`#${items.toLowerCase()}`} key={id} style={{color}}>{items}</a>     
+                })}</li>
                <button type="button" onClick={ChangeTheme}>{isPlay?<FiMoon style={{color}} size={18}/>:<FiSun style={{color}} size={18}/>}
-</button>
+                </button>
 
             </ol>
             </div>

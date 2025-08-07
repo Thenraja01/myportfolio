@@ -18,8 +18,7 @@ function Handlechangetheme(){
 <Home/>
 <Education/>
 <Projects/>
-<Skills/>
-
+ <Skills/>
         </div>
   </div>
 

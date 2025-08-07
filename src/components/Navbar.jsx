@@ -17,7 +17,6 @@ export default function Navbar({setTheme}) {
     return(
         <div className={Styles.navbar}>
             <div className="navupper">
-                <h2 style={{color}}>My Portfolia</h2>
                 <ol>
                     <li><a href="https://www.instagram.com/kingz__nyx_"><CiInstagram size={24} style={{color}}/>
                         </a></li>

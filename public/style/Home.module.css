@@ -2,10 +2,12 @@
     margin: 0 auto;
     padding-top: 24px;
 }
-.contentmain{
- margin: 0 auto;
-    width: 90%;
-    padding-bottom: 12px;
+.content h1{
+    text-align: start;
+    color: rgb(51, 24, 24);
+    font-size: 2.5em;
+    font-family: serif;
+    margin-bottom: 20px;
 }
 .info{
     display: flex;
@@ -13,6 +15,7 @@
     align-items: center;
     justify-content: center;
     padding: 12px;
+    
 }
 .info p{
     font-size: 18px;
@@ -20,6 +23,7 @@
     text-align: center;
     margin: 12px auto;
     padding-top: 12px;
+    width: 80%;
 }
 .info button{
     background-color: rgb(25, 143, 104);
@@ -31,22 +35,32 @@
     font-size: 16px;
     margin-bottom: 12px;
 }
-.contentmain img{
-      display: flex;
-      justify-self: start;
-      margin-bottom: 15px;
-      margin-top: 12px;
-    border-radius: 12px;
-    width: 45%;
-    height: 100%;
-         transform: scale(1.05);
-    transition: 0.3s ease-in-out ;
-    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+.profileImage{
+    width:20em;
+    border-radius: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    transform: scale(1.05);
+    margin:  12px;
+    border-bottom: 2px solid rgb(8, 14, 12);
+
+
+}
+.contentmain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+   padding: 12px;
 }
 .contentmain h3{
-    color:rgb(101, 97, 97);
-    width: 25%;
-    text-align: center;
+    padding-left:16px;
+    margin-left: 12px;
+    color:rgb(51, 24, 24);
+    text-align: start;
     text-decoration: underline;
 }
 
@@ -56,20 +70,30 @@
     margin: 0 auto;
     padding: 20px;
     text-align: start;
+    color: rgb(104, 104, 104);
     text-transform: capitalize;
     font-size:large;
 
 }
-.aboutcontent img{
-    display: flex;
-    justify-self: center;
-    border-radius: 12px;
-     width: 50%;
-    height: 100%;
+.profile2{
+    width: 20em;
+    border-radius: 5%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    display: block;
+    transition: transform 0.3s ease;
+    animation: aniimage 1s  ease 2s 1  ;
+    transform:scaleX(1.05);
+    border-bottom: 2px solid rgb(8, 14, 12);
+
 }
 .aboutcontent h2{
     padding: 12px;
-    margin: 12px auto;
+    font-size: 2em;
+    font-family: serif;
+    margin: 0 auto;
+    text-align: center;
+    color: rgb(51, 24, 24);
 }
 .aboutcontent{
     border: 1px solid;
@@ -77,40 +101,30 @@
     padding: 12px;
     border-radius: 12px;
     width: 90%;
-
+}
+.aboutinfo{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+    opacity: 0.9;
+    
 }
 .aboutcontent p{
 width: 90%;
-justify-self: center;
-margin:20px auto;
+text-indent: 2em;
 font-variant: initial;
-font-size: large;
-font-weight: lighter;
-    text-align: start;
-    padding: 12px;
-    list-style: none;
-}
-@media (max-width:450px){
-    .contentmain img{
-      display: grid;
-      justify-self: center;
-    border-radius: 12px;
-    
-    margin: 0 auto;
-}
-.contentmain h3{
-     color:rgb(102, 93, 114);
-    width: 25%;
+font-size: larger;
+color: rgb(104, 104, 104);
     text-align: center;
-    text-decoration: underline;
+    padding: 12px;
 }
-.aboutcontent p{
-    text-align: start;
-    font-size: large;
-    padding-top: 12px;
-    text-indent: 12px;
-    margin: 0 auto;
-    width: 90%; 
-
-}
+@keyframes aniimage {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 100;
+    }
+    
 }

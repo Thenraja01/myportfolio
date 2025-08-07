@@ -26,17 +26,21 @@ export default function Home() {
         <button type="button" onClick={toggleVisibility}>Contact Me</button>
       </div>
         <div className={styles.contentmain}>
-        <img src={person} alt="personimage" />
-        <h1>{data.username}</h1>
-        <h3>{data.joblevel}</h3>
+        <img src={person} alt="Profile" className={styles.profileImage} />
+        <div className={styles.userinfo}>
+           <h1>{data.username}</h1>
+          <h3>{data.joblevel}</h3>
             <p>{data.personnalinfo}</p>
         </div>
+        </div>
+       
         <div className={styles.aboutcontent} id='about'>
         <h2>About Me</h2>
-        <img src={person1} alt="" />
-        <p>
-        {data.personnalinfo}
-</p>
+        <div className={styles.aboutinfo}>
+        <img src={person1} alt="Profile" className={styles.profile2}/>
+        <p>{data.personnalinfo}</p>
+        </div>
+        
         </div>
     </div>
   )

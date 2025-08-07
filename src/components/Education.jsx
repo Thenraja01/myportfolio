@@ -2,7 +2,7 @@ import styles from '../../public/style/Education.module.css';
 export default function Education() {
     const educationData=[
             {id:1,
-            degree:'Bachelor of Engineering (B.E.) in Computer Science and Engineering',
+            degree:'BE-Computer Science and Engineering',
             institution:'Solamalai College of Engineering',
             year:'2022 - 2026',
             gpa:'8.5'},

@@ -5,19 +5,19 @@ export default function Education() {
             degree:'BE-Computer Science and Engineering',
             institution:'Solamalai College of Engineering',
             year:'2022 - 2026',
-            gpa:'8.5'},
+            gpa:'7.5'},
             {id:2,
             degree:'Higher Secondary School Certificate (HSC)',
             institution:'Holy Angel Higher Secondary School',
             year:'2021-2022',
-            gpa:'7.5'
+            gpa:'76.1%'
    },
             {id:3,
             degree:'Secondary School Certificate (SSC)',
             institution:'Holy Angel  Higher Secondary School',
             year:'2019-2020',
-            gpa:'8.0'}]
-            const tablehead=['Degree','Institution','Year','GPA']
+            gpa:'77%'}]
+            const tablehead=['Degree','Institution','Year','GPA/Percentage']
       
     
     return (

@@ -3,10 +3,11 @@ import person from '../components/icon/user1.jpeg'
 import person1 from '../components/icon/user3.jpeg'
 import { useState } from 'react'
 import styles from '../../public/style/Home.module.css'
-export default function Home() {
+export default function Home(setTheme) {
   const [visible, setVisible] = useState(false);
   const [color,setColor]=useState('black')
   const ColorChange=()=>{
+    setTheme()
     setColor(prev=>prev=="black"?'white':'black')
   }
   const toggleVisibility = () => {
@@ -24,7 +25,7 @@ export default function Home() {
   return (
     <div className={styles.content} id='home'>
       <div className={styles.info}>
-        <h1 style={{color}}>Welcome to My Portfolio</h1>
+        <h1>Welcome to My Portfolio</h1>
         <p>{info.jobdesc}</p>
         {visible && <p>{info.contact}</p>}
         <button type="button" onClick={toggleVisibility}>Contact Me</button>

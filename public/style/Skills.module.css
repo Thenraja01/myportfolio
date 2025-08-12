@@ -1,6 +1,7 @@
 
 .section{
-    margin: 20px auto;
+   justify-self: center;
+   margin-top: 12px;
     border: 1px solid;
     border-radius: 12px;
     padding: 12px;
@@ -8,11 +9,11 @@
 
 }
 .skills{
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
       justify-content: center;
     align-items: center;
-    gap: 20px;
-    margin: 20px auto;
+    gap: 10px;
     padding: 12px;}
 .list{
   
@@ -43,4 +44,17 @@ transform: skew(6deg,2deg);
 
   }
     
+}
+@media  screen and (max-width:765px) {
+  .skills{
+    width: 20%;
+       display: grid;
+    grid-template-columns: repeat(2,1fr);
+    
+    width: 50%;
+    gap: 0;
+  }
+  .list{
+ 
+  }
 }

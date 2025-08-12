@@ -15,10 +15,10 @@ function Handlechangetheme(){
 
 <Navbar setTheme={Handlechangetheme}/>
     <div className={theme?'dark':'light'}>
-<Home/>
+<Home  setTheme={Handlechangetheme}/>
 <Education/>
 <Projects/>
- <Skills/>
+ <Skills />
         </div>
   </div>
 

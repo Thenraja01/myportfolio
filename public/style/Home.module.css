@@ -128,3 +128,12 @@ color: rgb(104, 104, 104);
     }
     
 }
+@media only screen and  (max-width:767px) {
+    .profileImage{
+        width: 60%;
+    }
+    .contentmain{
+        display: grid;
+    }
+    
+}

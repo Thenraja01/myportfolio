@@ -3,12 +3,12 @@
     margin: 0;
 }
 .education {
+    display: grid;
+    margin-top: 12px;
+    gap: 12px;
     justify-items: center;
-    width: 90%;
 }
 .table{
-    height: 100%;
-    width: 80%;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -16,12 +16,22 @@
     border-collapse:collapse;
 }
 thead{
-    padding: 12px 15px;
-    font-weight: bold;
-    text-align: left;  
+    padding: 12px;
+}
+thead tr{
+        display: flex;
+    justify-content: space-evenly;
+    justify-self: center;
+        gap: 12px;
+    padding: 12px;
+} 
+tbody{
+    padding: 12px;
 }
 
 th,td{
+    justify-content: space-evenly;
+    justify-self: center;
     margin-bottom: 12px !important;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -38,6 +48,13 @@ th,td{
         display: grid;
         justify-content: center;
         width:auto;
+    }
+    thead tr{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        width: auto;
     }
     th,td{
         margin-top: 12px;

@@ -47,12 +47,15 @@ transform: skew(6deg,2deg);
 }
 @media  screen and (max-width:765px) {
   .skills{
-    width: 20%;
-       display: grid;
-    grid-template-columns: repeat(2,1fr);
-    
-    width: 50%;
-    gap: 0;
+   display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-content: center;
+    width: 80%;
+    margin: 12px;
+  }
+  .list{
+    display: flex;
+    justify-content: center;
   }
  
 }

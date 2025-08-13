@@ -28,7 +28,7 @@ export default function Education() {
                 <thead>
                     <tr>
                        {tablehead.map((items,id)=>(
-                        <td key={id}>{items}</td>
+                        <th key={id}>{items}</th>
                        ))}    
                     </tr>
                 </thead>

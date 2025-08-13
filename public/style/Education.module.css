@@ -27,7 +27,22 @@ th,td{
     border-bottom: 1px solid #ddd;
 }
 @media screen and (max-width:765px){
-    .table{
+    .table {
+        display: grid;
+        justify-content: center;
+        width: auto;
+        padding:12px;
+        
+    }
+    .education{
+        display: grid;
+        justify-content: center;
+        width:auto;
+    }
+    th,td{
+        margin-top: 12px;
+        padding-top: 12px;
+    }
+
     }
     
-}

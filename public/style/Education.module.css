@@ -3,27 +3,23 @@
     margin: 0;
 }
 .education {
-    display: grid;
-    justify-content: center;
+    margin: 12px 25px;
+    padding: 12px 24px;
 
-    width: auto;
 }
 .educontent{
-    max-width:max-content;
+        display: grid;
+    width:100%;
       margin-top: 12px;
     padding-top: 12px;
     gap: 12px;
 }
 table{
-    display: grid;
-    justify-content: center;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif; 
     border-collapse:collapse;
-    padding: 12px 24px;
-    width: 90%;
     margin-top: 12px;
 }
 thead{
@@ -51,12 +47,14 @@ th,td{
         justify-content: center;
         width: auto;
         padding:12px;
+        width:90%
         
     }
     .education{
         display: grid;
         justify-content:space-between;
         margin-top: 12px;
+        width:100%;
     }
     .educontent{
         display: grid;
@@ -75,6 +73,5 @@ th,td{
         margin-top: 12px;
         padding-top: 12px;
     }
-
     }
     

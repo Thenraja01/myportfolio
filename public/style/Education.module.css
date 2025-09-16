@@ -4,25 +4,35 @@
 }
 .education {
     display: grid;
-    margin-top: 12px;
-    gap: 12px;
-    justify-items: center;
+    justify-content: center;
+
+    width: auto;
 }
-.table{
+.educontent{
+    max-width:max-content;
+      margin-top: 12px;
+    padding-top: 12px;
+    gap: 12px;
+}
+table{
+    display: grid;
+    justify-content: center;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif; 
     border-collapse:collapse;
+    padding: 12px 24px;
+    width: 90%;
+    margin-top: 12px;
 }
 thead{
     padding: 12px;
 }
-thead tr{
-        display: flex;
-    justify-content: space-evenly;
-    justify-self: center;
-        gap: 12px;
+tr{
+     display: flex;
+    justify-content: space-between;
+    gap: 12px;
     padding: 12px;
 } 
 tbody{
@@ -30,11 +40,10 @@ tbody{
 }
 
 th,td{
-    justify-content: space-evenly;
-    justify-self: center;
     margin-bottom: 12px !important;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    padding: 12px;
+    border-bottom: 1px solid #660303;
 }
 @media screen and (max-width:765px){
     .table {
@@ -46,8 +55,14 @@ th,td{
     }
     .education{
         display: grid;
-        justify-content: center;
-        width:auto;
+        justify-content:space-between;
+        margin-top: 12px;
+    }
+    .educontent{
+        display: grid;
+        justify-content:space-around;
+        width: 100%;
+        margin: 0px 26px;
     }
     thead tr{
         display: flex;

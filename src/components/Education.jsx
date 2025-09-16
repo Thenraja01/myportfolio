@@ -22,14 +22,16 @@ export default function Education() {
     
     return (
         <div id="education" className={styles.education }>
+            <div className={styles.educontent}>
+
             <h2>Education</h2>
             <p>Details about my education will show here</p>
-            <table className={styles.table}>
+            <table>
                 <thead>
                     <tr>
                        {tablehead.map((items,id)=>(
-                        <th key={id}>{items}</th>
-                       ))}    
+                           <th key={id}>{items}</th>
+                        ))}    
                     </tr>
                 </thead>
                 <tbody>
@@ -44,6 +46,7 @@ export default function Education() {
                   </tbody>  
         
             </table>
+                    </div>
         </div>
     );
 }

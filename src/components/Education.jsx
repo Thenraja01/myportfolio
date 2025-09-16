@@ -22,7 +22,6 @@ export default function Education() {
     
     return (
         <div id="education" className={styles.education }>
-            <div className={styles.educontent}>
 
             <h2>Education</h2>
             <p>Details about my education will show here</p>
@@ -47,6 +46,5 @@ export default function Education() {
         
             </table>
                     </div>
-        </div>
     );
 }

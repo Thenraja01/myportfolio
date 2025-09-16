@@ -3,16 +3,8 @@
     margin: 0;
 }
 .education {
-    margin: 12px 25px;
-    padding: 12px 24px;
-
-}
-.educontent{
-        display: grid;
-    width:100%;
-      margin-top: 12px;
-    padding-top: 12px;
-    gap: 12px;
+    width: auto;
+    margin: 20px;
 }
 table{
     border: 1px solid #ccc;
@@ -21,6 +13,7 @@ table{
     font-family: Arial, sans-serif; 
     border-collapse:collapse;
     margin-top: 12px;
+    width: 100%;
 }
 thead{
     padding: 12px;
@@ -42,35 +35,14 @@ th,td{
     border-bottom: 1px solid #660303;
 }
 @media screen and (max-width:765px){
-    .table {
-        display: grid;
-        justify-content: center;
-        width: auto;
-        padding:12px;
-        width:90%
-        
-    }
-    .education{
-        display: grid;
-        justify-content:space-between;
-        margin-top: 12px;
+     .education{
         width:auto;
-    }
-    .educontent{
-        display: grid;
-        justify-content:space-around;
-        width: 100%;
-        margin: 0px 26px;
-    }
-    thead tr{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: auto;
-    }
-    th,td{
-        margin-top: 12px;
-        padding-top: 12px;
+        }
+    table{
+        width: 90%;
+          display: grid;
+        justify-content: center;
+
     }
     }
     

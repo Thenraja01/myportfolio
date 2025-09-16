@@ -9,16 +9,24 @@ import {DiMongodb} from "react-icons/di"
 export default function Skills( ) {
     
     const icons=[<FaHtml5 size={40} color="orange" />,<FaCss3Alt size={30} color="#264de4" />,<FaJs size={30} color="#f7df1e" />,<FaReact size={30} color="#61DBFB" />,<RiTailwindCssLine size={30} color="#38bdf8" /> ,<SiPostman color='orange' size={19}/> ,<DiMongodb color='green' size={19}/>]
+    const skills=["html","css","js","python","reactjs"]
     return(
-        <div className={styles.section} id='skills'>
+        <div className={styles.skillset}>
+
             <h3>My Skills</h3>
+        <div className={styles.section} id='skills'>
             <div className={styles.skills}>
                  { icons.map((icon, index) => (
-                  <li key={icon.index} style={{listStyle:"none"} }className={styles.list} >
+                     <li key={icon.index} style={{listStyle:"none"} }className={styles.list} >
                         {icon}     
                   </li>
           ))}
         </div>
+        <div className={styles.techskills}>
+       <h1>technical skills</h1>
+            {skills.map((tech)=><h2>{tech}</h2>)}
+        </div>
+          </div>
             </div>
        
     )

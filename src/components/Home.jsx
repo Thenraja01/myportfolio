@@ -39,6 +39,7 @@ export default function Home() {
         <div className={styles.aboutinfo}>
         <img src={person1} alt="Profile" className={styles.profile2}/>
         <p>{data.personnalinfo}</p>
+      <button>Download CV</button>
         </div>
         
         </div>

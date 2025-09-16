@@ -46,7 +46,7 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 8s ease-in-out;
     transform: scale(1.05);
     margin:  12px;
     border-bottom: 2px solid rgb(8, 14, 12);
@@ -85,7 +85,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform 0.9s ease;
     animation: aniimage 1s  ease 2s 1  ;
     transform:scaleX(1.05);
     border-bottom: 2px solid rgb(8, 14, 12);
@@ -124,9 +124,23 @@ color: rgb(104, 104, 104);
     text-align: center;
     padding: 12px;
 }
+.aboutcontent button{
+    justify-self:center;
+    padding: 12px;
+    background-color: rgb(44, 176, 44);
+    border: none;
+    border-radius: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+}
+.aboutcontent button:hover{
+    background-color: green;
+    font-style: oblique;
+}
 @keyframes aniimage {
     0%{
         opacity: 0;
+        
     }
     100%{
         opacity: 100;

@@ -1,9 +1,15 @@
+import Styles from "../../public/style/Footer.module.css"
 export default function Footer() {
     return(
-        <div className="">
+        <div className={Styles.footer}>
+            <div className={Styles.name}>
+                <h1>Then Raja</h1>
+            </div>
+            <div className={Styles.owner}>
+            <p>DEVLOPED BY THENRAJA</p>
+            </div>
             <div className="">
-                
-                
+            <button>contact me</button>
             </div>
         </div>
     )

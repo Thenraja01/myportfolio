@@ -3,6 +3,7 @@ import Projects from "./components/Projects"
 import Skills from "./components/Skills"
 import Home from './components/Home'
 import { useState } from "react"
+import Footer from "./components/Footer"
 import Education from "./components/Education"
 function App() {
   const [theme,setTheme]=useState(false)
@@ -19,6 +20,7 @@ function Handlechangetheme(){
 <Education/>
 <Projects/>
  <Skills />
+ <Footer/>
         </div>
   </div>
 

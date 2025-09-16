@@ -54,7 +54,7 @@ th,td{
         display: grid;
         justify-content:space-between;
         margin-top: 12px;
-        width:100%;
+        width:auto;
     }
     .educontent{
         display: grid;
@@ -66,7 +66,6 @@ th,td{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 12px;
         width: auto;
     }
     th,td{

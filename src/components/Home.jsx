@@ -11,7 +11,7 @@ export default function Home() {
   const info ={
     career:"Web Developer",
     jobdesc:"I am a passionate web developer with a focus on creating dynamic and responsive web applications. I have a strong foundation in HTML, CSS, and JavaScript, and I am continuously learning new technologies to enhance my skills. My goal is to build user-friendly websites that provide an excellent user experience.",
-    contact:"Email: thenwthen@gmail.com, Phone: 7418869396",
+    contact:["Email: thenwthen@gmail.com", "Phone: 7418869396"]
   }
   const data={
     username:"Then Raja",
@@ -21,8 +21,8 @@ export default function Home() {
     <div className={styles.content} id='home'>
       <div className={styles.info}>
           <h1>Welcome to My Portfolio</h1 >
-        <p>{info.jobdesc}</p>
-        {visible && <p>{info.contact}</p>}
+        <p className={styles.jobdesc}>{info.jobdesc}</p>
+        {visible && <h3 style={{"display":"grid","justifyContent":"center"}}>{info.contact.map((conts)=><p>{conts}</p>)}</h3>}
         <button type="button" onClick={toggleVisibility}>Contact Me</button>
       </div>
         <div className={styles.contentmain}>

@@ -8,21 +8,26 @@
     font-family: serif;
     margin-bottom: 20px;
 }
+.info .jobdesc{
+    width: 80%;
+    padding: 12px;
+    font-size: large;
+    flex-wrap: wrap;
+}
 .info{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 12px;
-    
 }
-.info p{
+.info h3{
     font-size: 18px;
     color: rgb(101, 97, 97);
     text-align: center;
-    margin: 12px auto;
-    padding-top: 12px;
     width: 80%;
+    margin: 12px;
+    padding: 12px;
 }
 .info button{
     background-color: rgb(25, 143, 104);

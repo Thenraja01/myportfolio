@@ -68,6 +68,28 @@ transform: skew(6deg,2deg);
   }
     
 }
+.percentagecontainer {
+  width: 300px;
+  margin: 20px auto;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.percentagebar {
+  width: 100%;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.percentagefill {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}
+
 @media  screen and (max-width:765px) {
   .skills{
    display: grid;

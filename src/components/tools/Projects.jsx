@@ -21,6 +21,9 @@ export default function Projects() {
         <div className={styles.projects}  id="projects">
             <h1>My Projects</h1>
             <div className={styles.youtube}>
+                <div className="">
+                    
+                </div>
             <aside>{project.map((id)=>
                 (<div key={id}>
                     <h3>{id.name}</h3>

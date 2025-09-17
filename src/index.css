@@ -10,7 +10,6 @@
     background-color: rgb(240, 232, 232);
     color: rgb(19, 18, 18);
 }
-
 @media (min-width:0px)and(max-width:480px) {
     .contentmain img{
         width: 25px;
@@ -18,10 +17,7 @@
     .section ol{
         display: flex;
     flex-wrap: wrap;
-        
-
-    }
-    
+    }  
 }
 @media (min-width:481px)and(max-width:850px) {
     .contentmain img{
@@ -30,12 +26,5 @@
     .section ol{
         display: flex;
     flex-wrap: wrap;
-        
-
-    }
-    
-}
-@media (min-width:851px)and(max-width:1500px) {
-
-    
+    }   
 }

@@ -1,4 +1,4 @@
-import styles from '../../public/style/Education.module.css';
+import styles from '../../../public/style/Education.module.css';
 export default function Education() {
     const educationData=[
             {id:1,

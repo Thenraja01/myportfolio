@@ -1,7 +1,7 @@
 import { FaHtml5 } from 'react-icons/fa6';
 import { FaCss3Alt } from 'react-icons/fa';
 import { FaJs} from 'react-icons/fa';
-import styles from '../../public/style/Skills.module.css'
+import styles from '../../../public/style/Skills.module.css'
 import { FaReact } from 'react-icons/fa';
 import { RiTailwindCssLine, } from 'react-icons/ri';
 import { SiPostman } from "react-icons/si";

@@ -1,4 +1,4 @@
-import styles from '../../public/style/projects.module.css'
+import styles from '../../../public/style/projects.module.css'
 export default function Projects() {
     const project=[{name:"Youtube-Static Website" ,
         status:"completed",
@@ -28,7 +28,6 @@ export default function Projects() {
                     <p>{id.projectdesc}</p>
                     <ol>{id.usedskill.map((id)=><li><h5>{id}</h5></li>)}</ol>
                 </div>))}</aside>
-             
             </div>   
         </div>
     )

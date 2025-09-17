@@ -1,8 +1,8 @@
 import React from 'react'
-import person from '../components/icon/user1.jpeg'
-import person1 from '../components/icon/user3.jpeg'
+import person from '../../components/icon/user1.jpeg'
+import person1 from '../../components/icon/user3.jpeg'
 import { useState } from 'react'
-import styles from '../../public/style/Home.module.css'
+import styles from '../../../public/style/Home.module.css'
 export default function Home() {
   const [visible, setVisible] = useState(false);
   const toggleVisibility = () => {

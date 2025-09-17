@@ -1,4 +1,4 @@
-import Styles from '../../public/style/Navbar.module.css'
+import Styles from '../../../public/style/Navbar.module.css'
 import { useState } from 'react'
 import { FiSun } from 'react-icons/fi';
 import { FiMoon } from 'react-icons/fi';

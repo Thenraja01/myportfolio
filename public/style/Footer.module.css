@@ -7,14 +7,21 @@
     align-items: center;
     padding: 12px;
     width:auto;
-    margin-top: 20px;
     background-color: rgb(23, 126, 102);
 }
 .name{
     flex-grow: 1;
     font-style: oblique;
-    transition: transform ease 8s inherit;
-    transform: scaleX(90%);
+    animation:namertrans 2s ease;
+}
+@keyframes namertrans {
+    0%{
+      opacity: 0;        
+    }
+    100%{
+        transform: scaleX(90%);
+    }
+    
 }
 .owner{
     margin-right: 12px;

@@ -1,4 +1,4 @@
-import Styles from "../../public/style/Footer.module.css"
+import Styles from "../../../public/style/Footer.module.css"
 export default function Footer() {
     return(
         <div className={Styles.footer}>
@@ -6,7 +6,7 @@ export default function Footer() {
                 <h1>Then Raja</h1>
             </div>
             <div className={Styles.owner}>
-            <p>DEVLOPED BY THENRAJA</p>
+            <p>DEVELOPED BY THENRAJA</p>
             </div>
             <div className="">
             <button>contact me</button>

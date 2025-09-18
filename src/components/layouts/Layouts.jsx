@@ -2,20 +2,20 @@ import Navbar from "../tools/Navbar"
 import { useState } from "react"
 import Footer from "../tools/Footer"
 import BodyContent from "./BodyContent"
+import { ThemeProvider } from "../../dataprovider/ThemeContext"
 export default function Layouts() {
-    const [theme, setTheme] = useState(false)
-    function Handlechangetheme() {
-        setTheme(prev => !prev)
-    }
+
     return (
         <div className="">
+                    <ThemeProvider>
             <div className="">
-                <Navbar setTheme={Handlechangetheme} />
-                <div className={theme ? 'dark' : 'light'}>
-                  <BodyContent/>
+                <Navbar />
+                <div>
+                  <BodyContent />
                 </div>
                     <Footer />
             </div>
+                        </ThemeProvider>
         </div>
     )
 };

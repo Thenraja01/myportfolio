@@ -1,18 +1,17 @@
 import Styles from '../../../public/style/Navbar.module.css'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { FiSun } from 'react-icons/fi';
 import { FiMoon } from 'react-icons/fi';
 import { FaGithubSquare } from 'react-icons/fa';
 import {CiInstagram,CiLinkedin} from 'react-icons/ci'
-
+import { ThemeContext } from '../../dataprovider/ThemeContext';
 export default function Navbar({setTheme}) {
-    const [color, setColor] = useState("black")
     const [isPlay, setIsplay] = useState(false)
    const links = ["About", "Skills", "Projects", "Education"]
+   const {toggleTheme,color}=useContext(ThemeContext)
     function ChangeTheme(){
-        setTheme()
-        setColor(prev=>prev=="black"?'white':'black')
           setIsplay(!isPlay)
+          toggleTheme()
         }
     return(
         <div className={Styles.navbar}>

@@ -29,7 +29,7 @@ export default function Skills( ) {
       <div className={styles.percentagebar}>
         <div
           className={styles.percentagefill}
-          style={{ width: `${percentage.map((valu)=>{valu})}%` }}
+          style={{ width: `${percentage}%` }}
         ></div>
       </div>
       </div>

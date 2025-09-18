@@ -1,9 +1,9 @@
 import Layouts from "./components/layouts/Layouts";
-function App() {
+export default function App() {
   return (
     <>
-    <Layouts/>
+    <Layouts/> 
     </>
   )
 }
-export default App
+

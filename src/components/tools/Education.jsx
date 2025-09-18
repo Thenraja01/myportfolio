@@ -10,13 +10,13 @@ export default function Education() {
             degree:'Higher Secondary School Certificate (HSC)',
             institution:'Holy Angel Higher Secondary School',
             year:'2021-2022',
-            gpa:'76.1%'
+            gpa:'76.1'
    },
             {id:3,
             degree:'Secondary School Certificate (SSC)',
             institution:'Holy Angel  Higher Secondary School',
             year:'2019-2020',
-            gpa:'77%'}]
+            gpa:'77'}]
             const tablehead=['Degree','Institution','Year','GPA/Percentage']
       
     
@@ -45,6 +45,24 @@ export default function Education() {
                   </tbody>  
         
             </table>
+            <div className="">
+                <div >
+                       {educationData.map((items)=>
+                        <div key={items.id} className={styles.contenthead}>
+                            <div className={styles.contentbody}>
+                                <div className={styles.contentupper}>
+                            <h3>{items.institution}</h3>
+                            <h4>{items.degree}</h4>
+                                </div>
+                            <div className={styles.contentlower}>
+                            <p>{items.year}</p>
+                            <h3>{items.gpa}</h3>
+                            </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
                     </div>
     );
 }

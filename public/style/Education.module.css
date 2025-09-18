@@ -3,8 +3,8 @@
     margin: 0;
 }
 .education {
-    width: auto;
-    margin: 20px;
+    margin: 12px;
+    width: 95%;
 }
 table{
     border: 1px solid #ccc;
@@ -16,33 +16,50 @@ table{
     width: 100%;
 }
 thead{
-    padding: 12px;
+    padding: 12px auto;
 }
 tr{
      display: flex;
     justify-content: space-between;
+    margin: 12px;
     gap: 12px;
-    padding: 12px;
+    padding:10px;
 } 
 tbody{
-    padding: 12px;
+    padding: 12px auto;
 }
+.contenthead{
+    display: none;
+}
+.contentbody h4{
+    color: gray;
 
+}
 th,td{
     margin-bottom: 12px !important;
     text-align: left;
-    padding: 12px;
+    padding: 12px auto;
     border-bottom: 1px solid #660303;
 }
 @media screen and (max-width:765px){
      .education{
-        width:auto;
+        display: grid; 
         }
     table{
-        width: 90%;
-          display: grid;
-        justify-content: center;
-
+      display: none;
     }
+    .contenthead{
+        display: grid;
+        font-size: small;
+        font-weight: 100;
+        gap: 12px;
+        padding-top: 12px;
+    }
+   .contentbody{
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-around;
+   }
+    
     }
     

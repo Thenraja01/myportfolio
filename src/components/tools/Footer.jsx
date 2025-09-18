@@ -1,8 +1,11 @@
+import { useState } from "react"
 import Styles from "../../../public/style/Footer.module.css"
 export default function Footer() {
+    const [contact,setContact]=useState(false)
     const HandleContact=()=>{
-        
+        setContact(!contact)
     }
+ 
     return(
         <div className={Styles.footer}>
             <div className={Styles.name}>

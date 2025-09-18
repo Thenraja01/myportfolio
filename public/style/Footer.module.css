@@ -12,11 +12,13 @@
 .name{
     flex-grow: 1;
     font-style: oblique;
-    animation:namertrans 2s ease ;
 }
 @keyframes namertrans {
     0%{
       opacity: 0;        
+    }
+    50%{
+        opacity: 0;
     }
     100%{
         transform: scaleX(90%);
@@ -36,4 +38,14 @@
     border-radius: 12px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
+}
+@media screen and  (max-width:765px) {
+    .owner{
+        display: none;
+    }
+    .footer button{
+        background-color: #000000;
+        color: #fff;
+    }
+    
 }

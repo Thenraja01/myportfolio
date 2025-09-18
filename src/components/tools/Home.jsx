@@ -17,7 +17,17 @@ export default function Home() {
     username:"Then Raja",
     joblevel:"Web devoloper",
     personnalinfo:"Hi, I'm Then Raja, I’m a passionate and aspiring web developer currently pursuing a Bachelor’s in Computer Science and Engineering (B.E. CSE). I specialize in building dynamic, responsive, and user-friendly websites using modern web technologies. With a solid foundation in computer science and a growing portfolio of web projects, I am focused on continuously improving my skills and contributing to impactful digital experiences." }
-  return (
+  
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/myportfolio/src/components/icon/THEN RAJA_M_RESUME (1).pdf'; // Replace with your file path
+    link.download = 'Then Raja_Resume.pdf';    // Optional: rename the file
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+    return (
     <div className={styles.content} id='home'>
       <div className={styles.info}>
           <h1>Welcome to My Portfolio</h1 >
@@ -39,7 +49,7 @@ export default function Home() {
         <div className={styles.aboutinfo}>
         <img src={person1} alt="Profile" className={styles.profile2}/>
         <p>{data.personnalinfo}</p>
-      <button>Download CV</button>
+      <button onClick={handleDownload}>Download CV</button>
         </div>
         
         </div>

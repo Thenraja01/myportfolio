@@ -10,7 +10,7 @@ export default function Education() {
             degree:'Higher Secondary School Certificate (HSC)',
             institution:'Holy Angel Higher Secondary School',
             year:'2021-2022',
-            gpa:'76.1'
+            gpa:'76.01'
    },
             {id:3,
             degree:'Secondary School Certificate (SSC)',
@@ -56,7 +56,8 @@ export default function Education() {
                                 </div>
                             <div className={styles.contentlower}>
                             <p>{items.year}</p>
-                            <h3>{items.gpa}</h3>
+                            <h3>{items.gpa}%
+                            </h3>
                             </div>
                             </div>
                         </div>

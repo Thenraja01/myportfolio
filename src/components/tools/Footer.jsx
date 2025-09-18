@@ -1,5 +1,8 @@
 import Styles from "../../../public/style/Footer.module.css"
 export default function Footer() {
+    const HandleContact=()=>{
+        
+    }
     return(
         <div className={Styles.footer}>
             <div className={Styles.name}>
@@ -9,7 +12,7 @@ export default function Footer() {
             <p>DEVELOPED BY THENRAJA</p>
             </div>
             <div className="">
-            <button>contact me</button>
+            <button onClick={HandleContact}>contact me</button>
             </div>
         </div>
     )

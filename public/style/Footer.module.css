@@ -12,7 +12,7 @@
 .name{
     flex-grow: 1;
     font-style: oblique;
-    animation:namertrans 2s ease;
+    animation:namertrans 2s ease ;
 }
 @keyframes namertrans {
     0%{

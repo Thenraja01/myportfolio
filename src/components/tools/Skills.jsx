@@ -7,9 +7,14 @@ import { RiTailwindCssLine, } from 'react-icons/ri';
 import { SiPostman } from "react-icons/si";
 import { DiMongodb } from "react-icons/di"
 export default function Skills() {
-  const percentage = [90, 80, 70, 90, 70, 90]
   const icons = [<FaHtml5 size={40} color="orange" />, <FaCss3Alt size={30} color="#264de4" />, <FaJs size={30} color="#f7df1e" />, <FaReact size={30} color="#61DBFB" />, <RiTailwindCssLine size={30} color="#38bdf8" />, <SiPostman color='orange' size={19} />, <DiMongodb color='green' size={19} />]
-  const skills = ["html", "css", "js", "python", "tailwindcss", "mern stack"]
+  const skills = {
+    techname:[
+      "html", "css", "js", "python", "tailwindcss", "mern stack"],
+      
+     percenTage: [100, 80, 70, 90, 70, 90]
+  }
+
   return (
     <div className={styles.skillset}>
 
@@ -22,19 +27,24 @@ export default function Skills() {
             </li>
           ))}
         </div>
-        <div className={styles.techskills}>
-          <h1>technical skills</h1>
-          {skills.map((tech) => <div style={{ "display": "flex", "alignItems": "center" }}><h2>{tech}</h2>
-            <div className={styles.percentagecontainer}>
-              <div className={styles.percentagebar}>
-               <div
-                  className={styles.percentagefill}
-                  style={{ width:"90%"}}>    
-              </div>
-              </div>
-            </div>
+        <div className={styles.techskills}  >
+          {/* <h1>technical skills</h1> */}
+          <div className="">
+
+          {skills.techname.map((tech) => <div className={styles.techskillsname}>
+            <h2>{tech}</h2> 
           </div>
           )}
+          </div>
+          <div className="">
+
+           {skills.percenTage.map((w)=>(<div className={styles.percentagecontainer}>
+                <div className={styles.percentagebar}>
+              <div  className={styles.percentagefill}  key={w.id} style={{width:`${w}%`}}/>  
+            
+              </div> 
+            </div> ))} 
+          </div>
         </div>
 
       </div>

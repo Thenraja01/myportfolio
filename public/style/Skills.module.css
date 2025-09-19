@@ -19,7 +19,7 @@
   .skills{
     border-radius: 12px 10px 0px 0;
     display: grid;
-    background-color: gray;
+    background-color: rgb(78, 62, 86);
   grid-template-columns: repeat(4,1fr);
       justify-content: center;
     align-items: center;
@@ -40,12 +40,10 @@
     animation: skillsets 3s ease-in-out infinite;
     }
 .techskills{
-  padding-top: 12px;
+  display: flex;
+  align-items: center;
   font-size: small;
-  font-weight: 300;
   text-transform: capitalize;
-  margin: 12px;
-  padding: 12px;
 }
 .techskills h2{
   padding-left: 20px;
@@ -68,15 +66,21 @@ transform: skew(6deg,2deg);
   }
     
 }
+.techskillsname{
+  font-size: large;
+  margin: 20px 12px;
+  font-family: Arial, sans-serif;      
+}
 .percentagecontainer {
-  width: 150px;
-  margin: 20px auto;
-  text-align: center;
+  display: grid;
+  
+  align-items: center;
+  width: 200px;
+  margin: 20px 20px;
   font-family: Arial, sans-serif;
 }
 
 .percentagebar {
-  width: 100%;
   height: 12px;
   background-color: #e0e0e0;
   border-radius: 10px;
@@ -86,7 +90,7 @@ transform: skew(6deg,2deg);
 
 .percentagefill {
   height: 100%;
-  background-color: #4caf50;
+  background-color: #4cafa8;
   transition: width 0.3s ease;
 }
 
@@ -101,4 +105,11 @@ transform: skew(6deg,2deg);
     justify-content: center;
   }
  
+}
+@media  screen and (min-width:770px) {
+  .techskills{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
 }

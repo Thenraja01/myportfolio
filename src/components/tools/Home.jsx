@@ -20,7 +20,7 @@ export default function Home() {
   
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/myportfolio/src/components/icon/THEN RAJA_M_RESUME (1).pdf'; // Replace with your file path
+    link.href = '/myportfolio/src/components/icon/THEN RAJA_M_RESUME.pdf'; // Replace with your file path
     link.download = 'Then Raja_Resume.pdf';    // Optional: rename the file
     document.body.appendChild(link);
     link.click();

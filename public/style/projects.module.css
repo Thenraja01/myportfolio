@@ -4,7 +4,6 @@
     display: grid;
     gap: 8px;
     width: 90%;
-
 }
 .youtube{
     border: 1px solid;
@@ -15,24 +14,22 @@
 }
 
 aside{
-    margin: auto 12px;
-     transition:transform 1s ease 0.2ms inherit;
+        display: grid;
+    grid-template-columns: repeat(2,1fr);
+    transition:transform 1s ease 0.2ms inherit;
     transform:skew(12%);
-
+    
 }
 aside div{
+
     list-style: none;
     padding: 12px;
     margin:12px;
     border-radius: 12px;
     box-shadow: 0px 5px 10px rgb(43, 47, 51);
-
 }
-aside div:hover{
-    box-shadow: 0px 5px 10px rgb(77, 126, 179);
-    
 
-}
+
 aside div h3{
     color: rgb(25, 56, 56);
     text-decoration: underline;
@@ -61,4 +58,16 @@ aside div ol li h5{
     padding: 2px 8px;
     border-radius: 6px;
     box-shadow: 2px 2px 5px rgb(71, 58, 89);
+}
+    aside div:hover{
+    box-shadow: 0px 5px 10px rgb(77, 126, 179);
+    transition:transform 1s ease-in-out ;
+    transform: scale(1.02);
+}
+@media screen and (max-width:770px){
+    aside{
+        display: grid;
+        grid-template-columns: none;
+    }
+    
 }

@@ -16,14 +16,19 @@ export default function Projects() {
         id:3,
         projectdesc:"Built a fully responsive Single Page Website (SPA) using vanilla JavaScript, HTML5, and CSS3 to demonstrate core front-end development skills without relying on heavy frameworks. The project emphasizes performance, clean design, and seamless navigation between sections without page reloads.",
         usedskill:['HTML',"CSS",'JS']
-    }]
+    },{name:"Recipe-recommendation-website" ,
+        status:"completed",
+        id:3,
+        projectdesc:"Built a fully responsive Single Page Website (SPA) using vanilla JavaScript, HTML5, and CSS3 to demonstrate core front-end development skills without relying on heavy frameworks. The project emphasizes performance, clean design, and seamless navigation between sections without page reloads.",
+        usedskill:['HTML',"CSS",'JS']
+    }
+
+]
     return(
         <div className={styles.projects}  id="projects">
             <h1>My Projects</h1>
             <div className={styles.youtube}>
-                <div className="">
-                    
-                </div>
+                
             <aside>{project.map((id)=>
                 (<div key={id}>
                     <h3>{id.name}</h3>

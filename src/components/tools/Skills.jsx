@@ -36,7 +36,7 @@ export default function Skills() {
           </div>
           )}
           </div>
-          <div className="">
+          <div className=''>
 
            {skills.percenTage.map((w)=>(<div className={styles.percentagecontainer}>
                 <div className={styles.percentagebar}>

@@ -73,9 +73,8 @@ transform: skew(6deg,2deg);
 }
 .percentagecontainer {
   display: grid;
-  
   align-items: center;
-  width: 200px;
+  width: 300px;
   margin: 20px 20px;
   font-family: Arial, sans-serif;
 }
@@ -94,6 +93,7 @@ transform: skew(6deg,2deg);
   transition: width 0.3s ease;
 }
 
+
 @media  screen and (max-width:765px) {
   .skills{
    display: grid;
@@ -104,6 +104,15 @@ transform: skew(6deg,2deg);
     display: flex;
     justify-content: center;
   }
+   .percentagecontainer{
+    width: 150px;
+    
+  }
+   .techskills{
+    display: flex;
+    justify-content: space-evenly;
+  }
+ 
  
 }
 @media  screen and (min-width:770px) {
@@ -111,5 +120,5 @@ transform: skew(6deg,2deg);
     display: flex;
     justify-content: space-evenly;
   }
-  
+ 
 }

@@ -1,6 +1,6 @@
 import React from 'react'
-import person from '../../components/icon/user1.jpeg'
-import person1 from '../../components/icon/user3.jpeg'
+import person from '../../components/icon/user1.jpg'
+import person1 from '../../components/icon/user3.jpg'
 import { useState } from 'react'
 import styles from '../../../public/style/Home.module.css'
 export default function Home() {
@@ -18,14 +18,14 @@ export default function Home() {
     joblevel:"Web devoloper",
     personnalinfo:"Hi, I'm Then Raja, I’m a passionate and aspiring web developer currently pursuing a Bachelor’s in Computer Science and Engineering (B.E. CSE). I specialize in building dynamic, responsive, and user-friendly websites using modern web technologies. With a solid foundation in computer science and a growing portfolio of web projects, I am focused on continuously improving my skills and contributing to impactful digital experiences." }
   
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = '/myportfolio/src/components/icon/THEN RAJA_M_RESUME.pdf'; // Replace with your file path
-    link.download = 'Then Raja_Resume.pdf';    // Optional: rename the file
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+    const handleDownload = () => {
+      const link = document.createElement('a');
+      link.href = '/myportfolio/src/components/icon/THEN RAJA_M_RESUME.pdf'; // Replace with your file path
+      link.download = 'Then Raja_Resume.pdf';    // Optional: rename the file
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
 
     return (
     <div className={styles.content} id='home'>

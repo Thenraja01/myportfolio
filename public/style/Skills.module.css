@@ -19,7 +19,8 @@
   .skills{
     border-radius: 12px 10px 0px 0;
     display: grid;
-    background-color: rgb(78, 62, 86);
+    background-blend-mode: overlay;
+    background:radial-gradient(ellipse at center,rgb(12, 117, 101) 40%,rgb(0, 92, 92));
   grid-template-columns: repeat(4,1fr);
       justify-content: center;
     align-items: center;

@@ -24,19 +24,26 @@ export default function Projects() {
     }
 
 ]
+const perfectdiv=[]
+for (let i=0;i<project.length;i+=3){
+perfectdiv.push(project.slice(i,i+3))
+}
+console.log(perfectdiv)
     return(
         <div className={styles.projects}  id="projects">
             <h1>My Projects</h1>
-            <div className={styles.youtube}>
-                
-            <aside>{project.map((id)=>
-                (<div key={id}>
+            <div className={styles.perfectproject}>
+
+           {perfectdiv.map((groups)=> (<div className={styles.youtube} key={groups.id}>
+            <aside>{groups.map((id)=>
+                (<div key={id.id}>
                     <h3>{id.name}</h3>
                     <h4>{id.status}</h4>
                     <p>{id.projectdesc}</p>
                     <ol>{id.usedskill.map((id)=><li><h5>{id}</h5></li>)}</ol>
                 </div>))}</aside>
-            </div>   
+            </div> ))}  
+                    </div>
         </div>
     )
 }

@@ -124,7 +124,7 @@ color: rgb(104, 104, 104);
     text-align: center;
     padding: 12px;
 }
-.aboutcontent button{
+.aboutcontent a{
     justify-self:center;
     padding: 12px;
     background-color: rgba(47, 159, 109, 0.848);
@@ -133,7 +133,7 @@ color: rgb(104, 104, 104);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
 }
-.aboutcontent button:hover{
+.aboutcontent a:hover{
     background-color: rgb(0, 128, 77);
     font-style: oblique;
 }

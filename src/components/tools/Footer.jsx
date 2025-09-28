@@ -14,7 +14,7 @@ export default function Footer() {
        
         <div className={Styles.footer}>
             <div className={Styles.name}>
-                 <p>© 2025 Your Name. All rights reserved.</p>
+                 <p>© 2025 Then Raja. All rights reserved.</p>
                     <button>Back to top ↑</button>
 
             </div>

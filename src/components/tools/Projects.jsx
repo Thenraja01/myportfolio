@@ -20,8 +20,10 @@ export default function Projects() {
         status:"completed",
         id:3,
         projectdesc:"Built a fully responsive Single Page Website (SPA) using vanilla JavaScript, HTML5, and CSS3 to demonstrate core front-end development skills without relying on heavy frameworks. The project emphasizes performance, clean design, and seamless navigation between sections without page reloads.",
-        usedskill:['HTML',"CSS",'JS']
+        usedskill:['HTML',"CSS",'JS'],
+      
     }
+   
 
 ]
 const perfectdiv=[]
@@ -34,7 +36,7 @@ console.log(perfectdiv)
             <h1>My Projects</h1>
             <div className={styles.perfectproject}>
 
-           {perfectdiv.map((groups)=> (<div className={styles.youtube} key={groups.id}>
+           {perfectdiv.map((groups)=> (<div className={styles.youtube} key={groups.id} >
             <aside>{groups.map((id)=>
                 (<div key={id.id}>
                     <h3>{id.name}</h3>
@@ -42,7 +44,9 @@ console.log(perfectdiv)
                     <p>{id.projectdesc}</p>
                     <ol>{id.usedskill.map((id)=><li><h5>{id}</h5></li>)}</ol>
                 </div>))}</aside>
-            </div> ))}  
+            </div> ))
+            }  
+            <button className={styles.buttons}>read more</button>
                     </div>
         </div>
     )

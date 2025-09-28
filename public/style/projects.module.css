@@ -7,9 +7,7 @@
 }
 .perfectproject{
     display: flex;
-    overflow-x: auto;
-    gap: 1rem;
-
+    overflow-x:auto;
 }
 .youtube{
     
@@ -35,12 +33,10 @@ aside{
 aside div{
     list-style: none;
     padding: 12px;
-    margin:12px;
+    margin:12px ;
     border-radius: 12px;
     box-shadow: 0px 5px 10px rgb(43, 47, 51);
 }
-
-
 aside div h3{
     color: rgb(25, 56, 56);
     text-decoration: underline;
@@ -64,6 +60,17 @@ aside div ol li{
     list-style: none;
     
 }
+.buttons{
+    background-color: rgb(47, 124, 98);
+    padding: 5px;
+    border-radius: 12px;
+    border: none;
+    color: white;
+    font-family: serif;
+}
+.buttons:hover{
+    background-color: rgb(176, 176, 176);
+}
 aside div ol li h5{
     border: none;
     padding: 2px 8px;
@@ -77,8 +84,17 @@ aside div ol li h5{
 }
 @media screen and (max-width:770px){
     aside{
-        display: grid;
-        grid-template-columns: none;
+        display:grid;
+        grid-template-columns: repeat(1,1fr);
     }
-    
+    .perfectproject{
+        overflow-x: hidden;
+        flex-wrap: wrap;
+    }
+    .youtube{
+        flex-shrink: unset;
+    }
+    .youtube:nth-child(n+2){
+        display: none;
+    }
 }

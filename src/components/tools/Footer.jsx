@@ -14,10 +14,16 @@ export default function Footer() {
        
         <div className={Styles.footer}>
             <div className={Styles.name}>
-                <h1>Then Raja</h1>
+                 <p>© 2025 Your Name. All rights reserved.</p>
+                    <button>Back to top ↑</button>
+
             </div>
             <div className={Styles.owner}>
+                <div className={Styles.navupper}>
             <p>DEVELOPED BY THENRAJA</p>
+                <p >Tech Stack: React • Node.js • MongoDB • Docker</p>
+                </div>
+
      <div className={Styles.navupper}>
                     <ol>
                         <li><a href="https://www.instagram.com/kingz__nyx_"><CiInstagram size={24} />

@@ -13,6 +13,14 @@
     flex-grow: 1;
     font-style: oblique;
 }
+.name button{
+    background-color: rgb(23, 126, 102);
+    border: none;
+    color: white;
+    font-family: serif;
+    font-size: 16px;
+    cursor: pointer;
+}
 @keyframes namertrans {
     0%{
       opacity: 0;        
@@ -29,8 +37,9 @@
     display:flex;
     align-items: center;
     gap: 12px;
-
 }
+.navupper {
+    margin-left: 24px;}
 .footer .navupper ol{
     /* display: flex; */
     list-style: none;

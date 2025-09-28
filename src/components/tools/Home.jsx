@@ -1,3 +1,4 @@
+import { saveAs } from 'file-saver';
 import React from 'react'
 import person from '../../components/icon/user1.jpg'
 import person1 from '../../components/icon/user3.jpg'
@@ -18,15 +19,24 @@ export default function Home() {
     joblevel:"Web devoloper",
     personnalinfo:"Hi, I'm Then Raja, I’m a passionate and aspiring web developer currently pursuing a Bachelor’s in Computer Science and Engineering (B.E. CSE). I specialize in building dynamic, responsive, and user-friendly websites using modern web technologies. With a solid foundation in computer science and a growing portfolio of web projects, I am focused on continuously improving my skills and contributing to impactful digital experiences." }
   
-    const handleDownload = () => { 
+
+const handleDownload = async () => {
+  const response = await fetch('/public/Thenraja.pdf');
+  const blob = await response.blob();
+  const url = window.URL.createObjectURL(blob);
+
   const link = document.createElement('a');
-  link.href = '/myportfolio/src/components/icon/THEN_RAJA_M_RESUME.pdf'; // Ensure the file is in the public folder
-  link.setAttribute('download', 'Then_Raja_Resume.pdf'); // Optional: rename the file
+  link.href = url;
+  link.download = 'Then_Raja_Resume.pdf';
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+  window.URL.revokeObjectURL(url); // Clean up
 };
 
+// const handleDownload = () => {
+//   saveAs('/myportfolio/public/sourse/Thenraja.pdf', 'Then_Raja_Resume.pdf');
+// };
 
     return (
     <div className={styles.content} id='home'>

@@ -1,4 +1,6 @@
-
+import axios from 'axios';
+import { saveAs } from 'file-saver';
+import React from 'react'
 import person from '../../components/icon/user1.jpg'
 import person1 from '../../components/icon/user3.jpg'
 import { useState } from 'react'
@@ -18,7 +20,24 @@ export default function Home() {
     joblevel:"Web devoloper",
     personnalinfo:"Hi, I'm Then Raja, I’m a passionate and aspiring web developer currently pursuing a Bachelor’s in Computer Science and Engineering (B.E. CSE). I specialize in building dynamic, responsive, and user-friendly websites using modern web technologies. With a solid foundation in computer science and a growing portfolio of web projects, I am focused on continuously improving my skills and contributing to impactful digital experiences." }
 
+const handleDownload = async () => {
+  try {
+    const response = await axios.get('/Thenraja.pdf', {
+      responseType: 'blob', // 👈 Important: tells Axios to treat it as binary
+    });
 
+    const url = window.URL.createObjectURL(new Blob([response.data]));
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'Then_Raja_Resume.pdf'); // 👈 Custom filename
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.URL.revokeObjectURL(url); // 👈 Clean up
+  } catch (error) {
+    console.error('Download failed:', error);
+  }
+};
 
     return (
     <div className={styles.content} id='home'>
@@ -42,8 +61,7 @@ export default function Home() {
         <div className={styles.aboutinfo}>
         <img src={person1} alt="Profile" className={styles.profile2}/>
         <p>{data.personnalinfo}</p>
-       <a href="/files/sample.pdf" download="sample.pdf">Download PDF</a>
-        </div>
+<button onClick={handleDownload}>Download CV</button>        </div>
         
         </div>
     </div>

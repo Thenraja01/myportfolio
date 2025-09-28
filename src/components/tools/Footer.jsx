@@ -1,21 +1,15 @@
-import { useState } from "react"
 import {CiInstagram,CiLinkedin} from 'react-icons/ci'
 import { FaGithubSquare } from 'react-icons/fa';
 import Styles from "../../../public/style/Footer.module.css"
 export default function Footer() {
-    const [contact,setContact]=useState(false)
-    const HandleContact=()=>{
-    setContact(true)
+    const goBack=()=>{
+        window.scrollTo({top:0,behavior:'smooth'})
     }
- 
     return(
-    
-
-       
         <div className={Styles.footer}>
             <div className={Styles.name}>
                  <p>© 2025 Then Raja. All rights reserved.</p>
-                    <button>Back to top ↑</button>
+                    <button onClick={goBack}>Back to top ↑</button>
 
             </div>
             <div className={Styles.owner}>

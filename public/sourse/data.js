@@ -8,13 +8,14 @@ export const user={
    data:{
     username:"Then Raja",
     joblevel:"Web devoloper",
-    personnalinfo:"Hi, I'm Then Raja, I’m a passionate and aspiring web developer currently pursuing a Bachelor’s in Computer Science and Engineering (B.E. CSE). I specialize in building dynamic, responsive, and user-friendly websites using modern web technologies. With a solid foundation in computer science and a growing portfolio of web projects, I am focused on continuously improving my skills and contributing to impactful digital experiences." }
+    personnalinfo:"Hi, I'm Then Raja, I’m a passionate and aspiring web developer currently pursuing a Bachelor’s in Computer Science and Engineering (B.E. CSE). I specialize in building dynamic, responsive, and user-friendly websites using modern web technologies. With a solid foundation in computer science and a growing portfolio of web projects, I am focused on continuously improving my skills and contributing to impactful digital experiences." 
+}
 };
   export const project=[{name:"Youtube-Static Website" ,
         status:"completed",
         id:1,
         projectdesc:"Developed a static clone of the YouTube homepage using only HTML5 and CSS3, aimed at replicating the structure, layout, and styling of the original platform. This project demonstrates an understanding of responsive web design, layout techniques, and modern UI/UX design principles without using JavaScript or external frameworks.",
-                usedskill:['HTML',"CSS","JS"]
+        usedskill:['HTML',"CSS","JS"]
     },{name:"Personal-Portfolio wesite",
         status:"progerss",
         id:2,

@@ -2,7 +2,6 @@ import Navbar from "../tools/Navbar"
 import { useState } from "react"
 import Footer from "../tools/Footer"
 import BodyContent from "./BodyContent"
-import Review from "../tools/Review"
 import { ThemeProvider } from "../../dataprovider/ThemeContext"
 export default function Layouts() {
      const goBack = () => {
@@ -19,7 +18,6 @@ export default function Layouts() {
                   <BodyContent />
                 {/* <button onClick={goBack} style={{"backgroundColor":"green","padding":"12px","borderRadius":"12px","justifyself":"end","width":"auto"}}>Back to top ↑</button> */}
                 </div>
-                <Review />
                     <Footer />
             </div>
                         </ThemeProvider>

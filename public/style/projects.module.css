@@ -1,100 +1,156 @@
-.projects{
+/* Updated projects.module.css */
+
+/* sensible defaults */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root{
+    --accent:#2f7c62;
+    --accent-dark:#cc0000;
+    --muted-border:#ccc;
+    --card-shadow: 0px 5px 10px rgba(43,47,51,0.25);
+}
+.projects {
     margin: 20px auto;
     padding: 12px;
     display: grid;
     gap: 8px;
     width: 90%;
 }
-.perfectproject{
+.perfectproject {
     display: flex;
-    overflow-x:auto;
+    gap: 8px;
 }
-.youtube{
-    
-    border: 1px solid;
-    padding: 5px;
+.youtube {
+    border: 1px solid var(--muted-border);
+    padding: 8px;
     border-radius: 12px;
-    margin: 10px auto;
-    width: 100%;   
-    flex-shrink: 0;  
+    margin: 10px 0;
+    flex: 0 0 320px;        /* fixed width cards to allow horizontal scrolling */
+    min-width: 280px;
+    max-width: 420px;
+    scroll-snap-align: start;
+    background: #fff;
 }
 
-.scroll-container::-webkit-scrollbar-thumb:hover {
-  background: #cc0000; /* darker on hover */
+/* sidebar / aside styles */
+aside {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    transition: transform 200ms ease;
+    transform: skewX(12deg); /* use angle, not percent */
 }
 
-aside{
-        display: grid;
-    grid-template-columns: repeat(2,1fr);
-    transition:transform 1s ease 0.2ms inherit;
-    transform:skew(12%);
-    
-}
-aside div{
-    list-style: none;
+aside div {
     padding: 12px;
-    margin:12px ;
+    margin: 12px;
     border-radius: 12px;
-    box-shadow: 0px 5px 10px rgb(43, 47, 51);
+    box-shadow: var(--card-shadow);
+    list-style: none;
+    background: #fff;
+    transform: skewX(-12deg); /* neutralize parent skew for content */
 }
-aside div h3{
-    color: rgb(25, 56, 56);
+
+aside div h3 {
+    color: rgb(25,56,56);
     text-decoration: underline;
-    padding:auto 12px;
+    padding: 0 12px; /* fix invalid padding usage */
+    margin: 0 0 8px 0;
 }
-aside div h4{
-    color: rgb(115, 97, 97);
+
+aside div h4 {
+    color: rgb(115,97,97);
+    margin: 0 0 6px 0;
 }
-aside div p{
+
+aside div p {
     width: 80%;
-    padding: 12px;
+    padding: 12px 0;
+    margin: 0;
 }
-aside div ol{
-   display: flex;
-   width: max-content;
-}
-aside div ol li{
-    gap: 2px;
-    padding: 2px;
-    text-align: center;
+
+aside div ol {
+    display: flex;
+    gap: 8px;           /* use gap on flex container */
+    padding: 0;
+    margin: 8px 0 0 0;
     list-style: none;
-    
 }
-.buttons{
-    background-color: rgb(47, 124, 98);
-    padding: 5px;
-    border-radius: 12px;
+
+aside div ol li {
+    padding: 0;
+    text-align: center;
+}
+
+aside div ol li h5 {
+    display: inline-block;
     border: none;
-    color: white;
-    font-family: serif;
-}
-.buttons:hover{
-    background-color: rgb(176, 176, 176);
-}
-aside div ol li h5{
-    border: none;
-    padding: 2px 8px;
+    padding: 6px 10px;
     border-radius: 6px;
-    box-shadow: 2px 2px 5px rgb(71, 58, 89);
+    box-shadow: 2px 2px 5px rgba(71,58,89,0.2);
+    margin: 0;
 }
+
+/* interaction states */
+aside div:hover {
+    box-shadow: 0px 5px 10px rgb(77,126,179);
+    transition: transform 250ms ease-in-out, box-shadow 250ms ease-in-out;
+}
+
+.buttons {
+    display: none;
+}
+@media screen and (max-width: 770px) {
+
+    aside {
+        grid-template-columns: 1fr;
+        transform: none;
+    }
+
+    aside div {
+        transform: none;
+    }
     aside div:hover{
-    box-shadow: 0px 5px 10px rgb(77, 126, 179);
-    transition:transform 1s ease-in-out ;
     transform: scale(1.02);
-}
-@media screen and (max-width:770px){
-    aside{
-        display:grid;
-        grid-template-columns: repeat(1,1fr);
+
     }
-    .perfectproject{
-        overflow-x: hidden;
+
+    /* allow items to wrap and use full width on small screens */
+    .perfectproject {
         flex-wrap: wrap;
+        gap: 12px;
     }
-    .youtube{
-        flex-shrink: unset;
+
+    .youtube {
+        flex: 1 1 100%;
+        min-width: 0;
+        max-width: 100%;
     }
-    .youtube:nth-child(n+2){
+
+    /* hide all .youtube items except the first within the perfectproject row */
+    .perfectproject .youtube:nth-child(n+2) {
         display: none;
+    }
+
+    .buttons {
+        display: block;
+        margin: 16px auto;
+        background-color: var(--accent);
+        padding: 8px 12px;
+        border-radius: 12px;
+        border: none;
+        color: white;
+        font-family: serif;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .buttons:hover,
+    .buttons:focus {
+        background-color: #256d53;
+        outline: none;
     }
 }

@@ -1,125 +1,232 @@
-.skillset{
-  justify-content: center;
-  padding: 20px 0;
+:root {
+  --bg: #071617;
+  --panel: #0c7565;
+  --panel-dark: #005c5c;
+  --accent: #4cafa8;
+  --light: #e6e6e6;
+  --card-bg: #0d1819;
+  --radius: 12px;
+  --gap: 12px;
+  --shadow: 0 6px 18px rgba(2, 8, 8, 0.45);
+  --glass: rgba(255, 255, 255, 0.04);
+  --transition: 200ms ease-in-out;
+  --max-width: 1100px;
+  --text: #e6e6e6;
 }
-.skillset h3{
+
+/* Set base font-family for consistency */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Global box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Skillset section */
+.skillset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 16px;
+  background: linear-gradient(180deg, rgba(12, 117, 101, 0.04), transparent 40%);
+  gap: var(--gap);
+  color: var(--text);
+}
+
+.skillset .section {
+  width: 100%;
+  max-width: var(--max-width);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), var(--glass));
+  border-radius: calc(var(--radius) + 4px);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  margin-top: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Section heading */
+.skillset h3 {
   text-align: center;
-  font-size: larger;
-  font-style: oblique;
-  margin-top: 12px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--panel);
+  margin: 6px 0 12px;
+  letter-spacing: 0.2px;
 }
-.section{
-   justify-self: center;
-   margin-top: 12px;
-    border-radius: 12px;
-    border: 2px unset;
-    box-shadow: 0px 1px 0px 2px ;
-    width: 90%;
-  }
-  .skills{
-    border-radius: 12px 10px 0px 0;
-    display: grid;
-    background-blend-mode: overlay;
-    background:radial-gradient(ellipse at center,rgb(12, 117, 101) 40%,rgb(0, 92, 92));
-  grid-template-columns: repeat(4,1fr);
-      justify-content: center;
-    align-items: center;
-    width: auto;
-    padding: 12px 0;
-  }
-.list{
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    background-color: rgb(13, 24, 25);
-    margin: 10px auto;
-    padding: 2px;
-    border-radius: 20%;  
-    animation: skillsets 1.6s ease infinite;
-    }
-.techskills{
+
+/* Skill grid */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  width: 100%;
+  padding: 12px 8px;
+  background: linear-gradient(180deg, var(--panel) 60%, var(--panel-dark));
+  border-radius: calc(var(--radius) - 2px);
+}
+
+/* Individual skill card */
+.list {
   display: flex;
   align-items: center;
-  font-size: small;
-  text-transform: capitalize;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.12));
+  color: var(--light);
+  transition: transform var(--transition), box-shadow var(--transition);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
 }
-.techskills h2{
-  padding-left: 20px;
-  display: block;
-  font: 20px light;
-}
-@keyframes skillsets {
-  0%{
-    transform: skew(6deg,3deg);
-    background: rgb(45, 31, 31);
-  }
-  25%{
-    transform: skew(4deg,8deg);
-  }  
-  50%{   
-    transform: skew(10deg,6deg);
-  }
-  100%{
-transform: skew(6deg,2deg);
 
+.list:hover,
+.list:focus-within {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Skill icon container */
+.list .icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.16));
+  font-size: 1.4rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+}
+
+.techskills {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 12px;
+  width: 100%;
+}
+.techskills .techskillsname {
+  flex: 1 1 auto;
+  text-align: left;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+
+.techskills .percentagecontainer {
+  flex: 0 180px;
+  max-width: 40%;
+  min-width: 150px;
+}
+
+@media (max-width: 480px) {
+  .techskills {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
   }
-    
+  .techskills .techskillsname {
+    text-align: center;
+    margin-right: 0;
+  }
+  .techskills .percentagecontainer {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 100%;
+  }
 }
-.techskillsname{
-  font-size: large;
-  margin: 20px 12px;
-  font-family: Arial, sans-serif;      
+
+.techskillsname {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  color: #005c5c;
+  text-align: center;
 }
+
+.techskills h2 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
 .percentagecontainer {
   display: grid;
-  align-items: center;
-  width: 300px;
-  margin: 20px 20px;
+  width: 200px;
+  max-width: 300px;
+  margin: 12px auto;
   font-family: Arial, sans-serif;
 }
 
 .percentagebar {
   height: 12px;
-  background-color: #e0e0e0;
+  background-color: rgba(255, 255, 255, 0.12);
   border-radius: 10px;
   overflow: hidden;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
-
 .percentagefill {
   height: 100%;
-  background-color: #4cafa8;
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, rgb(53, 94, 74), #0ebbb5);
+  transition: width 300ms ease, background-color 300ms ease;
+  border-radius: 10px 0 0 10px;
+  will-change: width;
+  min-width: 0;
 }
 
-
-@media  screen and (max-width:765px) {
-  .skills{
-   display: grid;
-    grid-template-columns: repeat(3,1fr);
-    width: auto;
+@media (prefers-reduced-motion: reduce) {
+  .percentagefill {
+    transition: none;
   }
-  .list{
-    display: flex;
-    justify-content: center;
-  }
-   .percentagecontainer{
-    width: 150px;
-    
-  }
-   .techskills{
-    display: flex;
-    justify-content: space-evenly;
-  }
- 
- 
 }
-@media  screen and (min-width:770px) {
-  .techskills{
-    display: flex;
-    justify-content: space-evenly;
+
+.list:focus,
+.list:focus-within {
+@media (max-width: 760px) {
+  :root {
+    --max-width: 760px;
   }
- 
+
+  .skillset .section {
+    max-width: var(--max-width);
+    padding: 12px;
+  }
+
+  .skills {
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    padding: 8px 4px;
+  }
+  .list {
+    min-height: 100px;
+    padding: 10px;
+  }
+  }
+
+  .list .icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+
+  .percentagecontainer {
+    max-width: 100%;
+    margin: 10px auto;
+  }
+}
+  .percentagecontainer {
+    max-width: 100%;
+    margin: 10px auto;
+  }
+
+@media (min-width: 1200px) {
+  .skills {
+    gap: 18px;
+  }
+
+  .list {
+    padding: 16px;
+    min-height: 128px;
+  }
 }

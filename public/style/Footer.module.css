@@ -1,59 +1,101 @@
-*{
-    padding: 0;
-    margin: 0;
+:root{
+    --footer-bg: rgb(23, 126, 102);
+    --accent-hover: #00129d;
+    --text-on-accent: #fff;
+    --gap: 12px;
 }
+
+*, *::before, *::after { box-sizing: border-box; }
+
 .footer{
     display: flex;
     align-items: center;
-    padding: 12px;
-    width:auto;
-    background-color: rgb(23, 126, 102);
+    justify-content: space-between;
+    gap: var(--gap);
+    padding: 12px 16px;
+    width: 100%;
+    background: var(--footer-bg);
+    color: var(--text-on-accent);
 }
+
+/* left area (name) */
 .name{
-    flex-grow: 1;
+    flex: 1 1 auto;
     font-style: oblique;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: namerTrans 1s ease both;
 }
+
 .name button{
-    background-color: rgb(23, 126, 102);
+    background: transparent;
     border: none;
-    color: white;
+    color: inherit;
     font-family: serif;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 160ms, transform 120ms;
 }
-@keyframes namertrans {
-    0%{
-      opacity: 0;        
-    }
-    50%{
-        opacity: 0;
-    }
-    100%{
-        transform: scaleX(90%);
-    }
-    
+.name button:hover{ background: rgba(255,255,255,0.06); transform: translateY(-1px); }
+.name button:focus{ outline: 2px solid rgba(255,255,255,0.18); outline-offset: 2px; }
+
+/* animation corrected (scaleX expects a unitless multiplier) */
+@keyframes namerTrans {
+    0%   { opacity: 0; transform: scaleX(0.98); }
+    50%  { opacity: 0.6; transform: scaleX(0.99); }
+    100% { opacity: 1; transform: scaleX(1); }
 }
+
+/* right area (owner + nav) */
 .owner{
     display:flex;
     align-items: center;
-    gap: 12px;
+    gap: var(--gap);
+    flex: 0 0 auto;
 }
+
+/* navigation */
 .navupper {
-    margin-left: 24px;}
+    margin-left: 24px;
+}
 .footer .navupper ol{
-    /* display: flex; */
+    display: flex;
+    gap: 12px;
     list-style: none;
-    text-decoration: none;
+    padding-left: 0;
+    margin: 0;
 }
 .footer .navupper li a{
-    color: #fff;
+    color: var(--text-on-accent);
+    text-decoration: none;
+    padding: 4px;
+    transition: color 160ms, border-bottom-color 160ms;
 }
 .footer .navupper li a:hover{
-    color: #00129d;
-    border-bottom: 1px solid;
+    color: var(--accent-hover);
+    border-bottom: 1px solid currentColor;
 }
-@media screen and  (max-width:765px) {
+
+/* responsive: stack on small screens, hide owner if needed */
+@media screen and (max-width: 765px) {
+    .footer{
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        padding: 12px;
+    }
     .owner{
-        display: none;
+        display: none; /* keep original behavior */
+    }
+    .name{
+        justify-content: center;
+    }
+    .footer .navupper ol{
+        justify-content: center;
+        flex-wrap: wrap;
     }
 }

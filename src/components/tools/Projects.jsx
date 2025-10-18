@@ -13,18 +13,15 @@ console.log(perfectdiv)
         <div className={styles.projects}  id="projects">
             <h1>My Projects</h1>
             <div className={styles.perfectproject}>
-           {perfectdiv.map((groups)=> (<div className={styles.youtube} key={groups.id} >
-            <aside>{groups.map((id)=>
+            <aside>{data.map((id)=>
                 (<div key={id.id}>
                     <h3>{id.name}</h3>
                     <h4>{id.status}</h4>
                     <p>{id.projectdesc}</p>
-                    <ol>{id.usedskill.map((id)=><li><h5>{id}</h5></li>)}</ol>
+                    <ol>{id.usedSkills.map((id)=><li><h5>{id}</h5></li>)}</ol>
                 </div>))}</aside>
-            </div> ))
-            }  
+               </div>
             <button className={styles.buttons}>read more</button>
-                    </div>
         </div>
     )
 }

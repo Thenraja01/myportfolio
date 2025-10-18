@@ -17,8 +17,7 @@ export default function Home() {
 const handleDownload = async () => {
   try {
     const response = await axios.get('/Thenraja.pdf', {
-      responseType: 'blob', // 👈 Important: tells Axios to treat it as binary
-    });
+      responseType: 'blob',})
 
     const url = window.URL.createObjectURL(new Blob([response.data]));
     const link = document.createElement('a');
@@ -46,15 +45,15 @@ const handleDownload = async () => {
         <div className={styles.userinfo}>
            <h1>{user.data.username}</h1>
           <h3>{user.data.joblevel}</h3>
-            <p>{user.data.personnalinfo}</p>
+            <p>{user.data.personalInfo}</p>
         </div>
         </div>
        
         <div className={styles.aboutcontent} id='about'>
         <h2>About Me</h2>
         <div className={styles.aboutinfo}>
-        <img src={person1} alt="Profile" className={styles.profile2}/>
-        <p>{user.data.personnalinfo}</p>
+        <img src={person1} alt="Profile" className={styles.profileImage}/>
+        <p>{user.data.personalInfo}</p>
 <button onClick={handleDownload}>Download CV</button>        </div>
         
         </div>

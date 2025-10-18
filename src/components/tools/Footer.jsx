@@ -5,14 +5,11 @@ import { useContext } from 'react';
 import Styles from "../../../public/style/Footer.module.css"
 export default function Footer() {
     const { user } = useContext(ThemeContext)
-    const goBack = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
+   
     return (
         <div className={Styles.footer}>
             <div className={Styles.name}>
                 <p>© 2025  {user.data.username} All rights reserved.</p>
-                <button onClick={goBack}>Back to top ↑</button>
 
             </div>
             <div className={Styles.owner}>

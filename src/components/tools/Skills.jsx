@@ -22,21 +22,21 @@ const data=Value
           {icons.map((icon) => (
             <li key={icon.index} style={{ listStyle: "none" }} className={styles.list} >
               {icon}
+               
             </li>
           ))}
         </div>
         <div className={styles.techskills}  >
-          {/* <h1>technical skills</h1> */}
           <div className="">
 
-          {data.skills.techskill.map((tech) => <div className={styles.techskillsname}>
+          {data.skills.techSkills.map((tech) => <div className={styles.techskillsname}>
             <h2>{tech}</h2> 
           </div>
           )}
           </div>
           <div className=''>
 
-           {data.skills.percenTage.map((w)=>(<div className={styles.percentagecontainer}>
+           {data.skills.percentages.map((w)=>(<div className={styles.percentagecontainer}>
                 <div className={styles.percentagebar}>
               <div  className={styles.percentagefill}  key={w.id} style={{width:`${w}%`}}/>  
             

@@ -21,7 +21,6 @@ console.log(perfectdiv)
                     <ol>{id.usedSkills.map((id)=><li><h5>{id}</h5></li>)}</ol>
                 </div>))}</aside>
                </div>
-            <button className={styles.buttons}>read more</button>
         </div>
     )
 }

@@ -21,6 +21,7 @@ table {
 }
 
 thead {
+    color: black;
     background-color: #f4f4f4; /* Added background color for header */
 }
 
@@ -41,7 +42,7 @@ tbody {
 }
 
 .contentbody h4 {
-    color: gray;
+    color: rgb(94, 93, 93);
     margin: 8px 0; /* Added margin for spacing */
 }
 
@@ -56,7 +57,7 @@ th {
 }
 
 td {
-    color: #333; /* Darker text for better readability */
+    color: #878383; /* Darker text for better readability */
 }
 
 @media screen and (max-width: 765px) {

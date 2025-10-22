@@ -71,13 +71,17 @@ td {
 
     .contenthead {
         display: grid;
+        border-radius: 12px;
+        border: 1px solid;
         font-size: small;
+        margin-top: 12px;
         font-weight: 100;
         gap: 12px;
-        padding-top: 12px;
+        padding: 12px;
     }
 
     .contentbody {
+
         margin-top: 12px;
         display: flex;
         align-items: center;

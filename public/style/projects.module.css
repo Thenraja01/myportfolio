@@ -14,30 +14,20 @@
     --card-shadow: 0px 5px 10px rgba(43,47,51,0.25);
 }
 .projects {
+    width: auto;
     margin: 20px auto;
-    padding: 12px;
     display: grid;
     gap: 8px;
-    width: 90%;
 }
 .perfectproject {
     display: flex;
     gap: 8px;
 }
-.youtube {
-    border: 1px solid var(--muted-border);
-    padding: 8px;
-    border-radius: 12px;
-    margin: 10px 0;
-    flex: 0 0 320px;        /* fixed width cards to allow horizontal scrolling */
-    min-width: 280px;
-    max-width: 420px;
-    scroll-snap-align: start;
-    background: #fff;
-}
+
 
 /* sidebar / aside styles */
 aside {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     transition: transform 200ms ease;
@@ -45,6 +35,7 @@ aside {
 }
 
 aside div {
+    width: 90%;
     padding: 12px;
     margin: 12px;
     border-radius: 12px;
@@ -108,6 +99,7 @@ aside div:hover {
 @media screen and (max-width: 770px) {
 
     aside {
+        width: auto;
         grid-template-columns: 1fr;
         transform: none;
     }

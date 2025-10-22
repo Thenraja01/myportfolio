@@ -122,7 +122,6 @@ body {
 
 @media (max-width: 480px) {
   .techskills {
-    flex-direction: column;
     align-items: center;
     gap: 8px;
   }

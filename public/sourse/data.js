@@ -27,8 +27,8 @@ export const project = [
         id: 2,
         projectdesc: "Developed a dynamic and responsive personal portfolio website using React.js to highlight my professional skills, projects, and background. The project showcases a component-based architecture for maintainability and scalability while offering a smooth, interactive user experience.",
         usedSkills: ["HTML", "CSS", "JavaScript", 'React.js'],
-        githubLink: "https://github.com/ThenRaja/YouTube-Static-Website",
-        liveLink: "https://thenraja.github.io/YouTube-Static-Website/"
+        githubLink: "https://github.com/thenraja01/myportfolio",
+        liveLink: "https://thenraja-01.vercel.app/"
     },
     {
         name: "Single Page Website",
@@ -36,8 +36,8 @@ export const project = [
         id: 3,
         projectdesc: "Built a fully responsive Single Page Application (SPA) using vanilla JavaScript, HTML5, and CSS3 to demonstrate core front-end development skills without relying on heavy frameworks. The project emphasizes performance, clean design, and seamless navigation between sections without page reloads.",
         usedSkills: ['HTML', "CSS", 'JavaScript'],
-        githubLink: "https://github.com/ThenRaja/YouTube-Static-Website",
-        liveLink: "https://thenraja.github.io/YouTube-Static-Website/"
+        githubLink: "https://github.com/thenraja01/youtube_static_premium_app",
+        liveLink: "https://thenraja01.github.io/youtube_static_premium_app/"
     },
     {
         name: "Recipe Recommendation Website",

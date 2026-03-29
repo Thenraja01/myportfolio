@@ -17,28 +17,36 @@ export const project = [
         status: "Completed",
         id: 1,
         projectdesc: "Developed a static clone of the YouTube homepage using only HTML5 and CSS3, aimed at replicating the structure, layout, and styling of the original platform. This project demonstrates an understanding of responsive web design, layout techniques, and modern UI/UX design principles without using JavaScript or external frameworks.",
-        usedSkills: ['HTML', "CSS"]
+        usedSkills: ['HTML', "CSS"],
+        githubLink: "https://github.com/ThenRaja/YouTube-Static-Website",
+        liveLink: "https://thenraja.github.io/YouTube-Static-Website/"
     },
     {
         name: "Personal Portfolio Website",
         status: "Completed",
         id: 2,
         projectdesc: "Developed a dynamic and responsive personal portfolio website using React.js to highlight my professional skills, projects, and background. The project showcases a component-based architecture for maintainability and scalability while offering a smooth, interactive user experience.",
-        usedSkills: ["HTML", "CSS", "JavaScript", 'React.js']
+        usedSkills: ["HTML", "CSS", "JavaScript", 'React.js'],
+        githubLink: "https://github.com/ThenRaja/YouTube-Static-Website",
+        liveLink: "https://thenraja.github.io/YouTube-Static-Website/"
     },
     {
         name: "Single Page Website",
         status: "Completed",
         id: 3,
         projectdesc: "Built a fully responsive Single Page Application (SPA) using vanilla JavaScript, HTML5, and CSS3 to demonstrate core front-end development skills without relying on heavy frameworks. The project emphasizes performance, clean design, and seamless navigation between sections without page reloads.",
-        usedSkills: ['HTML', "CSS", 'JavaScript']
+        usedSkills: ['HTML', "CSS", 'JavaScript'],
+        githubLink: "https://github.com/ThenRaja/YouTube-Static-Website",
+        liveLink: "https://thenraja.github.io/YouTube-Static-Website/"
     },
     {
         name: "Recipe Recommendation Website",
         status: "Progress",
         id: 4,
         projectdesc: "Developed a fully responsive Single Page Application (SPA) using vanilla JavaScript, HTML5, and CSS3 to demonstrate core front-end development skills without relying on heavy frameworks. The project emphasizes performance, clean design, and seamless navigation between sections without page reloads.",
-        usedSkills: ['HTML', "CSS", 'JavaScript','MERN-stack','Fastapi']
+        usedSkills: ['HTML', "CSS", 'JavaScript','MERN-stack','Fastapi'],
+        githubLink: "https://github.com/ThenRaja/YouTube-Static-Website",
+        liveLink: "https://thenraja.github.io/YouTube-Static-Website/"
     }
 ];
 

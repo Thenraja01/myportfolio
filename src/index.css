@@ -1,31 +1,35 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-body.dark{
-    background-color: black;
-    color: white;
-}
-body.light{
-    background-color: rgb(240, 232, 232);
-    color: rgb(19, 18, 18);
+@import "tailwindcss";
+
+@theme {
+  --color-themeSubheading: #A98B76;
+  --color-themeButton: #79AE6F;
+  --color-themeText: #362F4F;
+  --color-darkText: #EAEAEA;
 }
 
-@media (min-width:0px)and(max-width:480px) {
-    .contentmain img{
-        width: 25px;
-    }
-    .section ol{
-        display: flex;
-    flex-wrap: wrap;
-    }  
+:root {
+  --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  --text-primary: #362F4F;
+  color-scheme: light;
 }
-@media (min-width:481px)and(max-width:850px) {
-    .contentmain img{
-        width: 105px;
-    }
-    .section ol{
-        display: flex;
-    flex-wrap: wrap;
-    }   
+
+.dark {
+  --bg-gradient: linear-gradient(135deg, #1f1f1f 0%, #000000 100%);
+  --text-primary: #EAEAEA;
+  color-scheme: dark;
+}
+
+body {
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-duration: 300ms;
+  -webkit-font-smoothing: antialiased;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+}
+
+@utility clip-hexagon {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }

@@ -1,9 +1,7 @@
-import Layouts from "./components/layouts/Layouts";
+import RootLayout from "./components/layout/RootLayout";
+
 export default function App() {
   return (
-    <>
-    <Layouts/> 
-    </>
+    <RootLayout />
   )
 }
-

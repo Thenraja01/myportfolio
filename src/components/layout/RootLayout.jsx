@@ -10,12 +10,34 @@ import Footer from '../Footer';
 import { ThemeContext } from '../../dataprovider/ThemeContext';
 
 export default function RootLayout() {
-  const { loading } = useContext(ThemeContext);
+  const { loading, error } = useContext(ThemeContext);
 
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-transparent">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-themeButton"></div>
+        <div className="flex flex-col items-center gap-4">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-themeButton"></div>
+          <p className="text-[var(--text-primary)] font-medium animate-pulse">Loading Portfolio...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-transparent p-4 text-center">
+        <div className="max-w-md space-y-6">
+          <div className="text-red-500 bg-red-500/10 p-6 rounded-3xl border border-red-500/20">
+            <h2 className="text-xl font-bold mb-2">Connection Error</h2>
+            <p className="text-sm opacity-80">{error}</p>
+          </div>
+          <button 
+            onClick={() => window.location.reload()}
+            className="px-8 py-3 bg-themeButton text-white rounded-full font-bold hover:scale-105 transition-transform"
+          >
+            Retry Connection
+          </button>
+        </div>
       </div>
     );
   }

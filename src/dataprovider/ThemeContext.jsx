@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDocFromServer } from "firebase/firestore";
 
 export const ThemeContext = createContext();
 
@@ -33,7 +33,7 @@ export function ThemeProvider({ children }) {
       try {
         setLoading(true);
         const docRef = doc(db, "portfolio", "data");
-        const docSnap = await getDoc(docRef);
+        const docSnap = await getDocFromServer(docRef);
 
         if (docSnap.exists()) {
           const data = docSnap.data();

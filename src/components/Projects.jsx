@@ -63,7 +63,7 @@ const ProjectCard = ({ p, cardVariants }) => {
           <motion.a 
             whileHover={{ scale: 1.1, y: -4 }}
             whileTap={{ scale: 0.9 }}
-            onClick={() => window.open(p.livedemo, '_blank')}
+            onClick={() => window.open(p.liveDemo, '_blank')}
             title="Live Project" 
             className="text-[var(--text-primary)]/60 hover:text-themeButton flex items-center gap-1 text-sm font-medium bg-[var(--text-primary)]/5 px-4 py-2 rounded-full border border-transparent hover:border-themeButton/30 transition-colors cursor-pointer"
           >

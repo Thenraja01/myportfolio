@@ -18,7 +18,7 @@ const ProjectCard = ({ p, cardVariants }) => {
       variants={cardVariants}
       className="group relative flex flex-col justify-between bg-[var(--card-bg)] backdrop-blur-md rounded-[2rem] overflow-hidden p-8 border border-[var(--border-color)] shadow-xl hover:shadow-2xl transition-all duration-300 h-full"
     >
-      <div className="absolute top-6 right-6 px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-[var(--text-primary)] text-white dark:text-black">
+      <div className="absolute top-6 right-6 px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-[var(--text-primary)] text-white dark:text-white">
         {p.status}
       </div>
 
@@ -48,24 +48,28 @@ const ProjectCard = ({ p, cardVariants }) => {
       </div>
 
       {/* Interactive Bottom Bar */}
-      <div className="flex items-center justify-between pt-6 mt-8 border-t border-gray-100 dark:border-white/5 relative z-10">
+      <div className="flex items-center justify-between pt-6 mt-8 border-t border-[var(--border-2)] relative z-10">
         <div className="flex gap-4">
-          <a 
-            href={p.githubLink || "#"} 
+          <motion.a 
+            whileHover={{ scale: 1.1, y: -4 }}
+            whileTap={{ scale: 0.9 }}
+            href={p.githubLink || p.link || "#"} 
             title="View Source" 
-            className="text-[var(--text-primary)]/60 hover:text-themeButton hover:-translate-y-1 transition-all duration-300 flex items-center gap-1 text-sm font-medium"
+            className="text-[var(--text-primary)]/60 hover:text-themeButton flex items-center gap-1 text-sm font-medium bg-[var(--text-primary)]/5 px-4 py-2 rounded-full border border-transparent hover:border-themeButton/30 transition-colors"
           >
             <Github size={18} />
             <span className="hidden sm:inline">Code</span>
-          </a>
-          <a 
-            href={p.liveLink || "#"} 
+          </motion.a>
+          <motion.a 
+            whileHover={{ scale: 1.1, y: -4 }}
+            whileTap={{ scale: 0.9 }}
+            href={p.liveLink || p.link || "#"} 
             title="Live Project" 
-            className="text-[var(--text-primary)]/60 hover:text-themeButton hover:-translate-y-1 transition-all duration-300 flex items-center gap-1 text-sm font-medium"
+            className="text-[var(--text-primary)]/60 hover:text-themeButton flex items-center gap-1 text-sm font-medium bg-[var(--text-primary)]/5 px-4 py-2 rounded-full border border-transparent hover:border-themeButton/30 transition-colors"
           >
             <ExternalLink size={18} />
             <span className="hidden sm:inline">Live</span>
-          </a>
+          </motion.a>
         </div>
         
         <button 

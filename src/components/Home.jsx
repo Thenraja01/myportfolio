@@ -57,7 +57,7 @@ export default function Home() {
           <div className="flex items-center gap-4">
              <button
                onClick={toggleVisibility}
-               className="px-8 py-3 bg-themeButton hover:bg-opacity-90 text-white rounded-full font-medium transition-all transform hover:scale-105 shadow-lg shadow-themeButton/30 flex items-center gap-2"
+               className="px-8 py-3 bg-themeButton hover:bg-opacity-90 text-[var(--text-button)] rounded-full font-medium transition-all transform hover:scale-105 shadow-lg shadow-themeButton/30 flex items-center gap-2"
              >
                <Mail size={18} /> Contact Me
              </button>
@@ -93,9 +93,9 @@ export default function Home() {
              <img 
                src={person} 
                alt="Profile" 
-               className="relative z-10 w-[280px] h-[380px] md:w-[350px] md:h-[480px] object-cover rounded-[2rem] shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 ease-in-out border-4 border-white dark:border-[#1f1f1f]" 
+               className="relative z-10 w-[280px] h-[380px] md:w-[350px] md:h-[480px] object-cover rounded-[2rem] shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 ease-in-out border-4 border-[var(--card-bg-2)]" 
              />
-             <div className="absolute -bottom-8 -left-8 bg-white dark:bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 z-20">
+             <div className="absolute -bottom-8 -left-8 bg-[var(--card-bg-2)] p-6 rounded-2xl shadow-xl border border-[var(--border-2)] z-20">
                <h1 className="text-2xl font-bold text-[var(--text-primary)]">{personalInfo.name}</h1>
                <h3 className="text-themeSubheading font-medium tracking-wide uppercase text-sm mt-1">{personalInfo.title}</h3>
              </div>
@@ -115,7 +115,7 @@ export default function Home() {
             <img 
                src={person1} 
                alt="Profile" 
-               className="w-48 h-48 md:w-64 md:h-64 object-cover rounded-full shadow-lg border-4 border-white dark:border-[#1f1f1f] grayscale hover:grayscale-0 transition-all duration-500"
+               className="w-48 h-48 md:w-64 md:h-64 object-cover rounded-full shadow-lg border-4 border-[var(--card-bg-2)] grayscale hover:grayscale-0 transition-all duration-500"
              />
         </div>
         <div className="w-full md:w-2/3 space-y-6 text-center md:text-left">

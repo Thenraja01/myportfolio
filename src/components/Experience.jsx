@@ -53,7 +53,7 @@ export default function Experience() {
                     <span className="text-[var(--text-primary)]/60 font-medium">{exp.location}</span>
                   </div>
                 </div>
-                <div className="px-5 py-2 bg-[var(--text-primary)]/5 dark:bg-white/5 rounded-2xl text-sm font-bold text-themeButton border border-[var(--text-primary)]/5 whitespace-nowrap h-max">
+                <div className="px-5 py-2 bg-[var(--text-primary)]/5 rounded-2xl text-sm font-bold text-themeButton border border-[var(--border-1)] whitespace-nowrap h-max">
                   {exp.duration}
                 </div>
               </div>
@@ -61,7 +61,7 @@ export default function Experience() {
               <ul className="space-y-4 border-l-2 border-themeButton/20 pl-6 ml-2">
                 {exp.responsibilities.map((resp, i) => (
                   <li key={i} className="text-[var(--text-primary)]/80 leading-relaxed relative">
-                    <span className="absolute -left-[1.85rem] top-2 w-3 h-3 rounded-full bg-themeButton border-2 border-white dark:border-[#1a1a1a]"></span>
+                    <span className="absolute -left-[1.85rem] top-2 w-3 h-3 rounded-full bg-themeButton border-2 border-[var(--card-bg-2)]"></span>
                     {resp}
                   </li>
                 ))}

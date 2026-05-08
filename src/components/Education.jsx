@@ -28,7 +28,7 @@ export default function Education() {
       </div>
 
       <div className="max-w-4xl mx-auto relative pl-4 md:pl-0">
-        <div className="absolute left-[39px] md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-[var(--text-primary)]/10 hidden md:block"></div>
+        <div className="absolute left-[39px] md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-[var(--text-secondary)]/10 hidden md:block"></div>
 
         <div className="space-y-12">
           {education.map((edu, index) => (
@@ -42,18 +42,18 @@ export default function Education() {
                 index % 2 === 0 ? "md:flex-row-reverse" : ""
               }`}
             >
-              <div className="absolute left-[8px] md:left-1/2 md:-translate-x-1/2 w-14 h-14 rounded-full bg-white dark:bg-[#1f1f1f] border-[3px] border-themeButton flex items-center justify-center z-10 shadow-lg text-[var(--text-primary)]">
+              <div className="absolute left-[8px] md:left-1/2 md:-translate-x-1/2 w-14 h-14 rounded-full bg-[var(--card-bg-2)] border-[3px] border-themeButton flex items-center justify-center z-10 shadow-lg text-[var(--text-primary)]">
                 <GraduationCap size={24} />
               </div>
 
               <div className={`w-full md:w-5/12 ml-20 md:ml-0 ${
                 index % 2 === 0 ? "md:pl-16 text-left" : "md:pr-16 md:text-right"
               }`}>
-                <div className="p-8 bg-white dark:bg-[#1a1a1a] rounded-3xl shadow-xl border border-gray-100 dark:border-white/5 hover:-translate-y-2 transition-transform duration-300">
+                <div className="p-8 bg-[var(--card-bg-2)] rounded-3xl shadow-xl border border-[var(--border-2)] hover:-translate-y-2 transition-transform duration-300">
                   <span className="px-3 py-1 bg-[var(--text-primary)]/5 rounded-full text-sm font-semibold tracking-wider text-themeButton block w-max uppercase mb-4">
                     {edu.duration}
                   </span>
-                  <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-2">
+                  <h3 className="text-xl md:text-2xl font-bold text-[var(--text-secondary)] mb-2">
                     {edu.degree}
                   </h3>
                   <h4 className="text-lg text-themeSubheading font-medium mb-4">

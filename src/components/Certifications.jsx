@@ -40,7 +40,7 @@ export default function Certifications() {
               transition={{ delay: index * 0.05 }}
               className="group flex items-start gap-5 p-8 bg-[var(--card-bg)] backdrop-blur-md rounded-[2rem] border border-[var(--border-color)] shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="p-4 rounded-2xl bg-themeButton/10 text-themeButton shrink-0 group-hover:bg-themeButton group-hover:text-white transition-all duration-300">
+              <div className="p-4 rounded-2xl bg-themeButton/10 text-themeButton shrink-0 group-hover:bg-themeButton group-hover:text-[var(--text-button)] transition-all duration-300">
                 <Award size={24} />
               </div>
               <div className="space-y-2">

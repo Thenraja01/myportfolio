@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore/lite";
+import { ref, get } from "firebase/database";
 
 export const ThemeContext = createContext();
 
@@ -32,11 +32,11 @@ export function ThemeProvider({ children }) {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const docRef = doc(db, "portfolio", "data");
-        const docSnap = await getDoc(docRef);
+        const dbRef = ref(db, "/");
+        const snap = await get(dbRef);
 
-        if (docSnap.exists()) {
-          const data = docSnap.data();
+        if (snap.exists()) {
+          const data = snap.val();
           if (data.personalInfo) setPersonalInfo(data.personalInfo);
           if (data.objective) setObjective(data.objective);
           if (data.workExperience) setWorkExperience(data.workExperience);
@@ -44,13 +44,19 @@ export function ThemeProvider({ children }) {
           if (data.projects) setProjects(data.projects);
           if (data.education) setEducation(data.education);
           if (data.certifications) setCertifications(data.certifications);
+          
+          // Also set theme if available in the database
+          if (data.themes && data.themes.default) {
+            // You can use data.themes.default.primary here if needed
+          }
+          
           setError(null);
         } else {
-          setError("Database document 'portfolio/data' not found. Please check your Firebase setup.");
+          setError("Data at root path '/' not found. Please check your Realtime Database setup.");
         }
       } catch (err) {
         console.error("Firebase fetch error:", err);
-        setError(`Firebase Connection Error: ${err.message}. Please ensure the Firestore API is enabled in your Google Cloud Console.`);
+        setError(`Firebase Connection Error: ${err.message}. Please ensure your Realtime Database rules allow read access.`);
       } finally {
         setLoading(false);
       }

@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { ThemeContext } from "../dataprovider/ThemeContext";
-import { Sun, Moon, Github, Instagram, Linkedin, Menu, X } from "lucide-react";
+import { Sun, Moon, Github, Instagram, Linkedin, Menu, X, LucideTent } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
@@ -25,7 +25,7 @@ export default function Navbar() {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl rounded-full transition-all duration-300 border ${
           scrolled
-            ? "bg-white/70 dark:bg-black/70 backdrop-blur-md shadow-lg border-gray-200 dark:border-white/10"
+            ? "bg-[var(--card-bg)] backdrop-blur-md shadow-lg border-[var(--border-3)]"
             : "bg-transparent border-transparent"
         }`}
       >
@@ -44,7 +44,7 @@ export default function Navbar() {
             </a>
             {personalInfo.leetcode && (
               <a href={`https://${personalInfo.leetcode}`} target="_blank" rel="noreferrer" className="text-[var(--text-primary)] hover:text-themeButton transition-colors text-xs font-bold font-mono">
-                LC
+                <LucideTent/>
               </a>
             )}
           </div>
@@ -64,7 +64,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-[var(--text-primary)]"
+              className="p-2 rounded-full hover:bg-[var(--border-1)] transition-colors text-[var(--text-primary)]"
             >
               <AnimatePresence mode="wait" initial={false}>
                 {theme === "dark" ? (
@@ -106,7 +106,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden fixed top-24 left-1/2 -translate-x-1/2 w-[95%] max-w-md bg-white dark:bg-[#1f1f1f] rounded-2xl shadow-xl z-40 overflow-hidden border border-gray-100 dark:border-white/10"
+            className="md:hidden fixed top-24 left-1/2 -translate-x-1/2 w-[95%] max-w-md bg-[var(--card-bg-2)] rounded-2xl shadow-xl z-40 overflow-hidden border border-[var(--border-2)]"
           >
             <div className="flex flex-col p-6 space-y-4">
               {links.map((item) => (

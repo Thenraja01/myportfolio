@@ -22,7 +22,7 @@ export default function RootLayout() {
           </div>
           <button 
             onClick={() => window.location.reload()}
-            className="px-8 py-3 bg-themeButton text-white rounded-full font-bold hover:scale-105 transition-transform"
+            className="px-8 py-3 bg-themeButton text-[var(--text-button)] rounded-full font-bold hover:scale-105 transition-transform"
           >
             Retry Connection
           </button>

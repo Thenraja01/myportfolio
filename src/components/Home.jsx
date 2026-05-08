@@ -16,14 +16,14 @@ export default function Home() {
 
   const handleDownload = async () => {
     try {
-      const response = await axios.get("/Thenraja.pdf", {
+      const response = await axios.get("/Then_Raja_Resume.docx", {
         responseType: "blob",
       });
 
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", "Thenraja_M_Resume.pdf");
+      link.setAttribute("download", "Then_Raja_Resume.docx");
       document.body.appendChild(link);
       link.click();
       link.remove();

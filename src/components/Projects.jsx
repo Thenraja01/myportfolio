@@ -12,6 +12,7 @@ const ProjectCard = ({ p, cardVariants }) => {
     setLiked(!liked);
     setCount((prev) => (liked ? prev - 1 : prev + 1));
   };
+  
 
   return (
     <motion.div

@@ -3,8 +3,9 @@ import { ThemeContext } from "../dataprovider/ThemeContext";
 import { motion } from "framer-motion";
 
 export default function Skills() {
-  const { Value } = useContext(ThemeContext);
-  const data = Value;
+  const { technicalSkills } = useContext(ThemeContext);
+
+  const categories = Object.keys(technicalSkills);
 
   return (
     <section id="skills" className="space-y-16">
@@ -27,28 +28,28 @@ export default function Skills() {
         </motion.p>
       </div>
 
-      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 text-[var(--text-primary)]">
-        {data.skills.techSkills.map((tech, index) => (
-          <motion.div 
-            key={index}
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="space-y-4"
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {categories.map((category, catIndex) => (
+          <motion.div
+            key={category}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: catIndex * 0.1 }}
+            className="p-8 bg-white dark:bg-[#1a1a1a] rounded-3xl border border-gray-100 dark:border-white/5 shadow-xl"
           >
-            <div className="flex justify-between font-semibold tracking-wide">
-              <span>{tech}</span>
-              <span className="text-themeButton">{data.skills.percentages[index]}%</span>
-            </div>
-            <div className="h-3 w-full bg-[var(--text-primary)]/10 rounded-full overflow-hidden shadow-inner">
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: `${data.skills.percentages[index]}%` }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, ease: "easeOut", delay: 0.2 + (index * 0.1) }}
-                className="h-full bg-gradient-to-r from-themeButton to-themeSubheading rounded-full shadow-md"
-              ></motion.div>
+            <h3 className="text-xl font-bold text-themeButton mb-6 capitalize">
+              {category.replace(/([A-Z])/g, ' $1').trim()}
+            </h3>
+            <div className="flex flex-wrap gap-3">
+              {technicalSkills[category].map((skill, skillIndex) => (
+                <span
+                  key={skillIndex}
+                  className="px-4 py-2 bg-[var(--text-primary)]/10 text-[var(--text-primary)] rounded-xl text-sm font-semibold border border-[var(--text-primary)]/10 hover:bg-themeButton/20 hover:text-themeButton transition-colors duration-300 shadow-sm"
+                >
+                  {skill}
+                </span>
+              ))}
             </div>
           </motion.div>
         ))}

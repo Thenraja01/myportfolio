@@ -4,10 +4,10 @@ import { Sun, Moon, Github, Instagram, Linkedin, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme, personalInfo } = useContext(ThemeContext);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const links = ["Home", "Skills", "Projects", "Education"];
+  const links = ["Home", "Skills", "Experience", "Projects", "Education", "Certifications"];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,15 +31,22 @@ export default function Navbar() {
       >
         <div className="px-6 py-4 flex items-center justify-between">
           <div className="flex gap-4 items-center">
-            <a href="https://www.instagram.com/kingz__nyx_" target="_blank" rel="noreferrer" className="text-[var(--text-primary)] hover:text-themeButton transition-colors">
-              <Instagram size={20} />
-            </a>
-            <a href="https://github.com/Thenraja01" target="_blank" rel="noreferrer" className="text-[var(--text-primary)] hover:text-themeButton transition-colors">
+            {personalInfo.instagram && (
+              <a href={personalInfo.instagram} target="_blank" rel="noreferrer" className="text-[var(--text-primary)] hover:text-themeButton transition-colors">
+                <Instagram size={20} />
+              </a>
+            )}
+            <a href={`https://${personalInfo.github}`} target="_blank" rel="noreferrer" className="text-[var(--text-primary)] hover:text-themeButton transition-colors">
               <Github size={20} />
             </a>
-            <a href="https://www.linkedin.com/in/then-raja1205" target="_blank" rel="noreferrer" className="text-[var(--text-primary)] hover:text-themeButton transition-colors">
+            <a href={`https://${personalInfo.linkedin}`} target="_blank" rel="noreferrer" className="text-[var(--text-primary)] hover:text-themeButton transition-colors">
               <Linkedin size={20} />
             </a>
+            {personalInfo.leetcode && (
+              <a href={`https://${personalInfo.leetcode}`} target="_blank" rel="noreferrer" className="text-[var(--text-primary)] hover:text-themeButton transition-colors text-xs font-bold font-mono">
+                LC
+              </a>
+            )}
           </div>
 
           <div className="hidden md:flex items-center space-x-8">

@@ -93,7 +93,7 @@ const ProjectCard = ({ p, cardVariants }) => {
 };
 
 export default function Projects() {
-  const { project } = useContext(ThemeContext);
+  const { projects } = useContext(ThemeContext);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -136,8 +136,18 @@ export default function Projects() {
         viewport={{ once: true, margin: "-50px" }}
         className="grid grid-cols-1 lg:grid-cols-2 gap-8"
       >
-        {project.map((p) => (
-          <ProjectCard key={p.id} p={p} cardVariants={cardVariants} />
+        {projects.map((p, index) => (
+          <ProjectCard 
+            key={index} 
+            p={{
+              ...p,
+              id: index,
+              status: p.status || "Completed",
+              projectdesc: p.description,
+              usedSkills: p.technologies || []
+            }} 
+            cardVariants={cardVariants} 
+          />
         ))}
       </motion.div>
     </section>

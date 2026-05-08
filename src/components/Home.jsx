@@ -7,7 +7,7 @@ import person from "./icon/user1.jpg";
 import person1 from "./icon/user3.jpg";
 
 export default function Home() {
-  const { user } = useContext(ThemeContext);
+  const { personalInfo, objective } = useContext(ThemeContext);
   const [visible, setVisible] = useState(false);
 
   const toggleVisibility = () => {
@@ -50,7 +50,7 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-lg text-[var(--text-primary)]/80 max-w-2xl leading-relaxed">
-              {user.info.jobdesc}
+              {objective}
             </p>
           </div>
 
@@ -75,11 +75,9 @@ export default function Home() {
              className="overflow-hidden"
           >
              <div className="p-4 rounded-xl bg-[var(--text-primary)]/5 border border-[var(--text-primary)]/10">
-               {user.info.contact.map((conts, idx) => (
-                 <p key={idx} className="text-[var(--text-primary)] font-medium leading-loose">
-                   {conts}
-                 </p>
-               ))}
+               <p className="text-[var(--text-primary)] font-medium leading-loose">Email: {personalInfo.email}</p>
+               <p className="text-[var(--text-primary)] font-medium leading-loose">Phone: {personalInfo.phone}</p>
+               <p className="text-[var(--text-primary)] font-medium leading-loose">Location: {personalInfo.location}</p>
              </div>
           </motion.div>
         </motion.div>
@@ -98,8 +96,8 @@ export default function Home() {
                className="relative z-10 w-[280px] h-[380px] md:w-[350px] md:h-[480px] object-cover rounded-[2rem] shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 ease-in-out border-4 border-white dark:border-[#1f1f1f]" 
              />
              <div className="absolute -bottom-8 -left-8 bg-white dark:bg-[#1a1a1a] p-6 rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 z-20">
-               <h1 className="text-2xl font-bold text-[var(--text-primary)]">{user.data.username}</h1>
-               <h3 className="text-themeSubheading font-medium tracking-wide uppercase text-sm mt-1">{user.data.joblevel}</h3>
+               <h1 className="text-2xl font-bold text-[var(--text-primary)]">{personalInfo.name}</h1>
+               <h3 className="text-themeSubheading font-medium tracking-wide uppercase text-sm mt-1">{personalInfo.title}</h3>
              </div>
           </div>
         </motion.div>
@@ -123,7 +121,7 @@ export default function Home() {
         <div className="w-full md:w-2/3 space-y-6 text-center md:text-left">
            <h2 className="text-3xl md:text-4xl font-bold text-themeSubheading">About Me</h2>
            <p className="text-lg text-[var(--text-primary)] leading-relaxed indent-8">
-             {user.data.personalInfo}
+             {objective}
            </p>
         </div>
       </motion.div>

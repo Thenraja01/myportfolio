@@ -4,6 +4,8 @@ import Home from '../Home';
 import Education from '../Education';
 import Projects from '../Projects';
 import Skills from '../Skills';
+import Experience from '../Experience';
+import Certifications from '../Certifications';
 import Footer from '../Footer';
 import { ThemeContext } from '../../dataprovider/ThemeContext';
 
@@ -25,8 +27,10 @@ export default function RootLayout() {
       <main className="pt-24 pb-12 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
         <Home />
         <Skills />
+        <Experience />
         <Projects />
         <Education />
+        <Certifications />
       </main>
 
       <Footer />

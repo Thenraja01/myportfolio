@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ThemeContext } from "../dataprovider/ThemeContext";
 
 export default function Footer() {
-  const { user } = useContext(ThemeContext);
+  const { personalInfo } = useContext(ThemeContext);
 
   return (
     <footer className="w-full bg-black dark:bg-[#0a0a0a] text-white py-12 mt-32 border-t border-white/10 relative overflow-hidden">
@@ -11,10 +11,10 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8 z-10 relative">
         <div className="text-center md:text-left space-y-2">
           <h2 className="text-2xl font-bold tracking-tight">
-            {user.data.username}
+            {personalInfo.name}
           </h2>
           <p className="text-gray-400 font-medium">
-            {user.data.joblevel} • Building Digital Experiences
+            {personalInfo.title} • Building Digital Experiences
           </p>
         </div>
         

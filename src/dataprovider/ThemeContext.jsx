@@ -9,10 +9,52 @@ export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState("light");
-  const [user, setUser] = useState(staticUser);
-  const [project, setProject] = useState(staticProject);
-  const [skills, setSkills] = useState(staticSkills);
-  const [educationData, setEducationData] = useState(staticEducation);
+  const [personalInfo, setPersonalInfo] = useState({
+    name: staticUser.data.username,
+    title: staticUser.data.joblevel,
+    email: "thenraja01@gmail.com",
+    phone: "7418869396",
+    location: "Madurai, India"
+  });
+  const [objective, setObjective] = useState(staticUser.info.jobdesc);
+  const [workExperience, setWorkExperience] = useState([
+    {
+      role: "Full Stack Developer Intern",
+      company: "Techspark",
+      duration: "Sep 2024 – Nov 2025",
+      location: "Madurai, India",
+      responsibilities: [
+        "Developed and maintained full-stack web features using React.js, Node.js, Express.js, and MongoDB.",
+        "Built reusable UI components with Tailwind CSS and shadcn/ui."
+      ]
+    }
+  ]);
+  const [technicalSkills, setTechnicalSkills] = useState({
+    frontendDevelopment: ["React.js", "HTML5", "CSS3", "JavaScript", "Tailwind CSS"],
+    backendAndDatabases: ["Node.js", "Express.js", "Python", "Fast API", "MongoDB", "Firebase"],
+    programmingAndCSConcepts: ["Python", "Core Java", "JavaScript", "DSA", "OOP"],
+    devOpsAndTools: ["Git", "GitHub", "Docker", "Postman", "VS Code"],
+    aiToolsAndEmergingTech: ["AI/ML Fundamentals", "OpenAI API", "Google AI"]
+  });
+  const [projects, setProjects] = useState(staticProject.map(p => ({
+    name: p.name,
+    description: p.projectdesc,
+    technologies: p.usedSkills,
+    status: p.status,
+    githubLink: p.githubLink,
+    liveLink: p.liveLink
+  })));
+  const [education, setEducation] = useState(staticEducation.map(e => ({
+    duration: e.year,
+    degree: e.degree,
+    institution: e.institution,
+    percentage: e.gpa
+  })));
+  const [certifications, setCertifications] = useState([
+    "React JS Developer — Networkz Systems",
+    "Introduction to Node.js — The Linux Foundation",
+    "Node.js Integration with MongoDB — MongoDB Foundation"
+  ]);
   const [loading, setLoading] = useState(true);
 
   const toggleTheme = () => {
@@ -20,7 +62,6 @@ export function ThemeProvider({ children }) {
   };
 
   useEffect(() => {
-    // Tailwind darkMode toggling
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
@@ -36,12 +77,15 @@ export function ThemeProvider({ children }) {
 
         if (docSnap.exists()) {
           const data = docSnap.data();
-          if (data.user) setUser(data.user);
-          if (data.project) setProject(data.project);
-          if (data.skills) setSkills(data.skills);
-          if (data.educationData) setEducationData(data.educationData);
+          if (data.personalInfo) setPersonalInfo(data.personalInfo);
+          if (data.objective) setObjective(data.objective);
+          if (data.workExperience) setWorkExperience(data.workExperience);
+          if (data.technicalSkills) setTechnicalSkills(data.technicalSkills);
+          if (data.projects) setProjects(data.projects);
+          if (data.education) setEducation(data.education);
+          if (data.certifications) setCertifications(data.certifications);
         } else {
-          console.log("No such document in Firebase! Using static data.");
+          console.log("No such document in Firebase! Using static fallbacks.");
         }
       } catch (error) {
         console.error("Error fetching data from Firebase:", error);
@@ -54,10 +98,12 @@ export function ThemeProvider({ children }) {
   }, []);
 
   const color = theme === "dark" ? "white" : "black";
-  const Value = { skills, educationData };
 
   return (
-    <ThemeContext.Provider value={{ theme, color, toggleTheme, user, project, Value, loading }}>
+    <ThemeContext.Provider value={{ 
+      theme, color, toggleTheme, loading,
+      personalInfo, objective, workExperience, technicalSkills, projects, education, certifications 
+    }}>
       {children}
     </ThemeContext.Provider>
   );

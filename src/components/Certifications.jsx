@@ -38,7 +38,7 @@ export default function Certifications() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
-              className="group flex items-start gap-5 p-8 bg-white dark:bg-[#1a1a1a] rounded-[2rem] border border-gray-100 dark:border-white/5 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+              className="group flex items-start gap-5 p-8 bg-[var(--card-bg)] backdrop-blur-md rounded-[2rem] border border-[var(--border-color)] shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
             >
               <div className="p-4 rounded-2xl bg-themeButton/10 text-themeButton shrink-0 group-hover:bg-themeButton group-hover:text-white transition-all duration-300">
                 <Award size={24} />

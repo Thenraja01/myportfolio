@@ -16,7 +16,7 @@ const ProjectCard = ({ p, cardVariants }) => {
   return (
     <motion.div
       variants={cardVariants}
-      className="group relative flex flex-col justify-between bg-white dark:bg-[#1a1a1a] rounded-[2rem] overflow-hidden p-8 border border-gray-100 dark:border-white/5 shadow-xl hover:shadow-2xl transition-all duration-300 h-full"
+      className="group relative flex flex-col justify-between bg-[var(--card-bg)] backdrop-blur-md rounded-[2rem] overflow-hidden p-8 border border-[var(--border-color)] shadow-xl hover:shadow-2xl transition-all duration-300 h-full"
     >
       <div className="absolute top-6 right-6 px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-[var(--text-primary)] text-white dark:text-black">
         {p.status}

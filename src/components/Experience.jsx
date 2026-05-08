@@ -35,7 +35,7 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="group relative flex gap-6 p-10 bg-white dark:bg-[#1a1a1a] rounded-[2.5rem] border border-gray-100 dark:border-white/5 shadow-xl hover:shadow-2xl transition-all duration-500"
+            className="group relative flex gap-6 p-10 bg-[var(--card-bg)] backdrop-blur-md rounded-[2.5rem] border border-[var(--border-color)] shadow-xl hover:shadow-2xl transition-all duration-500"
           >
             <div className="hidden sm:flex w-20 h-20 rounded-3xl bg-gradient-to-br from-themeButton/20 to-themeSubheading/10 items-center justify-center text-themeButton shrink-0 group-hover:scale-110 transition-transform duration-500">
               <Briefcase size={36} />

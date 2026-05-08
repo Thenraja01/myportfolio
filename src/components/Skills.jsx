@@ -36,7 +36,7 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: catIndex * 0.1 }}
-            className="p-8 bg-white dark:bg-[#1a1a1a] rounded-3xl border border-gray-100 dark:border-white/5 shadow-xl"
+            className="p-8 bg-[var(--card-bg)] backdrop-blur-md rounded-3xl border border-[var(--border-color)] shadow-xl"
           >
             <h3 className="text-xl font-bold text-themeButton mb-6 capitalize">
               {category.replace(/([A-Z])/g, ' $1').trim()}

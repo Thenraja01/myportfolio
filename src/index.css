@@ -1,21 +1,25 @@
 @import "tailwindcss";
 
 @theme {
-  --color-themeSubheading: #A98B76;
-  --color-themeButton: #79AE6F;
-  --color-themeText: #362F4F;
-  --color-darkText: #EAEAEA;
+  --color-themeSubheading: #F59E0B; /* Golden Amber Secondary */
+  --color-themeButton: #6366F1;     /* Indigo Blue Primary */
+  --color-themeText: #1E293B;       /* Deep Slate Text */
+  --color-darkText: #F1F5F9;        /* Soft White Dark Text */
 }
 
 :root {
-  --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  --text-primary: #362F4F;
+  --bg-gradient: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+  --text-primary: #1E293B;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(99, 102, 241, 0.1);
   color-scheme: light;
 }
 
 .dark {
-  --bg-gradient: linear-gradient(135deg, #1f1f1f 0%, #000000 100%);
-  --text-primary: #EAEAEA;
+  --bg-gradient: radial-gradient(circle at top left, #1E293B 0%, #0F172A 100%);
+  --text-primary: #F1F5F9;
+  --card-bg: rgba(30, 41, 59, 0.7);
+  --border-color: rgba(255, 255, 255, 0.05);
   color-scheme: dark;
 }
 

@@ -7,14 +7,14 @@ import { getDatabase } from "firebase/database";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDf70kUcb30y3lWLYDROGsIg5GkYzSceDo",
-  authDomain: "portfoliodb-442e0.firebaseapp.com",
-  databaseURL: "https://portfoliodb-442e0-default-rtdb.asia-southeast1.firebasedatabase.app/",
-  projectId: "portfoliodb-442e0",
-  storageBucket: "portfoliodb-442e0.firebasestorage.app",
-  messagingSenderId: "701002211846",
-  appId: "1:701002211846:web:f3530a9a47ca87ca691987",
-  measurementId: "G-Z3JWMLCM0T"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase

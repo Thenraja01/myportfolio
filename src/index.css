@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-themeSubheading: #F59E0B; /* Golden Amber Secondary */
-  --color-themeButton: #6366F1;     /* Indigo Blue Primary */
-  --color-themeText: #1E293B;       /* Deep Slate Text */
-  --color-darkText: #F1F5F9;        /* Soft White Dark Text */
+  --color-themeSubheading: #821047;
+  --color-themeButton: #6366F1;
+  --color-themeText: ##0e2e63;
+  --color-darkText: #F1F5F9;
 }
 
 :root {

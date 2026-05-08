@@ -1,23 +1,17 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from "firebase/firestore";
-
+import { getAnalytics } from "firebase/analytics";
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+  apiKey: "AIzaSyBmRIDZQB9zeXmtBAL98VudcQJS2TyN0Yg",
+  authDomain: "portfolio-3bd13.firebaseapp.com",
+  databaseURL: "https://portfolio-3bd13-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "portfolio-3bd13",
+  storageBucket: "portfolio-3bd13.firebasestorage.app",
+  messagingSenderId: "160066418348",
+  appId: "1:160066418348:web:ba65cf7019fbab7311d109",
+  measurementId: "G-YZDDQ7KK68"
 };
 
-
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-export const db = initializeFirestore(app, {
-  experimentalForceLongPolling: true,
-  localCache: persistentLocalCache({
-    tabManager: persistentMultipleTabManager()
-  })
-});
+const analytics = getAnalytics(app);

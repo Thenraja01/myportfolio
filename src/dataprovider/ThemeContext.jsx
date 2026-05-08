@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { db } from "../firebase";
-import { doc, getDocFromServer } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
 export const ThemeContext = createContext();
 
@@ -33,7 +33,7 @@ export function ThemeProvider({ children }) {
       try {
         setLoading(true);
         const docRef = doc(db, "portfolio", "data");
-        const docSnap = await getDocFromServer(docRef);
+        const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
           const data = docSnap.data();
@@ -50,7 +50,8 @@ export function ThemeProvider({ children }) {
         }
       } catch (err) {
         console.error("Firebase fetch error:", err);
-        setError("Unable to connect to Firebase. Please check your internet connection and .env configuration.");
+        const errorMessage = err.message || "Unknown error";
+        setError(`Firebase Connection Error: ${errorMessage}. Please check your .env configuration and internet connection.`);
       } finally {
         setLoading(false);
       }

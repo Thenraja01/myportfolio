@@ -12,17 +12,6 @@ import { ThemeContext } from '../../dataprovider/ThemeContext';
 export default function RootLayout() {
   const { loading, error } = useContext(ThemeContext);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-transparent">
-        <div className="flex flex-col items-center gap-4">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-themeButton"></div>
-          <p className="text-[var(--text-primary)] font-medium animate-pulse">Loading Portfolio...</p>
-        </div>
-      </div>
-    );
-  }
-
   if (error) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-transparent p-4 text-center">
@@ -47,12 +36,21 @@ export default function RootLayout() {
       <Navbar />
 
       <main className="pt-24 pb-12 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
-        <Home />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Education />
-        <Certifications />
+        {loading ? (
+          <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-themeButton"></div>
+            <p className="text-[var(--text-primary)] font-medium animate-pulse">Synchronizing Portfolio...</p>
+          </div>
+        ) : (
+          <>
+            <Home />
+            <Skills />
+            <Experience />
+            <Projects />
+            <Education />
+            <Certifications />
+          </>
+        )}
       </main>
 
       <Footer />

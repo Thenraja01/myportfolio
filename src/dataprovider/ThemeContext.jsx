@@ -50,8 +50,7 @@ export function ThemeProvider({ children }) {
         }
       } catch (err) {
         console.error("Firebase fetch error:", err);
-        const errorMessage = err.message || "Unknown error";
-        setError(`Firebase Connection Error: ${errorMessage}. Please check your .env configuration and internet connection.`);
+        setError(`Firebase Connection Error: ${err.message}. Please ensure the Firestore API is enabled in your Google Cloud Console.`);
       } finally {
         setLoading(false);
       }

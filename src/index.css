@@ -1,13 +1,11 @@
 @import "tailwindcss";
 
-@theme {
-  --color-themeSubheading: #F59E0B; /* Golden Amber Secondary */
-  --color-themeButton: #6366F1;     /* Indigo Blue Primary */
-  --color-themeText: #1E293B;       /* Deep Slate Text */
-  --color-darkText: #F1F5F9;        /* Soft White Dark Text */
-}
-
 :root {
+  --color-themeSubheading: #F59E0B;
+  --color-themeButton: #6366F1;
+  --color-themeText: #1E293B;
+  --color-darkText: #F1F5F9;
+
   --bg-gradient: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
   --text-primary: #1E293B;
   --card-bg: rgba(255, 255, 255, 0.8);
@@ -34,6 +32,8 @@ body {
   font-family: ui-sans-serif, system-ui, sans-serif;
 }
 
-@utility clip-hexagon {
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+@layer utilities {
+  .clip-hexagon {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
 }

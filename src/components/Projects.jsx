@@ -53,9 +53,9 @@ const ProjectCard = ({ p, cardVariants }) => {
           <motion.a 
             whileHover={{ scale: 1.1, y: -4 }}
             whileTap={{ scale: 0.9 }}
-            href={p.githubLink || p.link || "#"} 
+            onClick={() => window.open(p.github, '_blank')}
             title="View Source" 
-            className="text-[var(--text-primary)]/60 hover:text-themeButton flex items-center gap-1 text-sm font-medium bg-[var(--text-primary)]/5 px-4 py-2 rounded-full border border-transparent hover:border-themeButton/30 transition-colors"
+            className="text-[var(--text-primary)]/60 hover:text-themeButton flex items-center gap-1 text-sm font-medium bg-[var(--text-primary)]/5 px-4 py-2 rounded-full border border-transparent hover:border-themeButton/30 transition-colors cursor-pointer"
           >
             <Github size={18} />
             <span className="hidden sm:inline">Code</span>
@@ -63,9 +63,9 @@ const ProjectCard = ({ p, cardVariants }) => {
           <motion.a 
             whileHover={{ scale: 1.1, y: -4 }}
             whileTap={{ scale: 0.9 }}
-            href={p.liveLink || p.link || "#"} 
+            onClick={() => window.open(p.livedemo, '_blank')}
             title="Live Project" 
-            className="text-[var(--text-primary)]/60 hover:text-themeButton flex items-center gap-1 text-sm font-medium bg-[var(--text-primary)]/5 px-4 py-2 rounded-full border border-transparent hover:border-themeButton/30 transition-colors"
+            className="text-[var(--text-primary)]/60 hover:text-themeButton flex items-center gap-1 text-sm font-medium bg-[var(--text-primary)]/5 px-4 py-2 rounded-full border border-transparent hover:border-themeButton/30 transition-colors cursor-pointer"
           >
             <ExternalLink size={18} />
             <span className="hidden sm:inline">Live</span>

@@ -59,7 +59,7 @@ export default function Education() {
                   <h4 className="text-lg text-themeSubheading font-medium mb-4">
                     {edu.institution}
                   </h4>
-                  <div className="inline-block bg-[var(--text-primary)] text-white dark:text-black font-bold px-4 py-2 rounded-xl text-sm mt-2 shadow-md">
+                  <div className="inline-block bg-var(--text-primary) text-chart-1 dark:text-black font-bold px-4 py-2 rounded-xl text-sm mt-2 shadow-md">
                     Percentage: {edu.percentage}
                   </div>
                 </div>

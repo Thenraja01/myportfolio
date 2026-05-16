@@ -17,22 +17,22 @@ const ProjectCard = ({ p, cardVariants }) => {
   return (
     <motion.div
       variants={cardVariants}
-      className="group relative flex flex-col justify-between bg-[var(--card-bg)] backdrop-blur-md rounded-[2rem] overflow-hidden p-8 border border-[var(--border-color)] shadow-xl hover:shadow-2xl transition-all duration-300 h-full"
+      className="group relative flex flex-col justify-between bg-var(--card) backdrop-blur-md rounded-[2rem] overflow-hidden p-8 border border-var(--border-color) shadow-xl hover:shadow-2xl transition-all duration-300 h-full"
     >
-      <div className="absolute top-6 right-6 px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-[var(--text-primary)] text-white dark:text-white">
+      <div className="absolute top-6 right-6 px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-var(--text-primary) text-white dark:text-white">
         {p.status}
       </div>
 
-      <div className="space-y-6 mt-4 relative z-10 flex-grow">
-        <div className="w-14 h-14 rounded-2xl bg-[var(--text-primary)]/5 flex items-center justify-center text-themeButton group-hover:scale-110 transition-transform duration-300">
+      <div className="space-y-6 mt-4 relative z-10 grow">
+        <div className="w-14 h-14 rounded-2xl  flex items-center justify-center text-themeButton group-hover:scale-110 transition-transform duration-300">
           <Code size={28} />
         </div>
         
-        <h3 className="text-2xl font-bold text-[var(--text-primary)] group-hover:text-themeSubheading transition-colors">
+        <h3 className="text-2xl font-bold text-var(--chart-5) group-hover:text-themeSubheading transition-colors">
           {p.name}
         </h3>
         
-        <p className="text-[var(--text-primary)]/80 leading-relaxed">
+        <p className="text-[var(--chart-2)]/80 leading-relaxed">
           {p.projectdesc}
         </p>
 
@@ -40,7 +40,7 @@ const ProjectCard = ({ p, cardVariants }) => {
           {p.usedSkills.map((skill, index) => (
             <span 
               key={index} 
-              className="px-3 py-1 text-xs font-medium bg-[var(--text-primary)]/10 text-[var(--text-primary)] rounded-full"
+              className="px-3 py-1 text-xs font-medium bg-var(--chart-2)/10 text-var(--chart-2) rounded-full"
             >
               {skill}
             </span>
@@ -56,17 +56,17 @@ const ProjectCard = ({ p, cardVariants }) => {
             whileTap={{ scale: 0.9 }}
             onClick={() => window.open(p.github, '_blank')}
             title="View Source" 
-            className="text-[var(--text-primary)]/60 hover:text-themeButton flex items-center gap-1 text-sm font-medium bg-[var(--text-primary)]/5 px-4 py-2 rounded-full border border-transparent hover:border-themeButton/30 transition-colors cursor-pointer"
+            className="text-var(--chart-4)/60 hover:text-themeButton flex items-center gap-1 text-sm font-medium bg-var(--text-primary)/5 px-4 py-2 rounded-full border border-transparent hover:border-themeButton/30 transition-colors cursor-pointer"
           >
             <Github size={18} />
-            <span className="hidden sm:inline">Code</span>
+            <span className="hidden sm:inline bg-var(--chart-4)">Code</span>
           </motion.a>
           <motion.a 
             whileHover={{ scale: 1.1, y: -4 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => window.open(p.liveDemo, '_blank')}
             title="Live Project" 
-            className="text-[var(--text-primary)]/60 hover:text-themeButton flex items-center gap-1 text-sm font-medium bg-[var(--text-primary)]/5 px-4 py-2 rounded-full border border-transparent hover:border-themeButton/30 transition-colors cursor-pointer"
+            className="text-var(--chart-4)/60 hover:text-themeButton flex items-center gap-1 text-sm font-medium bg-var(--text-primary)/5 px-4 py-2 rounded-full border border-transparent hover:border-themeButton/30 transition-colors cursor-pointer"
           >
             <ExternalLink size={18} />
             <span className="hidden sm:inline">Live</span>

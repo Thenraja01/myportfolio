@@ -45,7 +45,7 @@ export default function Skills() {
               {technicalSkills[category].map((skill, skillIndex) => (
                 <span
                   key={skillIndex}
-                  className="px-4 py-2 bg-[var(--text-primary)]/10 text-[var(--text-primary)] rounded-xl text-sm font-semibold border border-[var(--text-primary)]/10 hover:bg-themeButton/20 hover:text-themeButton transition-colors duration-300 shadow-sm"
+                  className="px-4 py-2 bg-[var(--text-primary)]/10 text-[var(--text-use)] rounded-xl text-sm font-semibold border border-[var(--text-primary)]/10 hover:bg-themeButton/20 hover:text-themeButton transition-colors duration-300 shadow-sm"
                 >
                   {skill}
                 </span>

@@ -21,7 +21,7 @@ export default function Experience() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-[var(--text-primary)]/70 max-w-2xl mx-auto"
+          className="text-var(--text-use) max-w-2xl mx-auto"
         >
           My journey through internships and professional projects.
         </motion.p>
@@ -35,22 +35,22 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="group relative flex gap-6 p-10 bg-[var(--card-bg)] backdrop-blur-md rounded-[2.5rem] border border-[var(--border-color)] shadow-xl hover:shadow-2xl transition-all duration-500"
+            className="group relative flex gap-6 p-10 bg-var(--card) backdrop-blur-md rounded-[2.5rem] border border-[var(--border-color)] shadow-xl hover:shadow-2xl transition-all duration-500"
           >
-            <div className="hidden sm:flex w-20 h-20 rounded-3xl bg-gradient-to-br from-themeButton/20 to-themeSubheading/10 items-center justify-center text-themeButton shrink-0 group-hover:scale-110 transition-transform duration-500">
+            <div className="hidden sm:flex w-20 h-20 rounded-3xl bg-linear-to-br from-themeButton/20 to-themeSubheading/10 items-center justify-center text-themeButton shrink-0 group-hover:scale-110 transition-transform duration-500">
               <Briefcase size={36} />
             </div>
             
-            <div className="space-y-6 flex-grow">
+            <div className="space-y-6 grow">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                  <h3 className="text-2xl font-bold text-[var(--text-primary)] group-hover:text-themeButton transition-colors">
+                  <h3 className="text-2xl font-bold text-var(--text-default) group-hover:text-themeButton transition-colors">
                     {exp.role}
                   </h3>
                   <div className="flex items-center gap-2 mt-1">
                     <span className="text-lg text-themeSubheading font-bold">{exp.company}</span>
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--text-primary)]/20"></span>
-                    <span className="text-[var(--text-primary)]/60 font-medium">{exp.location}</span>
+                    <span className="text-var(--text-default)/60 font-medium">{exp.location}</span>
                   </div>
                 </div>
                 <div className="px-5 py-2 bg-[var(--text-primary)]/5 rounded-2xl text-sm font-bold text-themeButton border border-[var(--border-1)] whitespace-nowrap h-max">

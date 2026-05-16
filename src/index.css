@@ -14,8 +14,10 @@
 
 :root {
   --bg-gradient: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
-  --text-primary: #222423;
+  --text-primary: #b6b6b6;
   --text-secondary: #092158;
+  --text-use:rgb(44, 116, 125);
+
   --text-default: #475569;
   --text-button: #FFFFFF;
   --card-bg: rgba(160, 160, 160, 0.8);
@@ -50,8 +52,8 @@
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
+  --chart-4: oklch(46.943% 0.07857 211.729);
+  --chart-5: oklch(41.111% 0.07747 173.549);
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
@@ -67,6 +69,8 @@
   --bg-gradient: radial-gradient(circle at top left, #1E293B 0%, #0F172A 100%);
   --text-primary: #acacac;
   --text-secondary: #94A3B8;
+  --text-use:rgb(61, 147, 158);
+
   --text-default: #CBD5E1;
   --text-button: #0F172A;
   --card-bg: rgba(17, 28, 46, 0.7);
@@ -76,8 +80,8 @@
   --border-1: rgba(255, 255, 255, 0.05);
   --border-2: rgba(255, 255, 255, 0.1);
   --border-3: rgba(255, 255, 255, 0.15);
-  --border-4: rgba(255, 255, 255, 0.2);
-  --border-5: rgba(255, 255, 255, 0.25);
+  --border-4: rgba(16, 126, 121, 0.503);
+  --border-5: rgba(3, 29, 50, 0.25);
   --border-6: rgba(255, 255, 255, 0.3);
   color-scheme: dark;
   --background: oklch(0.145 0 0);
@@ -101,8 +105,8 @@
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
+  --chart-4: oklch(40.285% 0.09329 242.166);
+  --chart-5: oklch(51.64% 0.08819 185.603);
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);

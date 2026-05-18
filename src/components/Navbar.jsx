@@ -31,8 +31,8 @@ export default function Navbar() {
         <SpotlightCard
           className={`rounded-full transition-all duration-300 border ${
             scrolled
-              ? "bg-var(--primary)/50 backdrop-blur-md border-blue-300"
-              :"bg-var(--primary)/95 backdrop-blur-md shadow-xl border-var(--border-3)" 
+              ? "bg-var(--text-primary)/50 backdrop-blur-md border-blue-300"
+              :"bg-var(--card)/95 backdrop-blur-md shadow-xl border-var(--border-3)" 
           }`}
           spotlightColor={
             theme === "dark"

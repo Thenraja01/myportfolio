@@ -32,6 +32,74 @@ body {
   -webkit-font-smoothing: antialiased;
   font-family: "Segoe UI", ui-sans-serif, system-ui, sans-serif;
 }
+/* ================= ANIMATIONS ================= */
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); opacity: 0.3; }
+  20% { transform: translate(-2px, 2px); opacity: 0.5; }
+  40% { transform: translate(2px, -2px); opacity: 0.3; }
+  60% { transform: translate(-1px, -1px); opacity: 0.5; }
+  80% { transform: translate(1px, 1px); opacity: 0.3; }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); opacity: 0.2; }
+  25% { transform: translate(2px, -1px); opacity: 0.4; }
+  50% { transform: translate(-2px, 1px); opacity: 0.2; }
+  75% { transform: translate(1px, -2px); opacity: 0.4; }
+}
+
+@keyframes scan-line {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-glitch-1 {
+  animation: glitch-1 3s infinite;
+}
+
+.animate-glitch-2 {
+  animation: glitch-2 2.8s infinite;
+}
+
+.animate-scan-line {
+  animation: scan-line 4s linear infinite;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+
+.text-gradient-3d {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
+}
+
+.section-title-3d {
+  text-shadow: 
+    0 2px 4px rgba(0,0,0,0.1),
+    0 4px 8px rgba(0,0,0,0.05);
+}
 
 @utility clip-hexagon {
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);

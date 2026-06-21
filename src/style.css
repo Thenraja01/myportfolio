@@ -215,3 +215,31 @@
   position: relative;
   z-index: 1;
 }
+/* Add to your index.css or global styles */
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+/* Signature text styling */
+.signature-text {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+}
+
+/* Gradient text for name */
+.name-gradient {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

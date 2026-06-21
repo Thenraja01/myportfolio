@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { ThemeContext } from "../dataprovider/ThemeContext";
 import { motion } from "framer-motion";
 import { GraduationCap } from "lucide-react";
+import { useEducation } from "@/context/EducationContext"
 
 export default function Education() {
-  const { education } = useContext(ThemeContext);
+  const { education } = useEducation()
 
   return (
     <section id="education" className="space-y-16">

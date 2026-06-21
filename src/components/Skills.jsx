@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { ThemeContext } from "../dataprovider/ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 import { motion } from "framer-motion";
+import { useSkills } from "@/context";
 
 export default function Skills() {
-  const { technicalSkills } = useContext(ThemeContext);
+  const { technicalSkills } = useSkills()
 
   const categories = Object.keys(technicalSkills);
 

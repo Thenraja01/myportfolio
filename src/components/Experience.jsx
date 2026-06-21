@@ -1,10 +1,10 @@
-import { useContext } from "react";
-import { ThemeContext } from "../dataprovider/ThemeContext";
+import { ThemeContext } from "../context/ThemeContext";
 import { motion } from "framer-motion";
 import { Briefcase } from "lucide-react";
+import { useExperience } from "@/context/ExperienceContext";
 
 export default function Experience() {
-  const { workExperience } = useContext(ThemeContext);
+  const { workExperience } = useExperience()
 
   return (
     <section id="experience" className="space-y-16">

@@ -2,12 +2,15 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import { ThemeProvider } from './dataprovider/ThemeContext.jsx'
+import { AppProviders } from './context/index'
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ThemeProvider>
+    <AppProviders>
+
       <App />
-    </ThemeProvider>
+    </AppProviders>
+    
   </StrictMode>
 )

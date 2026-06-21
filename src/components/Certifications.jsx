@@ -1,10 +1,12 @@
-import { useContext, useState } from "react";
-import { ThemeContext } from "../dataprovider/ThemeContext";
+
+import { ThemeContext } from "../context/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { Award, CheckCircle, XCircle, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
+import { useCertifications } from "@/context/CertificationsContext";
+import { useState } from "react";
 
 export default function Certifications() {
-  const { certifications } = useContext(ThemeContext);
+  const { certifications } = useCertifications()
   const [expandedId, setExpandedId] = useState(null);
 
   const toggleExpand = (id) => {

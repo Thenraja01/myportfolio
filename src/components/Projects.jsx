@@ -1,8 +1,8 @@
-import { useContext, useMemo, useState, useCallback } from "react";
-import { ThemeContext } from "../dataprovider/ThemeContext";
+import {  useMemo, useState, useCallback } from "react";
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import { Github, ExternalLink, Code, Heart, ChevronDown, ChevronUp, LayoutGrid, List } from "lucide-react";
 import { use3DTilt } from "../hooks/use3dTilt";
+import { useProjects } from "@/context";
 
 const TOP_SKILLS_LIMIT = 8;
 
@@ -221,7 +221,7 @@ const ListItem = ({ p, expandedId, toggleExpand, getLike, toggleLike }) => {
 };
 
 export default function Projects() {
-  const { projects } = useContext(ThemeContext);
+  const { projects } = useProjects()
   const [activeSkill, setActiveSkill] = useState("All");
   const [viewMode, setViewMode] = useState("grid"); // "grid" | "list"
   const [expandedId, setExpandedId] = useState(null);

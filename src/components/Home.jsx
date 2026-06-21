@@ -1,14 +1,16 @@
-import { useContext, useState } from "react";
-import { ThemeContext } from "../dataprovider/ThemeContext";
 import { motion } from "framer-motion";
 import { Download, Mail, Github, Linkedin, Twitter, Terminal, Cpu, Zap } from "lucide-react";
 import axios from "axios";
 
 import person from "./icon/user1.jpg";
 import person1 from "./icon/user3.jpg";
+import { useUser } from "@/context/UserContext";
+import { useState } from "react";
+import { useProjects } from "@/context";
 
 export default function Home() {
-  const { user, objective, personalInfo, projects } = useContext(ThemeContext);
+  const { user, objective, personalInfo,  } = useUser();
+  const {projects}=useProjects()
 
   const [visible, setVisible] = useState(false);
 

@@ -1,10 +1,10 @@
-import { useContext, useState, useEffect } from "react";
-import { ThemeContext } from "../dataprovider/ThemeContext";
+import {  useState, useEffect } from "react";
+import {  useTheme } from "../context/ThemeContext";
 import { Sun, Moon, Github, Instagram, Linkedin, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme, toggleTheme } =  useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const links = ["Home", "Skills","Experience", "Projects", "Education"];

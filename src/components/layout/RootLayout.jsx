@@ -7,11 +7,11 @@ import Skills from '../Skills';
 import Experience from '../Experience';
 import Certifications from '../Certifications';
 import Footer from '../Footer';
-import { ThemeContext } from '../../dataprovider/ThemeContext';
+import { ThemeContext, useTheme } from '../../context/ThemeContext';
 import Scene3DBackground from '../ui/Scene3dbackground';
 
 export default function RootLayout() {
-  const { loading, error } = useContext(ThemeContext);
+  const { loading, error } = useTheme;
 
   if (error) {
     return (

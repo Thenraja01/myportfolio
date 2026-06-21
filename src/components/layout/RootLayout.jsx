@@ -8,6 +8,7 @@ import Experience from '../Experience';
 import Certifications from '../Certifications';
 import Footer from '../Footer';
 import { ThemeContext } from '../../dataprovider/ThemeContext';
+import Scene3DBackground from '../ui/Scene3dbackground';
 
 export default function RootLayout() {
   const { loading, error } = useContext(ThemeContext);
@@ -33,6 +34,7 @@ export default function RootLayout() {
 
   return (
     <div className="min-h-screen bg-transparent">
+      <Scene3DBackground />
       <Navbar />
 
       <main className="pt-24 pb-12 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">

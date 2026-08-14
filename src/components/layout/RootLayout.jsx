@@ -9,7 +9,7 @@ import Certifications from '../Certifications';
 import Footer from '../Footer';
 import { ThemeContext, useTheme } from '../../context/ThemeContext';
 import Scene3DBackground from '../ui/Scene3dbackground';
-
+import Contact from '../forms/Contact';
 export default function RootLayout() {
   const { loading, error } = useTheme;
 
@@ -51,6 +51,7 @@ export default function RootLayout() {
             <Projects />
             <Education />
             <Certifications />
+            <Contact/>
           </>
         )}
       </main>

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+    import { motion } from "framer-motion";
 import { Download, Mail, Github, Linkedin, Twitter, Terminal, Cpu, Zap } from "lucide-react";
 import axios from "axios";
 
@@ -32,7 +32,7 @@ export default function Home() {
 
       const link = document.createElement("a");
       link.href = url;
-      link.setAttribute("download", "Then_Raja_Resume.pdf");
+      link.setAttribute("download", "Then_Raja_Resume.docx");
 
       document.body.appendChild(link);
       link.click();

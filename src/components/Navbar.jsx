@@ -31,13 +31,13 @@ export default function Navbar() {
       >
         <div className="px-6 py-4 flex items-center justify-between">
           <div className="flex gap-4 items-center">
-            <a href="https://www.instagram.com/kingz__nyx_" target="_blank" rel="noreferrer" className="text-[var(--text-primary)] hover:text-themeButton transition-colors">
+            <a href="https://www.instagram.com/kingz__nyx_" target="_blank" rel="noreferrer" aria-label="Instagram" className="text-[var(--text-primary)] hover:text-themeButton transition-colors">
               <Instagram size={20} />
             </a>
-            <a href="https://github.com/Thenraja01" target="_blank" rel="noreferrer" className="text-[var(--text-primary)] hover:text-themeButton transition-colors">
+            <a href="https://github.com/Thenraja01" target="_blank" rel="noreferrer" aria-label="GitHub" className="text-[var(--text-primary)] hover:text-themeButton transition-colors">
               <Github size={20} />
             </a>
-            <a href="https://www.linkedin.com/in/then-raja1205" target="_blank" rel="noreferrer" className="text-[var(--text-primary)] hover:text-themeButton transition-colors">
+            <a href="https://www.linkedin.com/in/then-raja1205" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="text-[var(--text-primary)] hover:text-themeButton transition-colors">
               <Linkedin size={20} />
             </a>
           </div>
@@ -57,6 +57,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <button
               onClick={toggleTheme}
+              aria-label="Toggle theme"
               className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-[var(--text-primary)]"
             >
               <AnimatePresence mode="wait" initial={false}>
@@ -86,6 +87,8 @@ export default function Navbar() {
             <button
               className="md:hidden text-[var(--text-primary)] p-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

@@ -125,9 +125,9 @@ const Contact = () => {
               <Sparkles className="h-3.5 w-3.5" />
               Open to opportunities
             </div>
-            <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
+            <h2 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl">
               Let's <span className="text-purple-400">talk</span>
-            </h1>
+            </h2>
             <p className="mt-4 text-base leading-relaxed text-white/50">
               Have a project in mind or just want to say hi? Fill out the form
               and I'll get back to you as soon as possible.
@@ -230,12 +230,13 @@ const Contact = () => {
                   >
                     {/* Name */}
                     <div>
-                      <label className="mb-1.5 block text-xs font-medium text-white/60">
+                      <label htmlFor="name" className="mb-1.5 block text-xs font-medium text-white/60">
                         Name
                       </label>
                       <div className="relative">
                         <User className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-white/30" />
                         <input
+                          id="name"
                           type="text"
                           name="name"
                           value={formData.name}
@@ -254,12 +255,13 @@ const Contact = () => {
 
                     {/* Email */}
                     <div>
-                      <label className="mb-1.5 block text-xs font-medium text-white/60">
+                      <label htmlFor="email" className="mb-1.5 block text-xs font-medium text-white/60">
                         Email
                       </label>
                       <div className="relative">
                         <Mail className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-white/30" />
                         <input
+                          id="email"
                           type="email"
                           name="email"
                           value={formData.email}
@@ -278,13 +280,14 @@ const Contact = () => {
 
                     {/* Subject */}
                     <div>
-                      <label className="mb-1.5 block text-xs font-medium text-white/60">
+                      <label htmlFor="subject" className="mb-1.5 block text-xs font-medium text-white/60">
                         Subject{" "}
                         <span className="text-white/30">(optional)</span>
                       </label>
                       <div className="relative">
                         <MessageSquare className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-white/30" />
                         <input
+                          id="subject"
                           type="text"
                           name="subject"
                           value={formData.subject}
@@ -297,10 +300,11 @@ const Contact = () => {
 
                     {/* Message */}
                     <div>
-                      <label className="mb-1.5 block text-xs font-medium text-white/60">
+                      <label htmlFor="message" className="mb-1.5 block text-xs font-medium text-white/60">
                         Message
                       </label>
                       <textarea
+                        id="message"
                         name="message"
                         value={formData.message}
                         onChange={handleChange}

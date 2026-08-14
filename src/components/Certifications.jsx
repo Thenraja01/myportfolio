@@ -57,7 +57,11 @@ export default function Certifications() {
                   <p className="text-lg font-bold text-[var(--text-primary)] leading-tight group-hover:text-themeButton transition-colors">
                     {cert.title}
                   </p>
-                  <button className="mt-1 text-[var(--text-primary)]/40 hover:text-themeButton transition-colors">
+                  <button
+                    className="mt-1 text-[var(--text-primary)]/40 hover:text-themeButton transition-colors"
+                    aria-label={expandedId === cert.id ? "Collapse certificate details" : "Expand certificate details"}
+                    aria-expanded={expandedId === cert.id}
+                  >
                     {expandedId === cert.id ? (
                       <ChevronUp size={20} />
                     ) : (

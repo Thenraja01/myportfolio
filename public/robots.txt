@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thenraja-01.vercel.app/sitemap.xml

@@ -97,7 +97,7 @@ export default function Home() {
               >
                 <span className="relative inline-block">
                   <span className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                    My Portfolio
+                    ThenRaja — Full Stack Developer
                   </span>
                   {/* Scanning line effect */}
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-scan-line pointer-events-none" />
@@ -267,7 +267,7 @@ export default function Home() {
 
             <img
               src={person}
-              alt="Profile"
+              alt="Portrait of ThenRaja, Full Stack Developer"
               className="relative z-10 w-[280px] h-[380px] md:w-[350px] md:h-[480px] object-cover rounded-[2rem] shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 ease-in-out border-4 border-white/80 dark:border-indigo-500/30 card-3d"
             />
 
@@ -278,9 +278,9 @@ export default function Home() {
               transition={{ delay: 0.6 }}
               className="absolute -bottom-8 -left-8 glass-panel p-6 rounded-2xl z-20 card-3d backdrop-blur-xl bg-[var(--card-bg)]/80 border border-[var(--border-color)]"
             >
-              <h1 className="text-2xl font-bold text-[var(--text-primary)]">
+              <h2 className="text-2xl font-bold text-[var(--text-primary)]">
                 {personalInfo.name}
-              </h1>
+              </h2>
               <h3 className="text-themeSubheading font-medium tracking-wide uppercase text-sm mt-1">
                 {personalInfo.title}
               </h3>
@@ -312,7 +312,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-tr from-themeButton to-themeAccent rounded-full blur-2xl opacity-20 animate-pulse" />
             <img
               src={person1}
-              alt="Profile"
+              alt="Profile photo of ThenRaja in the About section"
               className="relative w-48 h-48 md:w-64 md:h-64 object-cover rounded-full shadow-lg border-4 border-white dark:border-[#1f1f1f] grayscale hover:grayscale-0 transition-all duration-500"
             />
           </div>

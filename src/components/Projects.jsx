@@ -73,6 +73,8 @@ const ProjectCard = ({ p, liked, count, onToggleLike }) => {
 
         <button
           onClick={onToggleLike}
+          aria-label={liked ? "Unlike project" : "Like project"}
+          aria-pressed={liked}
           className="flex items-center justify-center gap-2 group transition-all"
         >
           <span
@@ -132,7 +134,11 @@ const ListItem = ({ p, expandedId, toggleExpand, getLike, toggleLike }) => {
             <Heart size={14} className={liked ? "text-red-500 fill-red-500" : ""} />
             {count}
           </span>
-          <button className="text-[var(--text-primary)]/40 hover:text-themeButton transition-colors">
+          <button
+            className="text-[var(--text-primary)]/40 hover:text-themeButton transition-colors"
+            aria-label={isExpanded ? "Collapse project details" : "Expand project details"}
+            aria-expanded={isExpanded}
+          >
             {isExpanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
           </button>
         </div>
@@ -192,13 +198,15 @@ const ListItem = ({ p, expandedId, toggleExpand, getLike, toggleLike }) => {
                 <span className="text-xs text-[var(--text-primary)]/40">
                   Status: {p.status}
                 </span>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    toggleLike(p.id);
-                  }}
-                  className="flex items-center gap-2 group transition-all"
-                >
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleLike(p.id);
+            }}
+            aria-label={liked ? "Unlike project" : "Like project"}
+            aria-pressed={liked}
+            className="flex items-center gap-2 group transition-all"
+          >
                   <span className={`text-sm font-bold ${liked ? "text-red-500" : "text-[var(--text-primary)]/60"}`}>
                     {count}
                   </span>

@@ -19,13 +19,17 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+export const db = getDatabase(app);
+
 export const submitContactForm = async (formData) => {
-  const acontactsRef = ref(db, "contacts");
+  const contactsRef = ref(db, "contacts");
   return push(contactsRef, {
-    ...formData,
+    name: formData.name,
+    email: formData.email,
+    subject: formData.subject || "New portfolio message",
+    message: formData.message,
+    createdAt: new Date().toISOString(),
     timestamp: Date.now(),
     read: false,
   });
 };
-export const db = getDatabase(app);

@@ -19,6 +19,7 @@ export default function Footer() {
   return (
     <footer className="relative w-full mt-32 overflow-hidden">
       {/* Animated Gradient Border */}
+      
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-themeButton to-transparent animate-pulse" />
 
       {/* Background Glow */}

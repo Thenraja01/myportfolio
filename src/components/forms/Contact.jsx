@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
+import { motion, AnimatePresence } from "framer-motion";
+import { submitContactForm } from "../../firebase";
 import {
   Send,
   Mail,
@@ -18,6 +19,13 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
+const EMAILJS_SERVICE_ID =
+  import.meta.env.VITE_EMAILJS_SERVICE_ID || "default_service";
+const EMAILJS_TEMPLATE_ID =
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_di92ia6";
+const EMAILJS_PUBLIC_KEY =
+  import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "PPR2Yf0plpKlnHOld";
+
 const CONTACT_EMAIL = "thenwthen@gmail.com";
 
 const scrollToTop = () => {
@@ -25,6 +33,7 @@ const scrollToTop = () => {
 };
 
 const Contact = () => {
+  const formRef = useRef(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -61,22 +70,46 @@ const Contact = () => {
 
     setStatus("loading");
     try {
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: formData.name,
-          reply_to: formData.email,
+      // 1. Send email via EmailJS
+      if (formRef.current) {
+        await emailjs.sendForm(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          formRef.current,
+          EMAILJS_PUBLIC_KEY
+        );
+      } else {
+        await emailjs.send(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          {
+            name: formData.name,
+            from_name: formData.name,
+            email: formData.email,
+            reply_to: formData.email,
+            subject: formData.subject || "New portfolio message",
+            message: formData.message,
+          },
+          EMAILJS_PUBLIC_KEY
+        );
+      }
+
+      // 2. Also save sender and contact submission data in Firebase
+      try {
+        await submitContactForm({
+          name: formData.name,
+          email: formData.email,
           subject: formData.subject || "New portfolio message",
           message: formData.message,
-          to_email: CONTACT_EMAIL,
-        },
-        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY }
-      );
+        });
+      } catch (firebaseErr) {
+        console.warn("Firebase contact save warning:", firebaseErr);
+      }
+
       setStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch (err) {
-      console.error(err);
+      console.error("EmailJS submission error:", err);
       setStatus("error");
     }
   };
@@ -222,12 +255,16 @@ const Contact = () => {
                 ) : (
                   <motion.form
                     key="form"
+                    ref={formRef}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     onSubmit={handleSubmit}
                     className="space-y-5"
                   >
+                    <input type="hidden" name="from_name" value={formData.name} />
+                    <input type="hidden" name="reply_to" value={formData.email} />
+
                     {/* Name */}
                     <div>
                       <label htmlFor="name" className="mb-1.5 block text-xs font-medium text-white/60">

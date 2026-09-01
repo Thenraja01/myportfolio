@@ -1,20 +1,39 @@
-export default function GlobalLoading() {
-  return (
-    <div className="fixed inset-0 bg-slate-950 z-50 flex flex-col items-center justify-center space-y-4">
-      {/* Glowing loader */}
-      <div className="relative">
-        <div className="w-16 h-16 rounded-full border-2 border-indigo-500/20 border-t-indigo-500 animate-spin" />
-        <div className="absolute inset-0 rounded-full bg-indigo-500/10 blur-xl animate-pulse" />
-      </div>
+"use client";
+/**
+ * Root portfolio loading screen — config driven from Firebase /loaderConfig
+ *
+ * Firebase Realtime DB structure (update anytime without code changes):
+ * {
+ *   "loaderConfig": {
+ *     "title":       "THEN RAJA M",
+ *     "subtitle":    "Full Stack · AI-Integrated Engineer",
+ *     "bg_theme":    "dark",       ← "dark" | "light" | "brand" | "glass"
+ *     "duration_ms": 2400,
+ *     "enabled":     true
+ *   }
+ * }
+ */
+import { useLoaderConfig } from "@/hooks/useLoaderConfig";
+import PortfolioSplashLoader from "@/components/ui/PortfolioSplashLoader";
 
-      <div className="text-center space-y-1">
-        <h2 className="font-mono text-sm font-bold text-slate-200 tracking-wider">
-          THEN RAJA M
-        </h2>
-        <p className="font-mono text-xs text-indigo-400 animate-pulse">
-          FULL STACK · AI-INTEGRATED ENGINEER
-        </p>
+export default function GlobalLoading() {
+  const { config, loading } = useLoaderConfig();
+
+  // While fetching Firebase config, show a minimal inline spinner
+  if (loading) {
+    return (
+      <div className="fixed inset-0 bg-slate-950 z-50 flex items-center justify-center">
+        <div className="w-10 h-10 rounded-full border-2 border-indigo-500/30 border-t-indigo-400 animate-spin" />
       </div>
-    </div>
+    );
+  }
+
+  return (
+    <PortfolioSplashLoader
+      title={config.title}
+      subtitle={config.subtitle}
+      bgTheme={config.bg_theme}
+      duration={config.duration_ms}
+    />
   );
 }

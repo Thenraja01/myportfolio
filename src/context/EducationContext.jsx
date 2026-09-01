@@ -1,6 +1,7 @@
+"use client";
 // src/context/EducationContext.jsx
 import { createContext, useState, useContext, useEffect, useMemo } from "react";
-import { db } from "../firebase";
+import { db } from "@/lib/firebase";
 import { ref, get } from "firebase/database";
 
 // ✅ Export the context

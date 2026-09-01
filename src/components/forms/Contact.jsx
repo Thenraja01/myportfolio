@@ -1,7 +1,8 @@
+"use client";
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { motion, AnimatePresence } from "framer-motion";
-import { submitContactForm } from "../../firebase";
+import { submitContactForm } from "@/lib/firebase";
 import {
   Send,
   Mail,
@@ -17,14 +18,13 @@ import {
   MapPin,
   Sparkles,
 } from "lucide-react";
-import { Link } from "react-router-dom";
 
 const EMAILJS_SERVICE_ID =
-  import.meta.env.VITE_EMAILJS_SERVICE_ID || "default_service";
+  process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "default_service";
 const EMAILJS_TEMPLATE_ID =
-  import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_di92ia6";
+  process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_di92ia6";
 const EMAILJS_PUBLIC_KEY =
-  import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "PPR2Yf0plpKlnHOld";
+  process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "PPR2Yf0plpKlnHOld";
 
 const CONTACT_EMAIL = "thenwthen@gmail.com";
 

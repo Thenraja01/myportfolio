@@ -1,3 +1,4 @@
+"use client";
 import React, { useContext } from 'react';
 import Navbar from '../Navbar';
 import Home from '../Home';
@@ -7,11 +8,11 @@ import Skills from '../Skills';
 import Experience from '../Experience';
 import Certifications from '../Certifications';
 import Footer from '../Footer';
-import { ThemeContext, useTheme } from '../../context/ThemeContext';
+import { useTheme } from '@/context/ThemeContext';
 import Scene3DBackground from '../ui/Scene3dbackground';
 import Contact from '../forms/Contact';
 export default function RootLayout() {
-  const { loading, error } = useTheme;
+  const { loading, error } = useTheme();
 
   if (error) {
     return (

@@ -1,3 +1,4 @@
+"use client";
 export default function Scene3DBackground() {
   const shapes = [
     { type: "cube", top: "12%", left: "8%", size: 56, dur: "20s", delay: "0s", spin: "18s", rx: "35deg" },

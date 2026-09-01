@@ -1,6 +1,7 @@
+"use client";
 // src/context/ExperienceContext.js
 import { createContext, useState, useContext, useEffect } from "react";
-import { db } from "../firebase";
+import { db } from "@/lib/firebase";
 import { ref, get } from "firebase/database";
 
 export const ExperienceContext = createContext();

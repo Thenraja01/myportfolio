@@ -1,3 +1,4 @@
+"use client";
 // src/context/Providers.jsx
 import { ThemeProvider } from './ThemeContext';
 import { UserProvider } from './UserContext';

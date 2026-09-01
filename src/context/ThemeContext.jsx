@@ -1,36 +1,51 @@
-// src/context/ThemeContext.js
+"use client";
 import { createContext, useState, useContext, useEffect } from "react";
 
-export const ThemeContext = createContext();
+export const ThemeContext = createContext({
+  theme: "dark",
+  toggleTheme: () => {},
+  setTheme: () => {},
+  isDark: true,
+});
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("light");
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
+  const [theme, setTheme] = useState("dark");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
+    setMounted(true);
+    const savedTheme = localStorage.getItem("portfolio-theme");
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+      setTheme("light");
     }
-  }, [theme]);
+  }, []);
 
-  const color = theme === "dark" ? "white" : "black";
+  useEffect(() => {
+    if (!mounted) return;
+    const root = document.documentElement;
+    if (theme === "dark") {
+      root.classList.add("dark");
+      root.classList.remove("light");
+    } else {
+      root.classList.add("light");
+      root.classList.remove("dark");
+    }
+    localStorage.setItem("portfolio-theme", theme);
+  }, [theme, mounted]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
 
   return (
-    <ThemeContext.Provider value={{ theme, color, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme, isDark: theme === "dark" }}>
       {children}
     </ThemeContext.Provider>
   );
 }
 
 export const useTheme = () => {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-  return context;
+  return useContext(ThemeContext);
 };

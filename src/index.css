@@ -21,6 +21,15 @@
   color-scheme: dark;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+section {
+  scroll-margin-top: 100px;
+}
+
 body {
   background: var(--palette-bg, var(--bg-gradient));
   background-image: var(--bg-gradient);

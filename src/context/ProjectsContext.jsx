@@ -1,6 +1,7 @@
+"use client";
 // src/context/ProjectsContext.js
 import { createContext, useState, useContext, useEffect, useMemo } from "react";
-import { db } from "../firebase";
+import { db } from "@/lib/firebase";
 import { ref, get } from "firebase/database";
 
 export const ProjectsContext = createContext();

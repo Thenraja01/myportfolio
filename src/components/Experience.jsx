@@ -1,4 +1,4 @@
-import { ThemeContext } from "../context/ThemeContext";
+"use client";
 import { motion } from "framer-motion";
 import { Briefcase } from "lucide-react";
 import { useExperience } from "@/context/ExperienceContext";
@@ -41,7 +41,7 @@ export default function Experience() {
               <Briefcase size={36} />
             </div>
             
-            <div className="space-y-6 grow">
+            <div className="space-y-6 grow p-6">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                   <h3 className="text-2xl font-bold text-var(--text-default) group-hover:text-themeButton transition-colors">

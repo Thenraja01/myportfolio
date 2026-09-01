@@ -39,29 +39,38 @@ export async function POST(request) {
       status: "new",
     };
 
-    // 6. Write to Firebase Realtime Database via REST API
-    const dbUrl = process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL;
+    // 6. Write to Firebase Realtime Database using consistent firebase/database SDK
+    const { initializeApp, getApps } = await import("firebase/app");
+    const { getDatabase, ref, push, set } = await import("firebase/database");
+
     let firebaseSuccess = false;
+    let firebaseErrorDetails = "";
 
-    if (dbUrl) {
-      try {
-        const firebaseUrl = `${dbUrl.replace(/\/$/, "")}/contacts.json`;
-        const fbRes = await fetch(firebaseUrl, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(contactPayload),
-        });
+    try {
+      const firebaseConfig = {
+        apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+        authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+        databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+        projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+        storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+        messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+        appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+      };
 
-        if (fbRes.ok) {
-          firebaseSuccess = true;
-        } else {
-          console.error("Firebase REST write failed with status:", fbRes.status);
-        }
-      } catch (fbErr) {
-        console.error("Firebase REST write exception:", fbErr);
+      if (!firebaseConfig.databaseURL) {
+        throw new Error("NEXT_PUBLIC_FIREBASE_DATABASE_URL is not set");
       }
-    } else {
-      console.warn("NEXT_PUBLIC_FIREBASE_DATABASE_URL is not set.");
+
+      const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+      const db = getDatabase(app);
+      const contactsRef = ref(db, "contacts");
+      const newContactRef = push(contactsRef);
+      await set(newContactRef, contactPayload);
+      
+      firebaseSuccess = true;
+    } catch (fbErr) {
+      console.error("Firebase SDK write exception:", fbErr.message);
+      firebaseErrorDetails = fbErr.message;
     }
 
     // 7. Send email notification asynchronously
@@ -82,8 +91,9 @@ export async function POST(request) {
       );
     }
 
+    // In production, if Firebase fails, we return the error to help debug
     return NextResponse.json(
-      { error: "Unable to process your message right now. Please try again later." },
+      { error: `Unable to process your message: ${firebaseErrorDetails}` },
       { status: 500 }
     );
   } catch (error) {

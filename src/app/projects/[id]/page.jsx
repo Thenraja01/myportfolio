@@ -9,28 +9,35 @@ import { AsyncReadmeSection } from "@/components/projects/AsyncReadmeSection";
 import { parseGitHubUrl, getRepositoryReadme } from "@/lib/github/client";
 import { processReadmeMarkdown } from "@/lib/github/readme";
 import { ArrowLeft, Sparkles, FolderCode } from "lucide-react";
-import { getAdminDb } from "@/lib/firebase/admin";
+import { initializeApp, getApps } from "firebase/app";
+import { getDatabase, ref, get } from "firebase/database";
+
+// Render dynamically — fetches fresh project data from Firebase at request time
+export const dynamic = "force-dynamic";
+
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+};
 
 // Fetch all projects from Firebase Realtime DB
 async function getProjects() {
   try {
-    const db = getAdminDb();
-    if (!db) return [];
-    const { ref, get } = await import("firebase-admin/database");
+    const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+    const db = getDatabase(app);
     const snap = await get(ref(db, "/projects"));
     if (!snap.exists()) return [];
     const data = snap.val();
     return Array.isArray(data) ? data : Object.values(data);
-  } catch {
+  } catch (err) {
+    console.error("Firebase fetch error:", err.message);
     return [];
   }
-}
-
-export async function generateStaticParams() {
-  const projects = await getProjects();
-  return projects.map((project) => ({
-    id: project.id || project.name?.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
-  }));
 }
 
 export async function generateMetadata({ params }) {

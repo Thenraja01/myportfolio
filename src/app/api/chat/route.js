@@ -1,18 +1,34 @@
 import { NextResponse } from "next/server";
 import { generateWithGroq } from "@/lib/ai/groqClient";
 import { generateWithGemini } from "@/lib/ai/geminiClient";
-import { getAdminDb } from "@/lib/firebase/admin";
+import { initializeApp, getApps } from "firebase/app";
+import { getDatabase, ref, get } from "firebase/database";
 
-// Fetch all portfolio data from Firebase Realtime DB at request time
+// Firebase client config (server-safe, uses NEXT_PUBLIC_ vars)
+const firebaseConfig = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+};
+
+function getFirebaseDb() {
+  const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+  return getDatabase(app);
+}
+
+// Fetch all portfolio data from Firebase Realtime DB
 async function getPortfolioData() {
   try {
-    const db = getAdminDb();
-    if (!db) return null;
-    const { ref, get } = await import("firebase-admin/database");
+    const db = getFirebaseDb();
     const snap = await get(ref(db, "/"));
     if (!snap.exists()) return null;
     return snap.val();
-  } catch {
+  } catch (err) {
+    console.error("Firebase fetch error in chat API:", err.message);
     return null;
   }
 }
@@ -85,7 +101,6 @@ ${certifications.map((c) => `- ${c.title} by ${c.institute}`).join("\n")}
           context,
         });
 
-        // Strip any reasoning/think tags
         replyText = replyText.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
 
         if (replyText) {
@@ -109,7 +124,6 @@ ${certifications.map((c) => `- ${c.title} by ${c.institute}`).join("\n")}
           context,
         });
 
-        // Strip any reasoning/think tags
         replyText = replyText.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
 
         if (replyText) {
@@ -124,7 +138,7 @@ ${certifications.map((c) => `- ${c.title} by ${c.institute}`).join("\n")}
       }
     }
 
-    // 3. CLEAN FALLBACK IF KEYS MISSING
+    // 3. FALLBACK
     return NextResponse.json({
       reply: `Hello! 👋 I'm **Thenraja's AI Portfolio Assistant**. Feel free to ask about his projects, skills, or experience! (Email: **${personalInfo.email || "thenwthen@gmail.com"}**)`,
       provider: "AI Assistant",
@@ -133,7 +147,7 @@ ${certifications.map((c) => `- ${c.title} by ${c.institute}`).join("\n")}
   } catch (error) {
     console.error("Chat API route error:", error);
     return NextResponse.json(
-      { error: "Internal Server Error", reply: "Sorry, I ran into an error. Please try asking again!" },
+      { error: "Internal Server Error", reply: "Sorry, I ran into an error. Please try again!" },
       { status: 500 }
     );
   }

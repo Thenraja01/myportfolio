@@ -8,7 +8,7 @@ import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
 import CodingActivity from "@/components/sections/CodingActivity";
 import AIEngineering from "@/components/sections/AIEngineering";
-import Experience from "@/components/sections/Experience";
+import Experience from "@/components/Experience";
 import Education from "@/components/sections/Education";
 import Certifications from "@/components/sections/Certifications";
 import Contact from "@/components/sections/Contact";

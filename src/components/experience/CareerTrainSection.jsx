@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { useExperience } from "@/context/ExperienceContext";
+import { ExperienceCard } from "@/components/experience/ExperienceCard";
 import {
   Briefcase,
   MapPin,
@@ -104,84 +105,7 @@ function ExperienceCard3D({ exp, index, color, isLast }) {
 
       {/* Card */}
       <div ref={cardRef} className="flex-1 pb-14">
-        <div
-          className="glass-card-morphism rounded-2xl overflow-hidden group"
-          style={{ boxShadow: `0 12px 40px -12px ${color.glow}, 0 2px 8px rgba(0,0,0,0.06)` }}
-        >
-          {/* Gradient top bar */}
-          <div className={`h-1 w-full bg-gradient-to-r ${color.accent}`} />
-
-          <div className="p-5 md:p-6">
-            {/* Header row */}
-            <div className="flex items-start justify-between gap-3 flex-wrap">
-              <div className="flex items-center gap-3">
-                {/* Company icon */}
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-lg shrink-0 ${color.icon}`}>
-                  <Briefcase size={18} className="text-white" />
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-slate-900 dark:text-white leading-tight">
-                    {exp.role}
-                  </h3>
-                  <div className="flex items-center gap-1.5 mt-0.5">
-                    {exp.companyUrl ? (
-                      <a
-                        href={exp.companyUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className={`text-xs font-semibold bg-gradient-to-r ${color.accent} bg-clip-text text-transparent inline-flex items-center gap-0.5 hover:underline`}
-                      >
-                        {exp.company}
-                        <ExternalLink size={10} />
-                      </a>
-                    ) : (
-                      <span className={`text-xs font-semibold bg-gradient-to-r ${color.accent} bg-clip-text text-transparent`}>
-                        {exp.company}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Badges */}
-              <div className="flex flex-wrap gap-1.5 items-center">
-                <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold border ${color.badge}`}>
-                  <Calendar size={9} />
-                  {exp.duration}
-                </span>
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold border bg-slate-100/70 dark:bg-slate-800/70 border-slate-300/50 dark:border-slate-700/50 text-slate-500 dark:text-slate-400">
-                  <MapPin size={9} />
-                  {exp.location}
-                </span>
-                {exp.duration.includes("Present") && (
-                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold border border-emerald-400/40 bg-emerald-50/70 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 animate-pulse">
-                    ● Current
-                  </span>
-                )}
-              </div>
-            </div>
-
-            {/* Responsibilities */}
-            <ul className="mt-4 space-y-2">
-              {exp.responsibilities.map((r, i) => (
-                <li key={i} className="flex items-start gap-2 text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                  <ChevronRight
-                    size={12}
-                    className="mt-0.5 shrink-0"
-                    style={{ color: color.dot }}
-                  />
-                  <span>{r}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* 3D depth bottom shadow panel */}
-          <div
-            className={`h-1.5 w-full opacity-60 bg-gradient-to-r ${color.accent}`}
-            style={{ filter: "blur(4px)" }}
-          />
-        </div>
+        <ExperienceCard exp={{...exp, color: color.dot}} />
       </div>
     </div>
   );
@@ -223,7 +147,7 @@ export function CareerTrainSection() {
       ref={sectionRef}
       className="relative py-20 overflow-hidden scroll-mt-28"
     >
-      {/* Ambient background blobs */}
+
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-1/3 right-1/4 w-72 h-72 rounded-full bg-cyan-500/8 dark:bg-cyan-500/10 blur-3xl" />
         <div className="absolute bottom-1/3 left-1/4 w-64 h-64 rounded-full bg-purple-500/8 dark:bg-purple-500/10 blur-3xl" />

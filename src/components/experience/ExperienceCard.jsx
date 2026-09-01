@@ -20,7 +20,7 @@ export const ExperienceCard = forwardRef(function ExperienceCard(
         borderColor: `${exp.color}80`,
         boxShadow: `0 0 35px ${exp.color}25`,
       }}
-      className={`glass-card-morphism relative w-full max-w-[680px] p-5 sm:p-6 rounded-3xl border-2 transition-all duration-300 shadow-2xl text-slate-900 dark:text-slate-100 overflow-hidden ${className}`}
+      className={`glass-card-morphism group [transform:rotate3d(1_,-1,_1,0deg)] hover:[transform:rotate3d(0,0,0,0deg)] relative w-full max-w-[680px] p-5 sm:p-6 rounded-3xl border-2 transition-all duration-300 shadow-2xl text-slate-900 dark:text-slate-100 overflow-hidden ${className}`}
     >
       {/* Top Header Row */}
       <div className="flex items-center justify-between gap-3 pb-2.5 border-b border-slate-200/80 dark:border-slate-800/80">

@@ -1,17 +1,28 @@
+
 "use client";
 import { TiltCard } from "@/components/3d/TiltCard";
 import { Award, CheckCircle2, ExternalLink, ShieldAlert } from "lucide-react";
 
-export function CertificationCard({ cert }) {
+export function CertificationCard({ cert, isMarquee = false, onClick }) {
   const hasValidLink =
     cert.link &&
     typeof cert.link === "string" &&
     cert.link.trim() !== "" &&
     cert.link.trim() !== '""';
 
-  return (
-    <TiltCard maxTilt={4}>
-      <div className="glass-panel p-6 rounded-3xl border border-slate-800/80 bg-slate-950/70 backdrop-blur-xl h-full flex flex-col justify-between space-y-4 hover:border-indigo-500/40 transition-all duration-300 group">
+  // If in marquee mode, use the static 3D tilt and hover reset, 
+  // else use the default TiltCard behavior.
+  const staticTiltClasses = isMarquee 
+    ? "group [transform:rotate3d(1_,-1,_1,_30deg)] hover:[transform:rotate3d(0,0,0,0deg)_scale(1.05)] hover:z-50 shadow-xl shadow-indigo-500/10 hover:shadow-indigo-500/40" 
+    : "group";
+
+  const clickableClasses = onClick ? "cursor-pointer" : "";
+
+  const InnerCard = (
+    <div 
+      onClick={onClick}
+      className={`glass-panel p-6 rounded-3xl border border-slate-800/80 bg-slate-950/70 backdrop-blur-xl h-full flex flex-col justify-between space-y-4 hover:border-indigo-500/60 transition-all duration-500 ${staticTiltClasses} ${clickableClasses}`}
+    >
         <div className="space-y-3">
           {/* Header icon and verification badge */}
           <div className="flex items-center justify-between">
@@ -60,6 +71,7 @@ export function CertificationCard({ cert }) {
           </div>
         )}
       </div>
-    </TiltCard>
-  );
+    );
+
+    return isMarquee ? InnerCard : <TiltCard maxTilt={4}>{InnerCard}</TiltCard>;
 }

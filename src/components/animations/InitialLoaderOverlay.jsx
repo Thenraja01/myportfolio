@@ -10,7 +10,7 @@ export default function InitialLoaderOverlay() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 12000); // Max 12 seconds
+    }, 18000); // Max 18 seconds
     return () => clearTimeout(timer);
   }, []);
 

@@ -41,12 +41,12 @@ export default function CinematicLoader({ onComplete }) {
     // Cyberpunk Scene orchestration
     const sequence = [
       { s: 1, delay: 0 },       // System Wake (Terminal)
-      { s: 2, delay: 2500 },    // Data Surge & Grid
-      { s: 3, delay: 4500 },    // The Eagle
-      { s: 4, delay: 5500 },    // The Race Car
-      { s: 5, delay: 6500 },    // Title Reveal
-      { s: 6, delay: 8500 },    // Calm Dissolve
-      { s: 7, delay: 10500 },   // Complete
+      { s: 2, delay: 3000 },    // Data Surge & Grid
+      { s: 3, delay: 5500 },    // The Eagle
+      { s: 4, delay: 8000 },    // The Race Car
+      { s: 5, delay: 10500 },   // Title Reveal
+      { s: 6, delay: 13500 },   // Calm Dissolve
+      { s: 7, delay: 16000 },   // Complete
     ];
 
     const timeouts = sequence.map(({ s, delay }) =>
@@ -122,18 +122,6 @@ export default function CinematicLoader({ onComplete }) {
                 </motion.div>
               ))}
             </div>
-
-            {/* Overload Warning */}
-            <motion.div 
-              className="absolute inset-0 flex items-center justify-center"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 1 }}
-            >
-               <h2 className="text-red-500 font-bold tracking-widest text-2xl md:text-5xl chromatic-glitch" data-text="SYSTEM OVERLOAD">
-                 SYSTEM OVERLOAD
-               </h2>
-            </motion.div>
           </motion.div>
         )}
 

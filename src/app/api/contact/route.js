@@ -101,7 +101,10 @@ export async function POST(request) {
         { 
           message: "Message sent successfully.", 
           success: true,
-          notes: !firebaseSuccess ? `Firebase warning: ${firebaseErrorDetails}` : undefined
+          notes: {
+            firebase: !firebaseSuccess ? `Warning: ${firebaseErrorDetails}` : "OK",
+            email: !emailSuccess ? `Warning: ${emailErrorDetails}` : "OK"
+          }
         },
         { status: 201 }
       );

@@ -45,11 +45,49 @@ export function buildContactEmailHtml({ name, email, subject, message, date, tim
       </div>
       <div class="field" >
         <div class="label">Message Content</div>
-        <div class="message-box" style="background-color: #ffffffff;">${message}</div>
+        <div class="message-box" style="background-color: #ffffffff; color: #000000;">${message}</div>
       </div>
     </div>
     <div class="footer">
-      This message was sent from your Next.js Portfolio Contact System (thenraja-01.vercel.app).
+      This message was sent from your Next.js Portfolio Contact System.
+    </div>
+  </div>
+</body>
+</html>
+  `;
+}
+
+/**
+ * Auto-reply HTML Email Template sent to the visitor.
+ */
+export function buildAutoReplyEmailHtml({ name }) {
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Thank You For Reaching Out!</title>
+  <style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #050816; color: #e2e8f0; margin: 0; padding: 40px 20px; }
+    .container { max-width: 600px; margin: 0 auto; background: #0f172a; border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+    .header { background: linear-gradient(135deg, #4f46e5, #7c3aed); padding: 30px; text-align: center; }
+    .header h1 { margin: 0; font-size: 22px; font-weight: 700; color: #ffffff; letter-spacing: 1px; }
+    .content { padding: 30px; line-height: 1.6; font-size: 16px; }
+    .footer { background: #0b0f19; padding: 20px; text-align: center; font-size: 12px; color: #64748b; border-top: 1px solid rgba(255,255,255,0.05); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Message Received!</h1>
+    </div>
+    <div class="content">
+      <p>Hi <strong>${name}</strong>,</p>
+      <p>Thank you for reaching out to me! I have received your message and will get back to you as soon as possible.</p>
+      <p>Best regards,<br/>Then Raja M</p>
+    </div>
+    <div class="footer">
+      This is an automated response. Please do not reply to this email.
     </div>
   </div>
 </body>

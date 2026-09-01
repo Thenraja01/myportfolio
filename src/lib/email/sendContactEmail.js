@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-import { buildContactEmailHtml } from "./emailTemplate";
+import { buildContactEmailHtml, buildAutoReplyEmailHtml } from "./emailTemplate";
 
 /**
  * Send email notification to portfolio owner using server-side Nodemailer.
@@ -28,12 +28,13 @@ export async function sendContactEmail({ name, email, subject, message, date, ti
   });
 
   const htmlContent = buildContactEmailHtml({ name, email, subject, message, date, time });
+  const autoReplyHtml = buildAutoReplyEmailHtml({ name });
 
   const senderHeader = process.env.SMTP_FROM
     ? `"${process.env.SMTP_FROM}" <${smtpUser}>`
     : `"Portfolio Contact System" <${smtpUser}>`;
 
-  const mailOptions = {
+  const ownerMailOptions = {
     from: senderHeader,
     to: receiverEmail,
     replyTo: email,
@@ -41,12 +42,25 @@ export async function sendContactEmail({ name, email, subject, message, date, ti
     html: htmlContent,
   };
 
+  const autoReplyMailOptions = {
+    from: senderHeader,
+    to: email,
+    subject: `Thank you for your message!`,
+    html: autoReplyHtml,
+  };
+
   try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Contact email sent successfully via Nodemailer:", info.messageId);
-    return { success: true, messageId: info.messageId };
+    // Send both emails concurrently
+    const [ownerInfo, visitorInfo] = await Promise.all([
+      transporter.sendMail(ownerMailOptions),
+      transporter.sendMail(autoReplyMailOptions),
+    ]);
+    console.log("Owner email sent successfully:", ownerInfo.messageId);
+    console.log("Visitor auto-reply sent successfully:", visitorInfo.messageId);
+    
+    return { success: true, messageId: ownerInfo.messageId };
   } catch (error) {
-    console.error("Failed to send contact email:", error);
+    console.error("Failed to send contact emails:", error);
     return { success: false, error: error.message };
   }
 }

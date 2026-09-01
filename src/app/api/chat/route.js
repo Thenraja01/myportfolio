@@ -101,7 +101,7 @@ ${certifications.map((c) => `- ${c.title} by ${c.institute}`).join("\n")}
           context,
         });
 
-        replyText = replyText.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
+        replyText = replyText.replace(/<think>[\s\S]*?(?:<\/think>|$)/gi, "").trim();
 
         if (replyText) {
           return NextResponse.json({
@@ -124,7 +124,7 @@ ${certifications.map((c) => `- ${c.title} by ${c.institute}`).join("\n")}
           context,
         });
 
-        replyText = replyText.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
+        replyText = replyText.replace(/<think>[\s\S]*?(?:<\/think>|$)/gi, "").trim();
 
         if (replyText) {
           return NextResponse.json({

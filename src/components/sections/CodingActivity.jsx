@@ -87,7 +87,7 @@ export default function CodingActivity() {
 
     fetchGithubStats();
     fetchLeetcodeStats();
-  }, []);
+  }, [githubUsername, leetcodeUsername]);
 
   // Percentages for LeetCode Ring/Bars
   const total = leetcodeData.totalSolved || 81;

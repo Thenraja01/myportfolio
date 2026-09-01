@@ -142,7 +142,7 @@ export default function CinematicLoader({ onComplete }) {
               animate={{ scale: 1.1 }}
               transition={{ duration: 1, ease: "easeInOut" }}
             />
-            <div className="laser-flash"></div>
+        
           </motion.div>
         )}
 
@@ -159,9 +159,7 @@ export default function CinematicLoader({ onComplete }) {
               src="https://giffiles.alphacoders.com/223/223474.gif"
               alt="Cyberpunk Race Car"
               className="w-full h-full object-cover opacity-80 mix-blend-screen"
-              initial={{ x: "-100%" }}
-              animate={{ x: "100%" }}
-              transition={{ duration: 0.7, ease: "easeInOut" }}
+              transition={{ duration: 2, ease: "easeInOut" }}
             />
             <div className="laser-flash"></div>
           </motion.div>
@@ -182,7 +180,7 @@ export default function CinematicLoader({ onComplete }) {
               animate={{ filter: "blur(0px)" }}
               transition={{ duration: 1 }}
             >
-              <span className="chromatic-glitch" data-text="THEN RAJA">THEN RAJA</span>
+              <span className="neon-glitch" data-text="THEN RAJA">THEN RAJA</span>
             </motion.h1>
             
             <motion.div

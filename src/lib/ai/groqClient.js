@@ -1,6 +1,4 @@
-/**
- * Groq AI Helper Client
- */
+
 export async function generateWithGroq({ message, history = [], context }) {
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {

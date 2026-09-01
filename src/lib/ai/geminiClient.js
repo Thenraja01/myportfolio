@@ -40,7 +40,7 @@ ${context}`;
       ],
       generationConfig: {
         temperature: 0.3,
-        maxOutputTokens: 150,
+        maxOutputTokens: 800,
       },
     }),
   });
@@ -57,8 +57,8 @@ ${context}`;
     throw new Error("Gemini returned an empty response");
   }
 
-  // Strip unwanted reasoning/think tags
-  text = text.replace(/<think>[\s\S]*?<\/think>/gi, "").trim();
+  // Strip unwanted reasoning/think tags (even if unclosed due to truncation)
+  text = text.replace(/<think>[\s\S]*?(?:<\/think>|$)/gi, "").trim();
 
   return text;
 }

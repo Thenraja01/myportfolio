@@ -42,23 +42,24 @@ export default function CinematicLoader({ onComplete }) {
     const sequence = [
       { s: 1, delay: 0 },       // System Wake (Terminal)
       { s: 2, delay: 2500 },    // Data Surge & Grid
-      { s: 3, delay: 4500 },    // The Overload / Laser
-      { s: 4, delay: 5200 },    // Title Reveal
-      { s: 5, delay: 7500 },    // Calm Dissolve
-      { s: 6, delay: 9500 },    // Complete
+      { s: 3, delay: 4500 },    // The Eagle
+      { s: 4, delay: 5500 },    // The Race Car
+      { s: 5, delay: 6500 },    // Title Reveal
+      { s: 6, delay: 8500 },    // Calm Dissolve
+      { s: 7, delay: 10500 },   // Complete
     ];
 
     const timeouts = sequence.map(({ s, delay }) =>
       setTimeout(() => {
         setScene(s);
-        if (s === 6) onComplete();
+        if (s === 7) onComplete();
       }, delay)
     );
 
     return () => timeouts.forEach(clearTimeout);
   }, [onComplete]);
 
-  if (scene === 0 || scene === 6) return null;
+  if (scene === 0 || scene === 7) return null;
 
   return (
     <div className="loader-container bg-slate-950">
@@ -136,10 +137,31 @@ export default function CinematicLoader({ onComplete }) {
           </motion.div>
         )}
 
-        {/* SCENE 03: The Race Car */}
+        {/* SCENE 03: The Eagle */}
         {scene === 3 && (
           <motion.div
             key="scene-3"
+            className="absolute inset-0 bg-slate-950 flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 1.2, transition: { duration: 0.5 } }}
+          >
+            <motion.img 
+              src="https://media.giphy.com/media/xsIH9JAo9HZElViMQv/giphy.gif"
+              alt="Eagle"
+              className="w-full h-full object-cover opacity-60 mix-blend-screen"
+              initial={{ scale: 1 }}
+              animate={{ scale: 1.1 }}
+              transition={{ duration: 1, ease: "easeInOut" }}
+            />
+            <div className="laser-flash"></div>
+          </motion.div>
+        )}
+
+        {/* SCENE 04: The Race Car */}
+        {scene === 4 && (
+          <motion.div
+            key="scene-4"
             className="absolute inset-0 bg-slate-950 flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -157,10 +179,10 @@ export default function CinematicLoader({ onComplete }) {
           </motion.div>
         )}
 
-        {/* SCENE 04: Title Reveal */}
-        {scene === 4 && (
+        {/* SCENE 05: Title Reveal */}
+        {scene === 5 && (
           <motion.div
-            key="scene-4"
+            key="scene-5"
             className="absolute inset-0 flex flex-col items-center justify-center"
             initial={{ opacity: 0, scale: 1.1 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -193,10 +215,10 @@ export default function CinematicLoader({ onComplete }) {
           </motion.div>
         )}
 
-        {/* SCENE 05: Calm Dissolve */}
-        {scene === 5 && (
+        {/* SCENE 06: Calm Dissolve */}
+        {scene === 6 && (
           <motion.div
-            key="scene-5"
+            key="scene-6"
             className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-slate-950 to-indigo-950/20"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

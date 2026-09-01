@@ -75,6 +75,7 @@ export async function POST(request) {
 
     // 7. Send email notification synchronously so Vercel doesn't kill the function early
     let emailSuccess = false;
+    let emailErrorDetails = "";
     try {
       const emailResult = await sendContactEmail({
         name: cleanData.name,
@@ -85,8 +86,12 @@ export async function POST(request) {
         time: timeStr,
       });
       emailSuccess = emailResult.success;
+      if (!emailSuccess) {
+        emailErrorDetails = emailResult.reason || emailResult.error || "Unknown email error";
+      }
     } catch (err) {
       console.error("Email notification error:", err);
+      emailErrorDetails = err.message;
     }
 
     // 8. Return response
@@ -104,7 +109,7 @@ export async function POST(request) {
 
     // In production, if BOTH failed, we return the error to help debug
     return NextResponse.json(
-      { error: `Message failed to send. Database Error: ${firebaseErrorDetails}. Email might not be configured.` },
+      { error: `Message failed to send. Database Error: ${firebaseErrorDetails}. Email Error: ${emailErrorDetails}` },
       { status: 500 }
     );
   } catch (error) {

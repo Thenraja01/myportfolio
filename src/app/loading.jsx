@@ -1,18 +1,5 @@
 "use client";
-/**
- * Root portfolio loading screen — config driven from Firebase /loaderConfig
- *
- * Firebase Realtime DB structure (update anytime without code changes):
- * {
- *   "loaderConfig": {
- *     "title":       "THEN RAJA M",
- *     "subtitle":    "Full Stack · AI-Integrated Engineer",
- *     "bg_theme":    "dark",       ← "dark" | "light" | "brand" | "glass"
- *     "duration_ms": 2400,
- *     "enabled":     true
- *   }
- * }
- */
+
 import { useLoaderConfig } from "@/hooks/useLoaderConfig";
 import PortfolioSplashLoader from "@/components/ui/PortfolioSplashLoader";
 

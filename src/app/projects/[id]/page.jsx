@@ -1,15 +1,15 @@
-import { notFound } from \"next/navigation\";
-import Link from \"next/link\";
-import { Container } from \"@/components/layout/Container\";
-import Navbar from \"@/components/layout/Navbar\";
-import Footer from \"@/components/layout/Footer\";
-import { Badge } from \"@/components/ui/Badge\";
-import { ProjectLinks } from \"@/components/projects/ProjectLinks\";
-import { AsyncReadmeSection } from \"@/components/projects/AsyncReadmeSection\";
-import { parseGitHubUrl, getRepositoryReadme } from \"@/lib/github/client\";
-import { processReadmeMarkdown } from \"@/lib/github/readme\";
-import { ArrowLeft, Sparkles, FolderCode } from \"lucide-react\";
-import { getAdminDb } from \"@/lib/firebase/admin\";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { Container } from "@/components/layout/Container";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import { Badge } from "@/components/ui/Badge";
+import { ProjectLinks } from "@/components/projects/ProjectLinks";
+import { AsyncReadmeSection } from "@/components/projects/AsyncReadmeSection";
+import { parseGitHubUrl, getRepositoryReadme } from "@/lib/github/client";
+import { processReadmeMarkdown } from "@/lib/github/readme";
+import { ArrowLeft, Sparkles, FolderCode } from "lucide-react";
+import { getAdminDb } from "@/lib/firebase/admin";
 
 // Fetch all projects from Firebase Realtime DB
 async function getProjects() {

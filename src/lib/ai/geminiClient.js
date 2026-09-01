@@ -19,7 +19,7 @@ Rules:
 PORTFOLIO CONTEXT:
 ${context}`;
 
-  const modelName = process.env.GEMINI_MODEL || "gemini-2.0-flash";
+  const modelName = process.env.GEMINI_MODEL || "gemini-3.6-flash";
   const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
 
   const conversationHistory = history.slice(-6).map((msg) => ({
@@ -57,7 +57,6 @@ ${context}`;
     throw new Error("Gemini returned an empty response");
   }
 
-  // Strip unwanted reasoning/think tags (even if unclosed due to truncation)
   text = text.replace(/<think>[\s\S]*?(?:<\/think>|$)/gi, "").trim();
 
   return text;

@@ -22,8 +22,8 @@ export function CertificationMarquee({ certifications, onCardClick }) {
       `}</style>
       
       {/* Gradient fades on the left and right edges for a smooth entrance/exit */}
-      <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-[var(--background,theme(colors.slate.950))] opacity-80 mask-image:linear-gradient(to_right,black,transparent) z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-[var(--background,theme(colors.slate.950))] opacity-80 mask-image:linear-gradient(to_left,black,transparent) z-10 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-blur-950 [mask-image:linear-gradient(to_right,black,transparent)] z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-blur-950 [mask-image:linear-gradient(to_left,black,transparent)] z-10 pointer-events-none" />
       
       {/* Marquee Container */}
       <div className="flex w-full py-12 perspective-[1200px]">

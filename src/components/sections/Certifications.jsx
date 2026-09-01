@@ -61,7 +61,7 @@ export default function Certifications() {
       </div>
 
       {/* Certification Marquee */}
-      <div className="mt-4 -mx-4 md:-mx-12 lg:-mx-24 relative z-10">
+      <div className="mt-4 -mx-4 md:-mx-12  relative z-10">
         <CertificationMarquee 
           certifications={filteredCerts} 
           onCardClick={(index) => setSelectedCertIndex(index)} 

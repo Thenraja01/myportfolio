@@ -92,6 +92,9 @@ CERTIFICATIONS:
 ${certifications.map((c) => `- ${c.title} by ${c.institute}`).join("\n")}
 `;
 
+    let groqError = null;
+    let geminiError = null;
+
     // 1. TRY GROQ API FIRST
     if (groqKey && (preferredProvider === "groq" || !geminiKey)) {
       try {
@@ -112,7 +115,10 @@ ${certifications.map((c) => `- ${c.title} by ${c.institute}`).join("\n")}
         }
       } catch (err) {
         console.warn("Groq API error, trying Gemini...", err.message);
+        groqError = err.message;
       }
+    } else {
+        groqError = "GROQ_API_KEY is missing from environment variables.";
     }
 
     // 2. TRY GOOGLE GEMINI API
@@ -135,7 +141,10 @@ ${certifications.map((c) => `- ${c.title} by ${c.institute}`).join("\n")}
         }
       } catch (err) {
         console.warn("Gemini API error:", err.message);
+        geminiError = err.message;
       }
+    } else {
+        geminiError = "GEMINI_API_KEY is missing from environment variables.";
     }
 
     // 3. FALLBACK
@@ -143,6 +152,7 @@ ${certifications.map((c) => `- ${c.title} by ${c.institute}`).join("\n")}
       reply: `Hello! 👋 I'm **Thenraja's AI Portfolio Assistant**. Feel free to ask about his projects, skills, or experience! (Email: **${personalInfo.email || "thenwthen@gmail.com"}**)`,
       provider: "AI Assistant",
       suggestions: ["What projects has he built?", "What are his skills?", "How to contact him?"],
+      debug_error: `AI failed. Groq: ${groqError}. Gemini: ${geminiError}`,
     });
   } catch (error) {
     console.error("Chat API route error:", error);

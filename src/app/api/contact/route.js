@@ -73,27 +73,38 @@ export async function POST(request) {
       firebaseErrorDetails = fbErr.message;
     }
 
-    // 7. Send email notification asynchronously
-    sendContactEmail({
-      name: cleanData.name,
-      email: cleanData.email,
-      subject: cleanData.subject,
-      message: cleanData.message,
-      date: dateStr,
-      time: timeStr,
-    }).catch((err) => console.error("Email notification error:", err));
+    // 7. Send email notification synchronously so Vercel doesn't kill the function early
+    let emailSuccess = false;
+    try {
+      const emailResult = await sendContactEmail({
+        name: cleanData.name,
+        email: cleanData.email,
+        subject: cleanData.subject,
+        message: cleanData.message,
+        date: dateStr,
+        time: timeStr,
+      });
+      emailSuccess = emailResult.success;
+    } catch (err) {
+      console.error("Email notification error:", err);
+    }
 
     // 8. Return response
-    if (firebaseSuccess || process.env.NODE_ENV === "development") {
+    // If EITHER Firebase DB write OR Email succeeded, we consider the contact form submission a success
+    if (firebaseSuccess || emailSuccess || process.env.NODE_ENV === "development") {
       return NextResponse.json(
-        { message: "Message sent successfully.", success: true },
+        { 
+          message: "Message sent successfully.", 
+          success: true,
+          notes: !firebaseSuccess ? `Firebase warning: ${firebaseErrorDetails}` : undefined
+        },
         { status: 201 }
       );
     }
 
-    // In production, if Firebase fails, we return the error to help debug
+    // In production, if BOTH failed, we return the error to help debug
     return NextResponse.json(
-      { error: `Unable to process your message: ${firebaseErrorDetails}` },
+      { error: `Message failed to send. Database Error: ${firebaseErrorDetails}. Email might not be configured.` },
       { status: 500 }
     );
   } catch (error) {

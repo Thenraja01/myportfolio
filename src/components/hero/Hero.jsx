@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
 import { useUser } from "@/context/UserContext";
 import { useProjects } from "@/context/ProjectsContext";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 import { Photo3DEnvironment } from "@/components/3d/Photo3DEnvironment";
 import { useTheme } from "@/context/ThemeContext";
 
@@ -12,8 +12,7 @@ export default function Hero() {
   const { projectCount } = useProjects();
   const { isDark } = useTheme();
 
-  const shortSummary =
-    "Full Stack & AI Engineer crafting high-performance MERN & Python web applications, intelligent automation, and scalable real-time systems.";
+  const shortSummary ="Full Stack & AI Engineer crafting high-performance MERN & Python web applications, intelligent automation, and scalable real-time systems.";
 
   return (
     <section className="relative min-h-[90vh] flex flex-col justify-center pt-28 pb-16 overflow-hidden">

@@ -202,13 +202,15 @@ const Contact = () => {
               </p>
               <div className="mt-4 flex gap-3">
                 {[
-                  { icon: Github, href: "#", label: "GitHub" },
-                  { icon: Linkedin, href: "#", label: "LinkedIn" },
-                  { icon: Twitter, href: "#", label: "Twitter" },
+                  { icon: Github, href: "https://github.com/Thenraja01", label: "GitHub" },
+                  { icon: Linkedin, href: "https://linkedin.com/in/thenraja-m", label: "LinkedIn" },
+                  { icon: Mail, href: `mailto:${CONTACT_EMAIL}`, label: "Email" },
                 ].map(({ icon: Icon, href, label }) => (
                   <a
                     key={label}
                     href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                     aria-label={label}
                     className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-white/50 ring-1 ring-white/10 transition-all hover:bg-purple-500/20 hover:text-purple-400 hover:ring-purple-500/30"
                   >

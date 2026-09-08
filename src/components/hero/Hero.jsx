@@ -15,7 +15,7 @@ export default function Hero() {
   const shortSummary ="Full Stack & AI Engineer crafting high-performance MERN & Python web applications, intelligent automation, and scalable real-time systems.";
 
   return (
-    <section className="relative min-h-[90vh] flex flex-col justify-center pt-28 pb-16 overflow-hidden">
+    <section id="hero" className="relative min-h-[90vh] flex flex-col justify-center pt-28 pb-16 overflow-hidden">
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Left Column: Heading & CTA */}
         <motion.div

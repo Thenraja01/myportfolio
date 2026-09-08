@@ -10,7 +10,7 @@ export async function sendContactEmail({ name, email, subject, message, date, ti
   const smtpPass = process.env.SMTP_PASS || process.env.EMAIL_APP_PASSWORD;
   const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
   const smtpPort = parseInt(process.env.SMTP_PORT || "587", 10);
-  const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL ;
+  const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL || smtpUser || "thenwthen@gmail.com";
 
   if (!smtpUser || !smtpPass) {
     console.warn("Nodemailer missing SMTP_USER or SMTP_PASS. Skipping email delivery.");

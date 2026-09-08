@@ -19,7 +19,7 @@ Rules:
 PORTFOLIO CONTEXT:
 ${context}`;
 
-  const modelName = process.env.GEMINI_MODEL || "gemini-3.6-flash";
+  const modelName = process.env.GEMINI_MODEL || "gemini-2.0-flash";
   const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
 
   const conversationHistory = history.slice(-6).map((msg) => ({

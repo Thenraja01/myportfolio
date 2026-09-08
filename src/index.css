@@ -10,8 +10,8 @@
 }
 
 :root {
-  --bg-gradient: linear-gradient(160deg, #f0f4ff 0%, #e0e7ff 40%, #cffafe 100%);
-  --text-primary: #1e1b4b;
+  --bg-gradient: linear-gradient(160deg, #faf5ff 0%, #f3e8ff 45%, #ede9fe 100%);
+  --text-primary: #3b0764;
   color-scheme: light;
 }
 

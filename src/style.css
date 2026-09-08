@@ -1,15 +1,15 @@
 /* ─── Color palette ─── */
 :root {
-  --palette-bg: #f0f4ff;
-  --palette-surface: rgba(255, 255, 255, 0.72);
-  --palette-primary: #1e1b4b;
-  --palette-accent: #6366f1;
-  --palette-accent-2: #22d3ee;
+  --palette-bg: #faf5ff;
+  --palette-surface: rgba(255, 255, 255, 0.85);
+  --palette-primary: #3b0764;
+  --palette-accent: #7c3aed;
+  --palette-accent-2: #9333ea;
   --palette-highlight: #a855f7;
-  --palette-glow: rgba(99, 102, 241, 0.35);
-  --palette-glow-2: rgba(34, 211, 238, 0.25);
-  --glass-border: rgba(99, 102, 241, 0.18);
-  --shadow-3d: 0 25px 50px -12px rgba(30, 27, 75, 0.25);
+  --palette-glow: rgba(147, 51, 234, 0.25);
+  --palette-glow-2: rgba(168, 85, 247, 0.18);
+  --glass-border: rgba(192, 132, 252, 0.35);
+  --shadow-3d: 0 20px 50px -12px rgba(88, 28, 135, 0.12);
   --perspective: 1200px;
 }
 

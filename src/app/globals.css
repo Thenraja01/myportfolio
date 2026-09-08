@@ -10,20 +10,20 @@
 
 /* ─── Color palette ─── */
 :root {
-  --palette-bg: #f8fafc;
-  --palette-surface: rgba(255, 255, 255, 0.82);
-  --palette-primary: #090d16;
-  --palette-accent: #4f46e5;
-  --palette-accent-2: #0891b2;
-  --palette-highlight: #7c3aed;
-  --palette-glow: rgba(99, 102, 241, 0.2);
-  --palette-glow-2: rgba(34, 211, 238, 0.15);
-  --glass-border: rgba(226, 232, 240, 0.8);
-  --shadow-3d: 0 20px 50px -12px rgba(15, 23, 42, 0.12);
+  --palette-bg: #faf5ff;
+  --palette-surface: rgba(255, 255, 255, 0.85);
+  --palette-primary: #3b0764;
+  --palette-accent: #7c3aed;
+  --palette-accent-2: #9333ea;
+  --palette-highlight: #a855f7;
+  --palette-glow: rgba(147, 51, 234, 0.25);
+  --palette-glow-2: rgba(168, 85, 247, 0.18);
+  --glass-border: rgba(192, 132, 252, 0.35);
+  --shadow-3d: 0 20px 50px -12px rgba(88, 28, 135, 0.12);
   --perspective: 1200px;
 
-  --bg-gradient: linear-gradient(160deg, #f8fafc 0%, #f1f5f9 45%, #e2e8f0 100%);
-  --text-primary: #090d16;
+  --bg-gradient: linear-gradient(160deg, #faf5ff 0%, #f3e8ff 45%, #ede9fe 100%);
+  --text-primary: #3b0764;
   color-scheme: light;
 }
 
@@ -55,26 +55,27 @@ body {
 
 /* Glassmorphism Card Style — true frosted glass in both light & dark */
 .glass-card-morphism {
-  /* Light mode: translucent frosted glass — NOT white */
-  background: rgba(255, 255, 255, 0.18);
+  /* Light mode: translucent frosted glass with subtle violet aura */
+  background: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(148, 163, 184, 0.35);
+  border: 1px solid rgba(168, 85, 247, 0.25);
   box-shadow:
-    0 8px 32px -8px rgba(99, 102, 241, 0.12),
-    0 2px 8px rgba(15, 23, 42, 0.06),
-    inset 0 1.5px 1px rgba(255, 255, 255, 0.55);
+    0 8px 32px -8px rgba(124, 58, 237, 0.15),
+    0 2px 8px rgba(88, 28, 135, 0.05),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.75);
   position: relative;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card-morphism:hover {
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(147, 51, 234, 0.45);
   box-shadow:
-    0 16px 48px -8px rgba(99, 102, 241, 0.2),
-    0 4px 16px rgba(15, 23, 42, 0.08),
-    inset 0 1.5px 1px rgba(255, 255, 255, 0.65);
+    0 16px 48px -8px rgba(124, 58, 237, 0.25),
+    0 4px 16px rgba(88, 28, 135, 0.08),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.85);
 }
 
 .dark .glass-card-morphism {
@@ -102,12 +103,17 @@ body {
   left: 0;
   right: 0;
   height: 1.5px;
-  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.7), rgba(168, 85, 247, 0.7), transparent);
+  background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.8), rgba(217, 70, 239, 0.8), transparent);
 }
 
-/* High-contrast text for Light Mode — required on translucent glass cards */
+/* ─── Light Theme: Comprehensive Violet Typography ─── */
+html:not(.dark),
+.light {
+  color: #3b0764;
+}
+
 html:not(.dark) body {
-  color: #090d16;
+  color: #3b0764;
 }
 
 html:not(.dark) h1,
@@ -116,26 +122,52 @@ html:not(.dark) h3,
 html:not(.dark) h4,
 html:not(.dark) h5,
 html:not(.dark) h6 {
-  color: #0f172a;
+  color: #2e1065;
 }
 
-/* Make light-mode muted text legible on glass cards */
+html:not(.dark) p,
+html:not(.dark) li {
+  color: #4c1d95;
+}
+
+/* Make light-mode text crisp and legible on glass cards */
 html:not(.dark) .glass-card-morphism p,
 html:not(.dark) .glass-card-morphism span,
 html:not(.dark) .glass-card-morphism h3,
 html:not(.dark) .glass-card-morphism h4 {
-  text-shadow: 0 1px 2px rgba(255,255,255,0.6);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
-html:not(.dark) .text-slate-300,
-html:not(.dark) .text-slate-400,
+/* Map standard slate text classes into rich violet shades in light theme */
+html:not(.dark) .text-slate-950,
+html:not(.dark) .text-slate-900,
+html:not(.dark) .text-slate-800 {
+  color: #2e1065 !important; /* Deepest Royal Violet */
+}
+
+html:not(.dark) .text-slate-700 {
+  color: #4c1d95 !important; /* Deep Rich Violet */
+}
+
+html:not(.dark) .text-slate-600 {
+  color: #581c87 !important; /* Rich Violet */
+}
+
 html:not(.dark) .text-slate-500 {
-  color: #334155;
+  color: #6b21a8 !important; /* Medium Violet */
 }
 
-html:not(.dark) .text-slate-100,
-html:not(.dark) .text-slate-200 {
-  color: #0f172a;
+html:not(.dark) .text-slate-400 {
+  color: #7c3aed !important; /* Bright Violet Accent */
+}
+
+html:not(.dark) .text-slate-300 {
+  color: #8b5cf6 !important; /* Soft Violet */
+}
+
+html:not(.dark) .text-slate-200,
+html:not(.dark) .text-slate-100 {
+  color: #3b0764 !important; /* Primary Violet */
 }
 
 /* ─── 3D background scene ─── */

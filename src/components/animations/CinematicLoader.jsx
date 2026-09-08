@@ -127,7 +127,7 @@ export default function CinematicLoader({ onComplete }) {
 
             <button
               onClick={() => onComplete?.()}
-              className="text-xs font-mono text-white-300 hover:text-white px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/15 transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
+              className="text-xs font-mono text-slate-300 hover:text-white px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/15 border border-white/15 transition-all flex items-center gap-1.5 cursor-pointer shadow-sm"
             >
               <span className="font-semibold">Skip</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -145,7 +145,7 @@ export default function CinematicLoader({ onComplete }) {
               <span>Then Raja M</span>
             </h1>
 
-            <div className="h-6 flex items-center font-mono text-xs sm:text-sm text-white-300">
+            <div className="h-6 flex items-center font-mono text-xs sm:text-sm text-slate-300">
               <Terminal className="w-4 h-4 mr-2 text-cyan-400 shrink-0" />
               <AnimatePresence mode="wait">
                 <motion.span
@@ -154,7 +154,7 @@ export default function CinematicLoader({ onComplete }) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -5 }}
                   transition={{ duration: 0.2 }}
-                  className="truncate text-white-100 font-medium"
+                  className="truncate text-slate-100 font-medium"
                 >
                   {PRODUCTIVITY_TAGS[tagIndex]}
                 </motion.span>
@@ -168,45 +168,45 @@ export default function CinematicLoader({ onComplete }) {
             
             {/* Tile 1: Performance */}
             <div className="bento-card-subtle p-3.5 flex flex-col justify-between">
-              <div className="flex items-center justify-between text-white-300 mb-1">
+              <div className="flex items-center justify-between text-slate-300 mb-1">
                 <span className="text-[11px] font-mono uppercase font-semibold">Performance</span>
                 <Zap className="w-4 h-4 text-amber-400" />
               </div>
               <div className="text-2xl font-black text-white tracking-tight">
                 99.9<span className="text-sm text-emerald-400 font-bold ml-0.5">%</span>
               </div>
-              <span className="text-[11px] text-white-300 font-mono font-medium">Optimized & Fast</span>
+              <span className="text-[11px] text-slate-300 font-mono font-medium">Optimized & Fast</span>
             </div>
 
             {/* Tile 2: Architecture */}
             <div className="bento-card-subtle p-3.5 flex flex-col justify-between">
-              <div className="flex items-center justify-between text-white-300 mb-1">
+              <div className="flex items-center justify-between text-slate-300 mb-1">
                 <span className="text-[11px] font-mono uppercase font-semibold">Architecture</span>
                 <Layers className="w-4 h-4 text-indigo-400" />
               </div>
               <div className="text-2xl font-black text-white tracking-tight">
                 Modern
               </div>
-              <span className="text-[11px] text-white-300 font-mono font-medium">Clean & Scalable</span>
+              <span className="text-[11px] text-slate-300 font-mono font-medium">Clean & Scalable</span>
             </div>
 
             {/* Tile 3: Availability */}
             <div className="bento-card-subtle p-3.5 flex flex-col justify-between">
-              <div className="flex items-center justify-between text-white-300 mb-1">
+              <div className="flex items-center justify-between text-slate-300 mb-1">
                 <span className="text-[11px] font-mono uppercase font-semibold">Status</span>
                 <Globe2 className="w-4 h-4 text-cyan-400" />
               </div>
               <div className="text-2xl font-black text-emerald-400 tracking-tight">
                 Available
               </div>
-              <span className="text-[11px] text-white-300 font-mono font-medium">Open for Work</span>
+              <span className="text-[11px] text-slate-300 font-mono font-medium">Open for Work</span>
             </div>
 
           </div>
 
           {/* Tech Stack High-Contrast Pills */}
           <div className="pt-2 pb-6">
-            <div className="text-[11px] font-mono text-white-300 uppercase mb-2.5 flex items-center gap-1.5 font-semibold">
+            <div className="text-[11px] font-mono text-slate-300 uppercase mb-2.5 flex items-center gap-1.5 font-semibold">
               <Code2 className="w-3.5 h-3.5 text-indigo-400" />
               <span>Core Stack Arsenal</span>
             </div>
@@ -214,7 +214,7 @@ export default function CinematicLoader({ onComplete }) {
               {TECH_BADGES.map((badge, idx) => (
                 <span
                   key={idx}
-                  className="bento-tech-pill text-xs px-3 py-1.5 rounded-lg text-white-100"
+                  className="bento-tech-pill text-xs px-3 py-1.5 rounded-lg text-slate-100"
                 >
                   {badge}
                 </span>

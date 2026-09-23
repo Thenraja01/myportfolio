@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { generateWithGroq } from "@/lib/ai/groqClient";
 import { generateWithGemini } from "@/lib/ai/geminiClient";
+import { getRepositories } from "@/lib/github/client";
+import { createProjectFromGithub } from "@/lib/github/mapper";
 import { initializeApp, getApps } from "firebase/app";
 import { getDatabase, ref, get } from "firebase/database";
 
@@ -33,6 +35,47 @@ async function getPortfolioData() {
   }
 }
 
+// Fetch GitHub repos and merge with Firebase project data
+async function getAllProjects() {
+  const portfolioData = await getPortfolioData();
+  const firebaseProjects = portfolioData?.projects || {};
+  const username = process.env.GITHUB_USERNAME || "Thenraja01";
+  let githubProjects = [];
+
+  try {
+    githubProjects = await getRepositories(username);
+  } catch (err) {
+    console.warn("GitHub repo fetch failed in chat API:", err.message);
+  }
+
+  const projectMap = new Map();
+
+  // Add Firebase projects to map
+  const fbProjects = Array.isArray(firebaseProjects) ? firebaseProjects : Object.values(firebaseProjects);
+  for (const proj of fbProjects) {
+    const key = proj.id || proj.name?.toLowerCase().replace(/[^a-z0-9]+/g, "-") || "";
+    if (key && !projectMap.has(key)) {
+      projectMap.set(key, proj);
+    }
+  }
+
+  // Add/merge GitHub projects into map
+  for (const repo of githubProjects) {
+    if (repo.fork) continue;
+    const projectId = repo.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    const existing = projectMap.get(projectId);
+
+    if (existing) {
+      const merged = createProjectFromGithub(repo);
+      projectMap.set(projectId, { ...merged, ...existing });
+    } else {
+      projectMap.set(projectId, createProjectFromGithub(repo));
+    }
+  }
+
+  return Array.from(projectMap.values());
+}
+
 export async function POST(req) {
   try {
     const body = await req.json();
@@ -47,16 +90,12 @@ export async function POST(req) {
     const geminiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_API_KEY;
     const preferredProvider = (process.env.LLM_PROVIDER || "groq").toLowerCase();
 
-    // Fetch live data from Firebase Realtime DB
+    // Fetch live data from Firebase RTDB and GitHub
     const portfolioData = await getPortfolioData();
+    const allProjects = await getAllProjects();
 
     const personalInfo = portfolioData?.personalInfo || {};
     const objective = portfolioData?.objective || "";
-    const projects = portfolioData?.projects
-      ? Array.isArray(portfolioData.projects)
-        ? portfolioData.projects
-        : Object.values(portfolioData.projects)
-      : [];
     const workExperience = portfolioData?.workExperience
       ? Array.isArray(portfolioData.workExperience)
         ? portfolioData.workExperience
@@ -83,7 +122,7 @@ SKILLS:
 - Backend & DB: ${(technicalSkills.backendAndDatabases || []).join(", ")}
 - AI/ML & Emerging: ${(technicalSkills.aiToolsAndEmergingTech || []).join(", ")}
 PROJECTS:
-${projects.map((p) => `- ${p.name} (${p.category}): ${p.description}`).join("\n")}
+${allProjects.map((p) => `- ${p.name || p.title} (${p.category}): ${p.description || "No description"}`).join("\n")}
 WORK EXPERIENCE:
 ${workExperience.map((w) => `- ${w.role} at ${w.company} (${w.duration}): ${w.description || ""}`).join("\n")}
 EDUCATION:

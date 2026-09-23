@@ -10,16 +10,15 @@ import { ArrowRight, Sparkles, FolderCode, Loader2 } from "lucide-react";
 export function ProjectCard({ project }) {
   const [isOpening, setIsOpening] = useState(false);
 
-  // Prefetch README on hover so case study opens fast
+  const repoInfo = project.githubData
+    ? { owner: project.githubData.owner, repo: project.githubData.repo }
+    : (project.github ? parseGitHubUrl(project.github) : null);
+
   const handlePrefetch = () => {
-    if (!project.github) return;
-    const repoInfo = parseGitHubUrl(project.github);
-    if (repoInfo?.owner && repoInfo?.repo) {
-      // Warm up API cache
-      fetch(`/api/readme?owner=${encodeURIComponent(repoInfo.owner)}&repo=${encodeURIComponent(repoInfo.repo)}`, {
-        priority: "low",
-      }).catch(() => {});
-    }
+    if (!repoInfo?.owner || !repoInfo?.repo) return;
+    fetch(`/api/readme?owner=${encodeURIComponent(repoInfo.owner)}&repo=${encodeURIComponent(repoInfo.repo)}`, {
+      priority: "low",
+    }).catch(() => {});
   };
 
   const handleLinkClick = () => {

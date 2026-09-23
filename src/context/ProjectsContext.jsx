@@ -1,10 +1,41 @@
 "use client";
-// src/context/ProjectsContext.js
 import { createContext, useState, useContext, useEffect, useMemo } from "react";
 import { db } from "@/lib/firebase";
 import { ref, get } from "firebase/database";
 
 export const ProjectsContext = createContext();
+
+function normalizeProject(project) {
+  if (!project) return null;
+
+  const hasPortfolio = project.portfolio && Object.keys(project.portfolio).length > 0;
+  const hasGithubObject = project.github && typeof project.github === "object" && !Array.isArray(project.github);
+
+  if (hasPortfolio || hasGithubObject) {
+    const p = project.portfolio || {};
+    const g = project.github || {};
+
+    return {
+      ...project,
+      id: project.id || p.title?.toLowerCase().replace(/[^a-z0-9]+/g, "-") || "",
+      name: p.title || project.name || "",
+      description: p.customDescription || p.description || project.description || "",
+      category: p.category || project.category || "Other",
+      status: p.status || project.status || "Completed",
+      featured: p.featured !== undefined ? p.featured : project.featured || false,
+      technologies: p.technologies || project.technologies || [],
+      liveDemo: p.liveDemo || project.liveDemo || "",
+      github: hasGithubObject
+        ? (g.url || project.github)
+        : project.github,
+      githubData: hasGithubObject ? g : null,
+      portfolio: p,
+      sync: project.sync,
+    };
+  }
+
+  return { ...project };
+}
 
 export function ProjectsProvider({ children }) {
   const [projects, setProjects] = useState([]);
@@ -21,11 +52,11 @@ export function ProjectsProvider({ children }) {
         if (snap.exists()) {
           const data = snap.val();
           if (data.projects) {
-            // Handle both array and object formats
-            const projectsData = Array.isArray(data.projects) 
-              ? data.projects 
+            const projectsData = Array.isArray(data.projects)
+              ? data.projects
               : Object.values(data.projects);
-            setProjects(projectsData);
+            const normalized = projectsData.map(normalizeProject).filter(Boolean);
+            setProjects(normalized);
           }
           setError(null);
         }

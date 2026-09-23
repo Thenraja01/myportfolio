@@ -1,55 +1,86 @@
-/**
- * Extract { owner, repo } from a GitHub URL string.
- * Example: "https://github.com/Thenraja01/cropwhisper" -> { owner: "Thenraja01", repo: "cropwhisper" }
- */
-export function parseGitHubUrl(url) {
-  if (!url || typeof url !== "string") return null;
+const GITHUB_API = "https://api.github.com";
 
-  try {
-    const cleanUrl = url.trim().replace(/\/$/, "");
-    const match = cleanUrl.match(/github\.com\/([^/]+)\/([^/]+)/i);
-    if (match) {
-      return {
-        owner: match[1],
-        repo: match[2].replace(/\.git$/i, ""),
-      };
-    }
-  } catch (err) {
-    console.error("Error parsing GitHub URL:", err);
-  }
-
-  return null;
-}
-
-/**
- * Fetch GitHub repository README via REST API with Next.js server-side caching (revalidate: 30 min).
- */
-export async function getRepositoryReadme(owner, repo) {
-  if (!owner || !repo) return null;
-
+function githubHeaders() {
   const headers = {
-    Accept: "application/vnd.github.v3+json",
+    Accept: "application/vnd.github+json",
     "User-Agent": "NextJS-Portfolio-App",
+    "X-GitHub-Api-Version": "2022-11-28",
   };
 
   if (process.env.GITHUB_TOKEN) {
     headers["Authorization"] = `Bearer ${process.env.GITHUB_TOKEN}`;
   }
 
+  return headers;
+}
+
+export function parseGitHubUrl(url) {
+  if (!url || typeof url !== "string") return null;
   try {
-    // 1. Fetch README metadata
+    const cleanUrl = url.trim().replace(/\/$/, "");
+    const match = cleanUrl.match(/github\.com\/([^/]+)\/([^/]+)/i);
+    if (match) {
+      return { owner: match[1], repo: match[2].replace(/\.git$/i, "") };
+    }
+  } catch (err) {
+    console.error("Error parsing GitHub URL:", err);
+  }
+  return null;
+}
+
+export async function getRepositories(username, options = {}) {
+  const { perPage = 100, sort = "updated", includeForks = false, includePrivate = false } = options;
+  const params = new URLSearchParams({
+    per_page: perPage,
+    sort,
+    type: "owner",
+    ...(includeForks ? {} : { fork: "false" }),
+    ...(includePrivate ? {} : { type: "owner" }),
+  });
+
+  try {
+    const response = await fetch(
+      `${GITHUB_API}/users/${username}/repos?${params}`,
+      { headers: githubHeaders(), cache: "no-store" }
+    );
+    if (!response.ok) {
+      throw new Error(`GitHub API failed: ${response.status}`);
+    }
+    return response.json();
+  } catch (error) {
+    console.error("Failed to fetch repositories:", error);
+    throw error;
+  }
+}
+
+export async function getRepository(owner, repo) {
+  try {
+    const response = await fetch(
+      `${GITHUB_API}/repos/${owner}/${repo}`,
+      { headers: githubHeaders(), cache: "no-store" }
+    );
+    if (!response.ok) {
+      throw new Error(`Repo fetch failed: ${response.status}`);
+    }
+    return response.json();
+  } catch (error) {
+    console.error(`Failed to fetch repo ${owner}/${repo}:`, error);
+    throw error;
+  }
+}
+
+export async function getRepositoryReadme(owner, repo) {
+  if (!owner || !repo) return null;
+
+  const headers = githubHeaders();
+
+  try {
     const readmeRes = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/readme`,
-      {
-        headers,
-        next: { revalidate: 1800 }, // Cache for 30 minutes
-      }
+      `${GITHUB_API}/repos/${owner}/${repo}/readme`,
+      { headers, next: { revalidate: 1800 } }
     );
 
     if (!readmeRes.ok) {
-      console.warn(
-        `GitHub API README fetch failed for ${owner}/${repo}: status ${readmeRes.status}`
-      );
       return {
         error: true,
         status: readmeRes.status,
@@ -64,46 +95,46 @@ export async function getRepositoryReadme(owner, repo) {
 
     const readmeData = await readmeRes.json();
 
-    // 2. Fetch repo metadata to know default branch (for relative images)
     let defaultBranch = "main";
     try {
       const repoRes = await fetch(
-        `https://api.github.com/repos/${owner}/${repo}`,
-        {
-          headers,
-          next: { revalidate: 3600 },
-        }
+        `${GITHUB_API}/repos/${owner}/${repo}`,
+        { headers, next: { revalidate: 3600 } }
       );
       if (repoRes.ok) {
         const repoData = await repoRes.json();
-        if (repoData.default_branch) {
-          defaultBranch = repoData.default_branch;
-        }
+        if (repoData.default_branch) defaultBranch = repoData.default_branch;
       }
-    } catch {
-      // Default to "main" if repo fetch fails
+    } catch (err) {
+      console.warn("Failed to fetch default branch:", err?.message);
     }
 
-    // 3. Base64 Decode content
     let rawContent = "";
     if (readmeData.content) {
-      const cleanBase64 = readmeData.content.replace(/\s/g, "");
-      rawContent = Buffer.from(cleanBase64, "base64").toString("utf-8");
+      rawContent = Buffer.from(readmeData.content.replace(/\s/g, ""), "base64").toString("utf-8");
     }
 
     return {
       success: true,
-      owner,
-      repo,
-      defaultBranch,
+      owner, repo, defaultBranch,
       content: rawContent,
       htmlUrl: readmeData.html_url || `https://github.com/${owner}/${repo}`,
     };
   } catch (error) {
     console.error(`Exception fetching README for ${owner}/${repo}:`, error);
-    return {
-      error: true,
-      message: "Network error loading project documentation.",
-    };
+    return { error: true, message: "Network error loading project documentation." };
+  }
+}
+
+export async function getRepositoryLanguages(owner, repo) {
+  try {
+    const response = await fetch(
+      `${GITHUB_API}/repos/${owner}/${repo}/languages`,
+      { headers: githubHeaders(), cache: "no-store" }
+    );
+    if (!response.ok) return {};
+    return response.json();
+  } catch {
+    return {};
   }
 }

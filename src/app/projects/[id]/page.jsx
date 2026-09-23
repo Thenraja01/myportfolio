@@ -125,7 +125,7 @@ export default async function ProjectDetailPage({ params }) {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between">
+    <div className="min-h-screen flex flex-col justify-between">
       <Navbar />
 
       <main className="pt-28 pb-20">
@@ -133,13 +133,13 @@ export default async function ProjectDetailPage({ params }) {
           {/* Back button */}
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-400 hover:text-cyan-400 transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors"
           >
             <ArrowLeft size={16} /> Back to All Projects
           </Link>
 
           {/* Project Header Shell */}
-          <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-slate-800 bg-slate-900/60 backdrop-blur-xl space-y-6 shadow-2xl">
+          <div className="glass-card-morphism p-8 sm:p-12 rounded-3xl space-y-6 shadow-2xl">
             <div className="flex items-center justify-between">
               <Badge variant={project.category === "AI" ? "purple" : "default"}>
                 {project.category === "AI" && <Sparkles size={12} className="inline mr-1" />}
@@ -147,31 +147,31 @@ export default async function ProjectDetailPage({ params }) {
               </Badge>
 
               {project.status && (
-                <span className="text-xs font-mono uppercase px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
+                <span className="text-xs font-mono uppercase px-3 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20 font-semibold">
                   ● {project.status}
                 </span>
               )}
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-100 font-mono tracking-tight flex items-center gap-3">
-              <FolderCode size={32} className="text-cyan-400 shrink-0" />
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-slate-100 font-mono tracking-tight flex items-center gap-3 transition-colors">
+              <FolderCode size={32} className="text-cyan-600 dark:text-cyan-400 shrink-0" />
               {project.name}
             </h1>
 
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-sans">
+            <p className="text-slate-700 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-sans transition-colors font-medium">
               {project.description}
             </p>
 
             {/* Tech Stack */}
-            <div className="space-y-3 pt-4 border-t border-slate-800">
-              <h3 className="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold">
+            <div className="space-y-3 pt-4 border-t border-slate-200/80 dark:border-slate-800">
+              <h3 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 font-bold">
                 Technologies Used
               </h3>
               <div className="flex flex-wrap gap-2">
                 {project.technologies?.map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono text-cyan-300"
+                    className="px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-mono text-cyan-600 dark:text-cyan-300 font-medium shadow-2xs"
                   >
                     {tech}
                   </span>

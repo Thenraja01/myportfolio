@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { AIChatbot } from "@/components/chat/AIChatbot";
 import { ThemeProvider } from "@/context/ThemeContext";
@@ -6,6 +7,20 @@ import { Scene3DBackground } from "@/components/3d/Scene3DBackground";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { AppProviders } from "@/context/Provider";
 import InitialLoaderOverlay from "@/components/animations/InitialLoaderOverlay";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-plus-jakarta",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains",
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
 
 const PORTFOLIO_URL = "https://thenraja-01.vercel.app";
 
@@ -61,7 +76,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className={`dark scroll-smooth ${plusJakartaSans.variable} ${jetbrainsMono.variable}`} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <script
@@ -82,7 +97,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-indigo-500 selection:text-white relative">
+      <body className="min-h-screen font-sans antialiased selection:bg-indigo-500 selection:text-white relative">
         <InitialLoaderOverlay />
         <AppProviders>
           <SmoothScroll>

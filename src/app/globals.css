@@ -1,44 +1,94 @@
 @import "tailwindcss";
 
 @theme {
-  --color-themeSubheading: #a855f7;
+  --font-sans: var(--font-plus-jakarta), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", "Fira Code", monospace;
+  --color-themeSubheading: #818cf8;
   --color-themeButton: #6366f1;
-  --color-themeText: #0f172a;
-  --color-darkText: #e2e8f0;
+  --color-themeText: var(--text-primary);
+  --color-darkText: #f8fafc;
   --color-themeAccent: #22d3ee;
 }
 
-/* ─── Color palette ─── */
+/* ─── Gray Family Design System: Semantic Design Tokens ─── */
 :root {
-  --palette-bg: #faf5ff;
+  /* Backgrounds: Slate / Gray Family */
+  --bg-primary: #f8fafc;          /* slate-50 base canvas */
+  --bg-secondary: #ffffff;        /* elevated surface */
+  --bg-tertiary: #f1f5f9;         /* slate-100 containers/pills */
+  --bg-elevated: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+
+  /* Typography: Jet Black & Crisp Dark Gray */
+  --text-primary: #000000;        /* Solid Jet Black for high-contrast headings */
+  --text-secondary: #1e293b;      /* Deep Slate / Charcoal for crisp readable body text */
+  --text-tertiary: #475569;       /* Slate-600 for secondary descriptions & subtitles */
+  --text-muted: #64748b;          /* Slate-500 for metadata, dates & hints */
+
+  /* Borders & Dividers */
+  --border-subtle: #e2e8f0;       /* slate-200 */
+  --border-default: #cbd5e1;      /* slate-300 */
+  --border-active: #94a3b8;       /* slate-400 */
+  --border-glass: rgba(203, 213, 225, 0.7);
+
+  /* Accents & Glows */
+  --palette-bg: #f8fafc;
   --palette-surface: rgba(255, 255, 255, 0.85);
-  --palette-primary: #3b0764;
-  --palette-accent: #7c3aed;
-  --palette-accent-2: #9333ea;
+  --palette-primary: #000000;
+  --palette-accent: #6366f1;
+  --palette-accent-2: #8b5cf6;
   --palette-highlight: #a855f7;
-  --palette-glow: rgba(147, 51, 234, 0.25);
-  --palette-glow-2: rgba(168, 85, 247, 0.18);
-  --glass-border: rgba(192, 132, 252, 0.35);
-  --shadow-3d: 0 20px 50px -12px rgba(88, 28, 135, 0.12);
+  --palette-glow: rgba(99, 102, 241, 0.15);
+  --palette-glow-2: rgba(147, 51, 234, 0.12);
+  --glass-border: rgba(203, 213, 225, 0.8);
+  --shadow-3d: 0 16px 40px -10px rgba(15, 23, 42, 0.08);
   --perspective: 1200px;
 
-  --bg-gradient: linear-gradient(160deg, #faf5ff 0%, #f3e8ff 45%, #ede9fe 100%);
-  --text-primary: #3b0764;
+  --bg-gradient: linear-gradient(160deg, #f8fafc 0%, #f1f5f9 45%, #e2e8f0 100%);
   color-scheme: light;
 }
 
 .dark {
-  --palette-bg: #050816;
-  --palette-surface: rgba(15, 23, 42, 0.65);
-  --palette-primary: #e2e8f0;
-  --palette-glow: rgba(99, 102, 241, 0.45);
-  --palette-glow-2: rgba(168, 85, 247, 0.3);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --shadow-3d: 0 25px 50px -12px rgba(0, 0, 0, 0.55);
+  /* Backgrounds: Deep Slate / Obsidian Family */
+  --bg-primary: #030712;          /* slate-950 deep canvas */
+  --bg-secondary: #0b0f19;        /* slate-900 elevated surface */
+  --bg-tertiary: #131b2e;         /* slate-800 containers/pills */
+  --bg-elevated: #1e293b;
+  --bg-glass: rgba(11, 15, 25, 0.85);
 
-  --bg-gradient: linear-gradient(160deg, #050816 0%, #0f172a 45%, #1e1b4b 100%);
-  --text-primary: #e2e8f0;
+  /* Typography: High-Contrast Light Slate */
+  --text-primary: #f8fafc;        /* slate-50 high-contrast headings */
+  --text-secondary: #cbd5e1;      /* slate-300 body copy */
+  --text-tertiary: #94a3b8;       /* slate-400 metadata */
+  --text-muted: #64748b;          /* slate-500 muted text */
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-default: rgba(255, 255, 255, 0.14);
+  --border-active: rgba(255, 255, 255, 0.24);
+  --border-glass: rgba(255, 255, 255, 0.12);
+
+  /* Accents & Glows */
+  --palette-bg: #030712;
+  --palette-surface: rgba(11, 15, 25, 0.75);
+  --palette-primary: #f8fafc;
+  --palette-accent: #818cf8;
+  --palette-accent-2: #a78bfa;
+  --palette-highlight: #c084fc;
+  --palette-glow: rgba(99, 102, 241, 0.35);
+  --palette-glow-2: rgba(168, 85, 247, 0.22);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --shadow-3d: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+
+  --bg-gradient: linear-gradient(160deg, #030712 0%, #0b0f19 45%, #111827 100%);
   color-scheme: dark;
+}
+
+/* ─── Global Base & Compact Typography ─── */
+html {
+  scroll-behavior: smooth;
+  font-size: 15px; /* Compact & dense base scale */
+  letter-spacing: -0.011em;
 }
 
 body {
@@ -47,53 +97,141 @@ body {
   background-attachment: fixed;
   color: var(--text-primary);
   min-height: 100vh;
+  line-height: 1.55;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-duration: 300ms;
   -webkit-font-smoothing: antialiased;
-  font-family: "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-plus-jakarta), "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* Glassmorphism Card Style — true frosted glass in both light & dark */
+/* Headings with tight, modern tracking and crisp weight */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+code, kbd, samp, pre {
+  font-family: var(--font-jetbrains), "JetBrains Mono", monospace;
+  letter-spacing: -0.005em;
+}
+
+/* ─── Light Theme: Jet Black & Crisp Dark Gray Typography ─── */
+html:not(.dark),
+.light {
+  color: #1e293b;
+}
+
+html:not(.dark) h1,
+html:not(.dark) h2,
+html:not(.dark) h3,
+html:not(.dark) h4,
+html:not(.dark) h5,
+html:not(.dark) h6 {
+  color: #000000;
+}
+
+html:not(.dark) p,
+html:not(.dark) li {
+  color: #1e293b;
+}
+
+/* ─── Semantic Theme Utilities ─── */
+.bg-primary-theme {
+  background-color: var(--bg-primary);
+}
+.bg-secondary-theme {
+  background-color: var(--bg-secondary);
+}
+.bg-tertiary-theme {
+  background-color: var(--bg-tertiary);
+}
+.text-primary-theme {
+  color: var(--text-primary);
+}
+.text-secondary-theme {
+  color: var(--text-secondary);
+}
+.text-tertiary-theme {
+  color: var(--text-tertiary);
+}
+.text-muted-theme {
+  color: var(--text-muted);
+}
+.border-theme-subtle {
+  border-color: var(--border-subtle);
+}
+.border-theme-default {
+  border-color: var(--border-default);
+}
+.border-theme-glass {
+  border-color: var(--border-glass);
+}
+
+/* ─── Tech Stack & Metadata Semantic Utilities ─── */
+.tech-pill-theme {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.tech-pill-theme:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-active);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.meta-pill-theme {
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+}
+
+/* ─── Glassmorphism Cards (Harmonious in both Light & Dark) ─── */
 .glass-card-morphism {
-  /* Light mode: translucent frosted glass with subtle violet aura */
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(168, 85, 247, 0.25);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(203, 213, 225, 0.8);
   box-shadow:
-    0 8px 32px -8px rgba(124, 58, 237, 0.15),
-    0 2px 8px rgba(88, 28, 135, 0.05),
-    inset 0 1.5px 1px rgba(255, 255, 255, 0.75);
+    0 8px 30px -6px rgba(15, 23, 42, 0.07),
+    0 2px 6px rgba(15, 23, 42, 0.04),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
   position: relative;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card-morphism:hover {
-  background: rgba(255, 255, 255, 0.6);
-  border-color: rgba(147, 51, 234, 0.45);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(99, 102, 241, 0.4);
   box-shadow:
-    0 16px 48px -8px rgba(124, 58, 237, 0.25),
-    0 4px 16px rgba(88, 28, 135, 0.08),
-    inset 0 1.5px 1px rgba(255, 255, 255, 0.85);
+    0 16px 40px -8px rgba(99, 102, 241, 0.18),
+    0 4px 12px rgba(15, 23, 42, 0.06),
+    inset 0 1px 1px rgba(255, 255, 255, 1);
 }
 
 .dark .glass-card-morphism {
-  background: rgba(15, 23, 42, 0.52);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(11, 15, 25, 0.65);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.10);
   box-shadow:
-    0 20px 45px -10px rgba(0, 0, 0, 0.45),
-    inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    0 20px 45px -10px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
 }
 
 .dark .glass-card-morphism:hover {
-  background: rgba(15, 23, 42, 0.68);
+  background: rgba(15, 23, 42, 0.78);
+  border-color: rgba(129, 140, 248, 0.4);
   box-shadow:
-    0 24px 56px -10px rgba(0, 0, 0, 0.55),
-    0 0 32px rgba(99, 102, 241, 0.15),
-    inset 0 1px 1px rgba(255, 255, 255, 0.18);
+    0 24px 56px -10px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(99, 102, 241, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.16);
 }
 
 .glass-card-morphism::before {
@@ -103,71 +241,15 @@ body {
   left: 0;
   right: 0;
   height: 1.5px;
-  background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.8), rgba(217, 70, 239, 0.8), transparent);
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.6), rgba(168, 85, 247, 0.6), transparent);
 }
 
-/* ─── Light Theme: Comprehensive Violet Typography ─── */
-html:not(.dark),
-.light {
-  color: #3b0764;
-}
-
-html:not(.dark) body {
-  color: #3b0764;
-}
-
-html:not(.dark) h1,
-html:not(.dark) h2,
-html:not(.dark) h3,
-html:not(.dark) h4,
-html:not(.dark) h5,
-html:not(.dark) h6 {
-  color: #2e1065;
-}
-
-html:not(.dark) p,
-html:not(.dark) li {
-  color: #4c1d95;
-}
-
-/* Make light-mode text crisp and legible on glass cards */
-html:not(.dark) .glass-card-morphism p,
-html:not(.dark) .glass-card-morphism span,
-html:not(.dark) .glass-card-morphism h3,
-html:not(.dark) .glass-card-morphism h4 {
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
-}
-
-/* Map standard slate text classes into rich violet shades in light theme */
-html:not(.dark) .text-slate-950,
-html:not(.dark) .text-slate-900,
-html:not(.dark) .text-slate-800 {
-  color: #2e1065 !important; /* Deepest Royal Violet */
-}
-
-html:not(.dark) .text-slate-700 {
-  color: #4c1d95 !important; /* Deep Rich Violet */
-}
-
-html:not(.dark) .text-slate-600 {
-  color: #581c87 !important; /* Rich Violet */
-}
-
-html:not(.dark) .text-slate-500 {
-  color: #6b21a8 !important; /* Medium Violet */
-}
-
-html:not(.dark) .text-slate-400 {
-  color: #7c3aed !important; /* Bright Violet Accent */
-}
-
-html:not(.dark) .text-slate-300 {
-  color: #8b5cf6 !important; /* Soft Violet */
-}
-
-html:not(.dark) .text-slate-200,
-html:not(.dark) .text-slate-100 {
-  color: #3b0764 !important; /* Primary Violet */
+.glass-panel {
+  background: var(--palette-surface);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-3d);
 }
 
 /* ─── 3D background scene ─── */
@@ -187,7 +269,7 @@ html:not(.dark) .text-slate-100 {
   background:
     radial-gradient(ellipse 80% 50% at 20% 40%, var(--palette-glow), transparent 55%),
     radial-gradient(ellipse 60% 40% at 80% 20%, var(--palette-glow-2), transparent 50%),
-    radial-gradient(ellipse 50% 60% at 50% 90%, rgba(168, 85, 247, 0.15), transparent 45%);
+    radial-gradient(ellipse 50% 60% at 50% 90%, rgba(99, 102, 241, 0.12), transparent 45%);
 }
 
 .scene-3d-grid {
@@ -203,7 +285,7 @@ html:not(.dark) .text-slate-100 {
     linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: linear-gradient(to top, black 0%, transparent 70%);
-  opacity: 0.5;
+  opacity: 0.4;
   animation: grid-drift 24s linear infinite;
 }
 
@@ -230,7 +312,7 @@ html:not(.dark) .text-slate-100 {
   width: var(--size, 64px);
   height: var(--size, 64px);
   background: linear-gradient(135deg, var(--palette-accent), var(--palette-highlight));
-  opacity: 0.35;
+  opacity: 0.28;
   box-shadow: 0 0 40px var(--palette-glow);
 }
 
@@ -243,7 +325,7 @@ html:not(.dark) .text-slate-100 {
   height: var(--size, 120px);
   border: 3px solid var(--palette-accent-2);
   border-radius: 50%;
-  opacity: 0.25;
+  opacity: 0.22;
   box-shadow: 0 0 60px var(--palette-glow-2), inset 0 0 30px var(--palette-glow-2);
 }
 
@@ -256,7 +338,7 @@ html:not(.dark) .text-slate-100 {
   height: var(--size, 90px);
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, var(--palette-accent-2), var(--palette-accent));
-  opacity: 0.2;
+  opacity: 0.18;
   filter: blur(1px);
   box-shadow: 0 0 80px var(--palette-glow);
 }
@@ -294,14 +376,6 @@ html:not(.dark) .text-slate-100 {
   transition: transform 0.35s ease-out;
 }
 
-.glass-panel {
-  background: var(--palette-surface);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-3d);
-}
-
 .text-gradient-3d {
   background: linear-gradient(135deg, var(--palette-accent) 0%, var(--palette-accent-2) 45%, var(--palette-highlight) 100%);
   -webkit-background-clip: text;
@@ -314,17 +388,17 @@ html:not(.dark) .text-slate-100 {
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 6px 0 rgba(79, 70, 229, 0.45), 0 12px 24px var(--palette-glow);
+  box-shadow: 0 5px 0 rgba(79, 70, 229, 0.35), 0 10px 20px var(--palette-glow);
 }
 
 .btn-3d:hover {
   transform: translateY(-2px) translateZ(8px);
-  box-shadow: 0 8px 0 rgba(79, 70, 229, 0.45), 0 16px 32px var(--palette-glow);
+  box-shadow: 0 7px 0 rgba(79, 70, 229, 0.45), 0 14px 28px var(--palette-glow);
 }
 
 .btn-3d:active {
-  transform: translateY(4px) translateZ(0);
-  box-shadow: 0 2px 0 rgba(79, 70, 229, 0.45), 0 6px 16px var(--palette-glow);
+  transform: translateY(3px) translateZ(0);
+  box-shadow: 0 2px 0 rgba(79, 70, 229, 0.45), 0 4px 12px var(--palette-glow);
 }
 
 .profile-3d-wrap {
@@ -341,8 +415,8 @@ html:not(.dark) .text-slate-100 {
   transform: perspective(600px) rotateX(8deg);
   transform-origin: center bottom;
   text-shadow:
-    0 2px 4px rgba(0,0,0,0.1),
-    0 4px 8px rgba(0,0,0,0.05);
+    0 2px 4px rgba(0,0,0,0.06),
+    0 4px 8px rgba(0,0,0,0.03);
 }
 
 .animate-in-3d {
@@ -360,14 +434,12 @@ html:not(.dark) .text-slate-100 {
   }
 }
 
-/* Content sits above 3D bg */
 .app-layer {
   position: relative;
   z-index: 1;
 }
 
 /* ================= ANIMATIONS ================= */
-
 @keyframes pulse-slow {
   0%, 100% { opacity: 0.3; transform: scale(1); }
   50% { opacity: 0.6; transform: scale(1.05); }

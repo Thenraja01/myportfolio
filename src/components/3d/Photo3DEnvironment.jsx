@@ -127,10 +127,10 @@ export function Photo3DEnvironment({
           </AnimatePresence>
 
           {/* Interactive Click Switch Badge Banner */}
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 px-3 py-1 rounded-full bg-slate-950/80 border border-slate-700/70 text-slate-200 text-[10px] font-mono font-bold flex items-center gap-1.5 backdrop-blur-md opacity-80 group-hover:opacity-100 transition-opacity">
-            <Camera size={12} className="text-indigo-400 animate-bounce" />
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-30 px-3 py-1 rounded-full bg-white/90 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-700/70 text-slate-800 dark:text-slate-200 text-[10px] font-mono font-bold flex items-center gap-1.5 backdrop-blur-md opacity-90 group-hover:opacity-100 shadow-md transition-opacity">
+            <Camera size={12} className="text-indigo-600 dark:text-indigo-400 animate-bounce" />
             <span>Click to switch</span>
-            <RefreshCw size={10} className="text-purple-400" />
+            <RefreshCw size={10} className="text-purple-600 dark:text-purple-400" />
           </div>
 
           {/* Subtle gradient overlay */}

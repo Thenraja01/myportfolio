@@ -7,9 +7,16 @@ export function useParallax(speed = 0.2) {
 
   useEffect(() => {
     if (isReduced) return;
+    let ticking = false;
 
     const handleScroll = () => {
-      setOffsetY(window.scrollY * speed);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setOffsetY(window.scrollY * speed);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });

@@ -19,10 +19,10 @@ export function Button({
     primary:
       "bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-500/25 border border-indigo-400/30 btn-3d",
     secondary:
-      "bg-slate-800/80 hover:bg-slate-700/80 text-slate-100 border border-slate-700/50 glass-panel",
+      "bg-white/90 dark:bg-slate-800/80 hover:bg-slate-100 dark:hover:bg-slate-700/80 text-slate-800 dark:text-slate-100 border border-slate-300/80 dark:border-slate-700/50 shadow-sm glass-panel",
     outline:
-      "bg-transparent border border-slate-700 hover:border-indigo-500 text-slate-200 hover:text-white",
-    ghost: "bg-transparent hover:bg-white/5 text-slate-300 hover:text-white",
+      "bg-transparent border border-slate-300 dark:border-slate-700 hover:border-indigo-500 text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-white",
+    ghost: "bg-transparent hover:bg-slate-100 dark:hover:bg-white/5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white",
   };
 
   const sizes = {

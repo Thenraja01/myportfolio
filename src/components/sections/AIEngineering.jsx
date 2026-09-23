@@ -16,7 +16,7 @@ export default function AIEngineering() {
       subtitle: "Input Prompt & Request",
       icon: User,
       color: "from-blue-500/20 to-cyan-500/10",
-      accent: "text-cyan-400",
+      accent: "text-cyan-600 dark:text-cyan-400",
     },
     {
       id: "app",
@@ -24,7 +24,7 @@ export default function AIEngineering() {
       subtitle: "Next.js / FastAPI Middleware",
       icon: Smartphone,
       color: "from-indigo-500/20 to-purple-500/10",
-      accent: "text-indigo-400",
+      accent: "text-indigo-600 dark:text-indigo-400",
     },
     {
       id: "processing",
@@ -32,7 +32,7 @@ export default function AIEngineering() {
       subtitle: "Prompt Design & Sanitization",
       icon: Cpu,
       color: "from-purple-500/20 to-pink-500/10",
-      accent: "text-purple-400",
+      accent: "text-purple-600 dark:text-purple-400",
     },
     {
       id: "llm",
@@ -40,7 +40,7 @@ export default function AIEngineering() {
       subtitle: "OpenAI API & Google AI",
       icon: Sparkles,
       color: "from-pink-500/20 to-rose-500/10",
-      accent: "text-pink-400",
+      accent: "text-pink-600 dark:text-pink-400",
     },
     {
       id: "response",
@@ -48,7 +48,7 @@ export default function AIEngineering() {
       subtitle: "Structured AI Recommendations",
       icon: CheckCircle2,
       color: "from-emerald-500/20 to-teal-500/10",
-      accent: "text-emerald-400",
+      accent: "text-emerald-600 dark:text-emerald-400",
     },
   ];
 
@@ -73,15 +73,15 @@ export default function AIEngineering() {
                 className="w-full"
               >
                 <TiltCard maxTilt={6}>
-                  <div className="glass-panel p-5 rounded-3xl border border-slate-800/80 bg-slate-950/80 backdrop-blur-xl flex flex-col items-center text-center space-y-3 relative overflow-hidden group">
-                    <div className={`p-3 rounded-2xl bg-slate-900 border border-slate-800 ${node.accent}`}>
+                  <div className="glass-card-morphism p-5 rounded-3xl flex flex-col items-center text-center space-y-3 relative overflow-hidden group">
+                    <div className={`p-3 rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 ${node.accent} transition-colors shadow-2xs`}>
                       <node.icon size={24} />
                     </div>
                     <div>
-                      <h4 className="font-mono text-xs font-bold text-slate-200 uppercase tracking-tight">
+                      <h4 className="font-mono text-xs font-bold text-slate-900 dark:text-slate-200 uppercase tracking-tight transition-colors">
                         {node.title}
                       </h4>
-                      <p className="text-[11px] text-slate-400 font-sans mt-1">
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400 font-sans mt-1 transition-colors">
                         {node.subtitle}
                       </p>
                     </div>
@@ -91,7 +91,7 @@ export default function AIEngineering() {
 
               {/* Arrow Connector for desktop */}
               {idx < pipelineNodes.length - 1 && (
-                <div className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 z-20 text-indigo-500/50">
+                <div className="hidden md:block absolute -right-3 top-1/2 -translate-y-1/2 z-20 text-indigo-400/50 dark:text-indigo-500/50">
                   <ArrowRight size={18} />
                 </div>
               )}
@@ -100,15 +100,15 @@ export default function AIEngineering() {
         </div>
 
         {/* AI Capabilities Badges */}
-        <div className="mt-12 p-6 rounded-3xl glass-panel border border-slate-800 bg-slate-950/40 text-center space-y-4">
-          <h4 className="font-mono text-xs uppercase text-indigo-400 font-bold tracking-widest">
+        <div className="mt-12 p-6 rounded-3xl glass-card-morphism text-center space-y-4">
+          <h4 className="font-mono text-xs uppercase text-indigo-600 dark:text-indigo-400 font-bold tracking-widest">
             ENGINEERED WITH REAL AI STACK
           </h4>
           <div className="flex flex-wrap items-center justify-center gap-2">
             {aiSkills.map((skill) => (
               <span
                 key={skill}
-                className="px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-mono"
+                className="px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-700 dark:text-indigo-300 text-xs font-mono font-medium"
               >
                 ✦ {skill}
               </span>

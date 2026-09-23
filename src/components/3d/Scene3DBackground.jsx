@@ -1,23 +1,44 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useTheme } from "@/context/ThemeContext";
 
 export function Scene3DBackground() {
   const { isDark } = useTheme();
-  const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
+  const bgRef = useRef(null);
 
-  // Interactive mouse tilt effect for 3D depth
+  // Smooth mouse tilt effect for 3D depth via requestAnimationFrame (0 React re-renders)
   useEffect(() => {
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let animationFrameId;
+
     const handleMouseMove = (e) => {
       const { innerWidth, innerHeight } = window;
-      const x = (e.clientX / innerWidth - 0.5) * 20; // -10px to +10px
-      const y = (e.clientY / innerHeight - 0.5) * 20;
-      setMouseOffset({ x, y });
+      mouseX = (e.clientX / innerWidth - 0.5) * 16;
+      mouseY = (e.clientY / innerHeight - 0.5) * 16;
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    const animate = () => {
+      currentX += (mouseX - currentX) * 0.08;
+      currentY += (mouseY - currentY) * 0.08;
+
+      if (bgRef.current) {
+        bgRef.current.style.transform = `translate3d(${currentX}px, ${currentY}px, 0px)`;
+      }
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    animationFrameId = requestAnimationFrame(animate);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   const shapes = [
@@ -32,16 +53,13 @@ export function Scene3DBackground() {
 
   return (
     <div
+      ref={bgRef}
       className={`scene-3d-bg fixed inset-0 pointer-events-none z-0 overflow-hidden transition-colors duration-700 ${
         isDark
           ? "bg-slate-950 text-slate-100"
           : "bg-gradient-to-br from-slate-50 via-indigo-50/40 to-sky-50 text-slate-900"
       }`}
       aria-hidden="true"
-      style={{
-        transform: `translate3d(${mouseOffset.x * 0.5}px, ${mouseOffset.y * 0.5}px, 0px)`,
-        transition: "transform 0.2s ease-out",
-      }}
     >
       {/* Dynamic Ambient Glow Orbs */}
       <div

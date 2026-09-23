@@ -35,7 +35,7 @@ export default function Projects() {
             className={`px-5 py-2.5 rounded-full text-xs font-mono tracking-wider font-semibold transition-all ${
               filter === cat
                 ? "bg-cyan-600 text-white shadow-lg shadow-cyan-600/30"
-                : "bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800"
+                : "bg-white/80 dark:bg-slate-900 text-slate-700 dark:text-slate-400 hover:text-cyan-600 dark:hover:text-slate-200 border border-slate-200 dark:border-slate-800 shadow-xs"
             }`}
           >
             {cat.toUpperCase()}

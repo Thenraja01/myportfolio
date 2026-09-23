@@ -10,7 +10,7 @@ export const metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between">
+    <div className="min-h-screen flex flex-col justify-between">
       <Navbar />
       <main className="pt-24 pb-16">
         <Container>

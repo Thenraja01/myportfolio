@@ -6,13 +6,14 @@ import Footer from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/Badge";
 import { ProjectLinks } from "@/components/projects/ProjectLinks";
 import { AsyncReadmeSection } from "@/components/projects/AsyncReadmeSection";
-import { parseGitHubUrl, getRepositoryReadme } from "@/lib/github/client";
+import { parseGitHubUrl, getRepositoryReadme, getRepository, getRepositories } from "@/lib/github/client";
+import { createProjectFromGithub, mergeGithubIntoProject } from "@/lib/github/mapper";
 import { processReadmeMarkdown } from "@/lib/github/readme";
 import { ArrowLeft, Sparkles, FolderCode } from "lucide-react";
 import { initializeApp, getApps } from "firebase/app";
 import { getDatabase, ref, get } from "firebase/database";
 
-// Render dynamically — fetches fresh project data from Firebase at request time
+// Render dynamically — fetches fresh project data at request time
 export const dynamic = "force-dynamic";
 
 const firebaseConfig = {
@@ -25,27 +26,59 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Fetch all projects from Firebase Realtime DB
-async function getProjects() {
+async function getProjectById(id) {
+  const username = process.env.GITHUB_USERNAME || "Thenraja01";
+  const cleanId = id.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
+  // 1. Try to fetch direct repository from GitHub
+  try {
+    const repos = await getRepositories(username);
+    const matchedRepo = repos.find((r) => {
+      const slug = r.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      return slug === cleanId || r.name.toLowerCase() === id.toLowerCase();
+    });
+
+    if (matchedRepo) {
+      return createProjectFromGithub(matchedRepo);
+    }
+
+    // Try directly by repo name
+    const singleRepo = await getRepository(username, id);
+    if (singleRepo && singleRepo.name) {
+      return createProjectFromGithub(singleRepo);
+    }
+  } catch (err) {
+    console.warn("GitHub project lookup error:", err?.message || err);
+  }
+
+  // 2. Fallback to Firebase
   try {
     const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
     const db = getDatabase(app);
-    const snap = await get(ref(db, "/projects"));
-    if (!snap.exists()) return [];
-    const data = snap.val();
-    return Array.isArray(data) ? data : Object.values(data);
+    const snap = await get(ref(db, `/projects/${cleanId}`));
+    if (snap.exists()) {
+      return snap.val();
+    }
+    
+    // Check in all projects list in Firebase
+    const allSnap = await get(ref(db, "/projects"));
+    if (allSnap.exists()) {
+      const data = allSnap.val();
+      const list = Array.isArray(data) ? data : Object.values(data);
+      return list.find(
+        (p) => p.id === id || p.id === cleanId || p.name?.toLowerCase().replace(/[^a-z0-9]+/g, "-") === cleanId
+      ) || null;
+    }
   } catch (err) {
-    console.error("Firebase fetch error:", err.message);
-    return [];
+    console.error("Firebase fetch error:", err?.message || err);
   }
+
+  return null;
 }
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
-  const projects = await getProjects();
-  const project = projects.find(
-    (p) => p.id === id || p.name?.toLowerCase().replace(/[^a-z0-9]+/g, "-") === id
-  );
+  const project = await getProjectById(id);
 
   if (!project) {
     return { title: "Project Not Found" };
@@ -53,28 +86,27 @@ export async function generateMetadata({ params }) {
 
   return {
     title: `${project.name} | Then Raja M Portfolio`,
-    description: project.description,
+    description: project.description || "Portfolio Project Case Study",
   };
 }
 
 export default async function ProjectDetailPage({ params }) {
   const { id } = await params;
-  const projects = await getProjects();
-  const project = projects.find(
-    (p) => p.id === id || p.name?.toLowerCase().replace(/[^a-z0-9]+/g, "-") === id
-  );
+  const project = await getProjectById(id);
 
   if (!project) {
     notFound();
   }
 
-
   // Parse GitHub repository owner and name
-  const repoInfo = parseGitHubUrl(project.github);
+  const repoInfo = project.githubData
+    ? { owner: project.githubData.owner, repo: project.githubData.repo }
+    : parseGitHubUrl(project.github);
+
   let initialReadmeContent = null;
   let readmeHtmlUrl = project.github;
 
-  // Pre-fetch at build time if available, otherwise AsyncReadmeSection handles it on client
+  // Pre-fetch README if repo info is available
   if (repoInfo) {
     try {
       const readmeData = await getRepositoryReadme(repoInfo.owner, repoInfo.repo);
@@ -88,7 +120,7 @@ export default async function ProjectDetailPage({ params }) {
         readmeHtmlUrl = readmeData.htmlUrl || project.github;
       }
     } catch (err) {
-      console.warn(`Static build pre-fetch skipped for ${repoInfo.owner}/${repoInfo.repo}`);
+      console.warn(`Static build pre-fetch skipped for ${repoInfo.owner}/${repoInfo.repo}:`, err?.message);
     }
   }
 
@@ -101,13 +133,13 @@ export default async function ProjectDetailPage({ params }) {
           {/* Back button */}
           <Link
             href="/#projects"
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-400 hover:text-indigo-400 transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-slate-400 hover:text-cyan-400 transition-colors"
           >
             <ArrowLeft size={16} /> Back to All Projects
           </Link>
 
-          {/* Project Header Shell (Renders Immediately) */}
-          <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-slate-800 bg-slate-900/60 backdrop-blur-xl space-y-6">
+          {/* Project Header Shell */}
+          <div className="glass-panel p-8 sm:p-12 rounded-3xl border border-slate-800 bg-slate-900/60 backdrop-blur-xl space-y-6 shadow-2xl">
             <div className="flex items-center justify-between">
               <Badge variant={project.category === "AI" ? "purple" : "default"}>
                 {project.category === "AI" && <Sparkles size={12} className="inline mr-1" />}
@@ -115,14 +147,14 @@ export default async function ProjectDetailPage({ params }) {
               </Badge>
 
               {project.status && (
-                <span className="text-xs font-mono uppercase px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                <span className="text-xs font-mono uppercase px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/20 font-semibold">
                   ● {project.status}
                 </span>
               )}
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-100 font-mono tracking-tight flex items-center gap-3">
-              <FolderCode size={32} className="text-indigo-400 shrink-0" />
+              <FolderCode size={32} className="text-cyan-400 shrink-0" />
               {project.name}
             </h1>
 
@@ -139,7 +171,7 @@ export default async function ProjectDetailPage({ params }) {
                 {project.technologies?.map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono text-indigo-300"
+                    className="px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs font-mono text-cyan-300"
                   >
                     {tech}
                   </span>

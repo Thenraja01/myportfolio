@@ -28,7 +28,7 @@ export function parseGitHubUrl(url) {
   return null;
 }
 
-export async function getRepositories(username, options = {}) {
+export async function getRepositories(username = process.env.GITHUB_USERNAME || "Thenraja01", options = {}) {
   const { perPage = 100, sort = "updated", includeForks = false, includePrivate = false } = options;
   const params = new URLSearchParams({
     per_page: perPage,
@@ -41,31 +41,36 @@ export async function getRepositories(username, options = {}) {
   try {
     const response = await fetch(
       `${GITHUB_API}/users/${username}/repos?${params}`,
-      { headers: githubHeaders(), cache: "no-store" }
+      { headers: githubHeaders(), next: { revalidate: 60 } }
     );
     if (!response.ok) {
+      if (response.status === 403 || response.status === 429) {
+        console.warn("GitHub API rate limit exceeded in getRepositories");
+      }
       throw new Error(`GitHub API failed: ${response.status}`);
     }
-    return response.json();
+    const data = await response.json();
+    return Array.isArray(data) ? data : [];
   } catch (error) {
-    console.error("Failed to fetch repositories:", error);
-    throw error;
+    console.error("Failed to fetch repositories:", error.message || error);
+    return [];
   }
 }
 
-export async function getRepository(owner, repo) {
+export async function getRepository(owner = process.env.GITHUB_USERNAME || "Thenraja01", repo) {
+  if (!repo) return null;
   try {
     const response = await fetch(
       `${GITHUB_API}/repos/${owner}/${repo}`,
-      { headers: githubHeaders(), cache: "no-store" }
+      { headers: githubHeaders(), next: { revalidate: 60 } }
     );
     if (!response.ok) {
       throw new Error(`Repo fetch failed: ${response.status}`);
     }
     return response.json();
   } catch (error) {
-    console.error(`Failed to fetch repo ${owner}/${repo}:`, error);
-    throw error;
+    console.error(`Failed to fetch repo ${owner}/${repo}:`, error.message || error);
+    return null;
   }
 }
 

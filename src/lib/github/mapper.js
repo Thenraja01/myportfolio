@@ -24,7 +24,6 @@ function detectCategory(repo) {
     text.includes("gemini") ||
     text.includes("openai") ||
     text.includes("groq") ||
-    text.includes("ollama") ||
     text.includes("langchain") ||
     text.includes("llama") ||
     text.includes("agent") ||

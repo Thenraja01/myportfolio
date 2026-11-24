@@ -6,8 +6,6 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import { Scene3DBackground } from "@/components/3d/Scene3DBackground";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import { AppProviders } from "@/context/Provider";
-import InitialLoaderOverlay from "@/components/animations/InitialLoaderOverlay";
-
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-plus-jakarta",
@@ -98,7 +96,6 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className="min-h-screen font-sans antialiased selection:bg-indigo-500 selection:text-white relative">
-        <InitialLoaderOverlay />
         <AppProviders>
           <SmoothScroll>
             <Scene3DBackground />

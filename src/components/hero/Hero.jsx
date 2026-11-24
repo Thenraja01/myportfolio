@@ -57,7 +57,7 @@ export default function Hero() {
             </a>
 
             <a href={personalInfo.resume || "/Then_Raja_Resume.docx"} target="_blank" rel="noopener noreferrer">
-              <Button variant="secondary" size="lg">
+              <Button variant="default" size="lg">
                 <Download size={18} /> Resume
               </Button>
             </a>
@@ -90,28 +90,28 @@ export default function Hero() {
           </div>
 
           {/* Quick Metrics */}
-          <div className="pt-6 grid grid-cols-3 gap-4 border-t border-slate-200 dark:border-slate-900 max-w-lg mx-auto lg:mx-0 transition-colors">
+          <div className="pt-6 bg-yellow/80 text-black grid grid-cols-3 gap-4 border-t border-slate-200 dark:border-slate-900 max-w-lg mx-auto lg:mx-0 transition-colors">
             <div>
-              <div className="text-2xl font-bold text-slate-900 dark:text-slate-100 font-mono transition-colors">
+              <div className="text-2xl font-bold text-yellow-900 dark:text-slate-100 font-mono transition-colors">
                 {projectCount}+
               </div>
-              <div className="text-xs text-slate-500 dark:text-slate-400 font-mono uppercase">
+              <div className="text-xs text-yellow-500 dark:text-slate-400 font-mono uppercase">
                 Projects Built
               </div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-slate-900 dark:text-slate-100 font-mono transition-colors">
+              <div className="text-2xl font-bold text-yellow-900 dark:text-slate-100 font-mono transition-colors">
                 3+
               </div>
-              <div className="text-xs text-slate-500 dark:text-slate-400 font-mono uppercase">
+              <div className="text-xs text-yellow-500 dark:text-slate-400 font-mono uppercase">
                 Internships
               </div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-slate-900 dark:text-slate-100 font-mono transition-colors">
+              <div className="text-2xl font-bold text-yellow-900 dark:text-slate-100 font-mono transition-colors">
                 11
               </div>
-              <div className="text-xs text-slate-500 dark:text-slate-400 font-mono uppercase">
+              <div className="text-xs text-yellow-500 dark:text-slate-400 font-mono uppercase">
                 Certifications
               </div>
             </div>
